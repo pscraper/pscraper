@@ -1,3 +1,6 @@
+import sys
+sys.path.append(r"C:\Users\seungsu\Desktop\projects\pscraper\crawler")
+
 from crawling_manager import CrawlingManager
 from bs4 import BeautifulSoup
 from selenium.webdriver.remote.webelement import WebElement

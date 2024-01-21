@@ -1,9 +1,7 @@
-import sys
-import os
-
-
+from crawler.dotnet_crawling_manager import DotnetCrawlingManager
+from crawler.crawling_manager import CrawlingManager
 
 
 if __name__ == "__main__":
-    # dc = DotnetCollector()
-    print("OK")
+    dcm = DotnetCrawlingManager()
+    dcm.run()

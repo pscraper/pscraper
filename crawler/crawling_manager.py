@@ -14,7 +14,7 @@ from pathlib import Path
 
 
 class CrawlingManager:
-    _bin_path = Path(__file__).parent / "bin"
+    _bin_path = Path(__file__).cwd() / "bin"
 
     _patch_file_path = _bin_path / "patchfiles"
 
@@ -140,4 +140,4 @@ class CrawlingManager:
 
 if __name__ == "__main__":
     # cm = CrawlingManager()
-    print(CrawlingManager._patch_file_path.as_posix())
+    print(Path(__file__).cwd())
