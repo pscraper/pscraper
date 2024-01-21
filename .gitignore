@@ -1,0 +1,15 @@
+.idea/*
+.venv/*
+./*/__pycache__/*
+./back_office/crwaling/patchfiles
+
+*.exe
+*.log
+*.csv
+*.pyc
+*.png
+*.msu
+*.xml
+*.txt
+*.cab
+*.xlsx
