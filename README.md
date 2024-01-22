@@ -1,10 +1,11 @@
 ## Intro.
-<b>"pscraper</b>는 Java, Oracle, MS 등의 벤더사에서 릴리즈하는 정기/비정기 패치 정보와 패치 파일 및 해시 정보를 자동으로 수집해주는 도구입니다.
+<b>"pscraper"</b>는 Java, Oracle, MS 등의 벤더사에서 릴리즈하는 정기/비정기 패치 정보와 패치 파일 및 해시 정보를 자동으로 수집해주는 도구입니다. <br/>
 업무상 제한된 폐쇄망 환경을 기준으로 개발되었기 때문에 Selenium과 Beautifulsoup을 통해 정보를 수집합니다.
 추가적으로 MS 패치의 경우 오직 Windows OS에서만 예외 없는 실행이 가능합니다.
     
     
-<b>"pscraper"</b> automatically collects regular/irregular patch information, patch files, hash information, and various other information from various vendors such as .NET, Adobe, and Java. It was developed for a limited, closed-network business environment, it operates based on Selenium and bs4. Not Requests module. Additionally, when dealing with MS patch files, exception-free execution is only possible on Windows OS.
+<b>"pscraper"</b> automatically collects regular/irregular patch information, patch files, hash information, and various other information from various vendors such as .NET, Adobe, and Java. <br/>
+It was developed for a limited, closed-network business environment, it operates based on Selenium and bs4. Not Requests module. Additionally, when dealing with MS patch files, exception-free execution is only possible on Windows OS.
 
 ---
 
@@ -17,6 +18,7 @@
     
 Click the "run.bat" file for batch processing.
 The batch process includes creating a virtual environment by Anaconda, downloading required libraries, and scraping.
+
 <br/>
 
 ### 2. exe 파일 실행
@@ -26,7 +28,7 @@ dist 폴더 내 "main.exe" 파일 또는, 우측 새롭게 Release된 exe 실행
 You can run <b>pscraper</b> by downloading the main.exe file in the "dist" folder or the newly released exe executable file on the right.
 This method is particularly useful because it does not require a Python runtime environment, and patch files and collection information are generated in the path "%APPDATA%\Local\Temp\\_MEI12722\bin".
 
----
+<br/>
 
 ### 3. 직접 실행
 만약 Anaconda가 설치되있지 않거나, exe 파일을 실행할 수 없는 환경이라면 "main.py" 파일을 직접 실행하여 <b>pscraper</b>를 작동할 수 있습니다.
