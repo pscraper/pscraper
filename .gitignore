@@ -3,6 +3,7 @@
 ./*/__pycache__/*
 ./back_office/crwaling/patchfiles
 ./build/*
+./build/main/*
 
 *.log
 *.csv
@@ -13,3 +14,12 @@
 *.txt
 *.cab
 *.xlsx
+*.toc
+*.pkg
+*.html
+*.zip
+*.pkg
+*.manifest
+*.pyz
+*.txt
+*.spec
