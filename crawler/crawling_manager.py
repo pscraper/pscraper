@@ -14,13 +14,13 @@ from pathlib import Path
 
 
 class CrawlingManager:
-    _bin_path = Path(__file__).cwd() / "bin"
-
+    _bin_path = Path(__file__).parent.parent / "bin"
+    
     _patch_file_path = _bin_path / "patchfiles"
-
+    
     _data_file_path = _bin_path / "data"
-
-    _chrome_driver_path = _bin_path / "chromedriver.exe"
+    
+    _chrome_driver_path = _bin_path / "exe" / "chromedriver.exe"
 
 
     def __init__(self):
@@ -32,7 +32,7 @@ class CrawlingManager:
 
         # ./bin/data 폴더가 없으면 생성
         if not os.path.exists(self._data_file_path):
-            os.mkdir(self._data_file_path)        
+            os.mkdir(self._data_file_path)
 
         # ./bin/patchfiles 폴더 비어있는지 검사 
         while True:

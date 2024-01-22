@@ -1,16 +1,20 @@
+from pathlib import Path
 import sys
-sys.path.append(r"C:\Users\seungsu\Desktop\projects\pscraper\crawler")
 
-from crawling_manager import CrawlingManager
-from bs4 import BeautifulSoup
-from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.common.by import By
-from datetime import datetime
+sys.path.append(str(Path(__file__).parent))
+
 import re
 import time
 import os
 import hashlib
 import shutil
+from crawling_manager import CrawlingManager
+from bs4 import BeautifulSoup
+from bs4 import ResultSet
+from selenium.webdriver.remote.webelement import WebElement
+from selenium.webdriver.common.by import By
+from datetime import datetime
+
 
 
 class DotnetCrawlingManager(CrawlingManager):
@@ -73,6 +77,10 @@ class DotnetCrawlingManager(CrawlingManager):
         for file in os.listdir(self._cab_file_path):
             if file.endswith("_WSUSSCAN.cab"):
                 continue
+            
+            # 관리자 권한이 아닌 경우 임시 파일을 삭제하려다 엑세스 거부 예외가 발생할 수 있음 
+            if file.endswith(".tmp"):
+                continue
 
             os.remove(self._cab_file_path / file)
             print(f"[Delete] {self._cab_file_path / file}")
@@ -100,7 +108,7 @@ class DotnetCrawlingManager(CrawlingManager):
         return cab_file_name
 
 
-    def _extract_file_hash(self, file_name: str) -> tuple[str]:
+    def _extract_file_hash(self, file_name: str) -> tuple[str, str, str]:
         file_abs_path = self._patch_file_path / file_name
 
         with open(file_abs_path, "rb") as fp:
@@ -132,9 +140,9 @@ class DotnetCrawlingManager(CrawlingManager):
         return "undefined"
 
 
-    def _download_patch_file(self) -> dict[str, list[dict[str, str]]]:
+    def _download_patch_file(self, common_dict: dict[str, dict[str, str]]) -> dict[str, list[dict[str, str]]]:
         driver = self.driver
-        file_dict = dict()
+        file_dict: dict[str, list[dict[str, str]]] = dict()
         
         for qnumber, value in self.qnumbers.items():
             product_version = value[0]
@@ -156,15 +164,75 @@ class DotnetCrawlingManager(CrawlingManager):
                 os.system("cls")
 
                 print(f"[{product_version} {dotnet_version}] 다운로드 작업 시작")
-                print("link: ", link)
+                print("[link]", link)
 
+                severity_set = set()
+
+                # 중요도 조사
                 for tr in trs:
                     self._driver_wait(By.TAG_NAME, "td")
                     tds: list[WebElement] = tr.find_elements(by = By.TAG_NAME, value = "td")[1:]
-                    tds[-1].click()
+                    patch_title_elem = tds[0]
+                    patch_title = patch_title_elem.text
+
+                    if "Embedded" in patch_title or "Itanium" in patch_title:
+                        continue
+
+                    patch_title_elem.click()
                     time.sleep(2)
 
-                while len(driver.window_handles) != 1:
+                for handle in driver.window_handles:
+                    if handle == main_window:
+                        continue
+                    
+                    driver.switch_to.window(handle)
+                    
+                    title_xpath = "//*[@id=\"ScopedViewHandler_titleText\"]"
+                    self._driver_wait(by = By.XPATH, name = title_xpath)
+                    patch_title = driver.find_element(by = By.XPATH, value = title_xpath).text
+                    
+                    severity_xpath = "//*[@id=\"ScopedViewHandler_msrcSeverity\"]"
+                    self._driver_wait(by = By.XPATH, name = severity_xpath)
+                    severity = driver.find_element(by = By.XPATH, value = severity_xpath).text
+                    severity_set.add(severity)
+
+                    print(f"[Patch Titke] {patch_title}")
+                    print(f"[Severity] {severity}")
+                    
+                    driver.close()
+                    
+                # 중요도 업데이트
+                max_severity = ""
+                if "Critical" in severity_set or "critical" in severity_set:
+                    max_severity = "Critical"
+                
+                elif "Important" in severity_set or "important" in severity_set:
+                    max_severity = "Important"
+
+                common_dict[qnumber].update({"중요도": max_severity})
+
+                # 다운로드 작업 시작 세팅
+                time.sleep(3)
+
+                driver.switch_to.window(main_window)
+
+                # 다운로드 버튼 클릭
+                for tr in trs:
+                    self._driver_wait(By.TAG_NAME, "td")
+                    tds: list[WebElement] = tr.find_elements(by = By.TAG_NAME, value = "td")[1:]
+                    patch_title = tds[0].text
+
+                    if "Embedded" in patch_title or "Itanium" in patch_title:
+                        continue
+                    
+                    tds[-1].click()
+                    time.sleep(2)
+        
+                # 다운로드 수행
+                for handle in driver.window_handles:
+                    if handle == main_window:
+                        continue
+
                     driver.switch_to.window(driver.window_handles[-1])
 
                     # 열린 다운로드 창에서 파일 다운로드 받기
@@ -172,7 +240,7 @@ class DotnetCrawlingManager(CrawlingManager):
                     self._driver_wait(By.XPATH, xpath)
                     
                     box: WebElement = driver.find_element(by = By.XPATH, value = xpath)
-                    divs = box.find_elements(by = By.TAG_NAME, value = "div")[1:]
+                    divs: list[WebElement] = box.find_elements(by = By.TAG_NAME, value = "div")[1:]
 
                     for div in divs:
                         atag: WebElement = div.find_element(by = By.TAG_NAME, value = "a")
@@ -202,8 +270,6 @@ class DotnetCrawlingManager(CrawlingManager):
                         })
 
                         time.sleep(4)
-                    
-                    # 다운로드 창 닫기
                     driver.close()
                 
                 # 다시 main window로 전환 (카탈로그 창)
@@ -224,8 +290,9 @@ class DotnetCrawlingManager(CrawlingManager):
                 })
 
                 continue
-        
-            self._wait_til_download_ended()
+            
+            finally:
+                self._wait_til_download_ended()
 
         # msu 파일명 전부 변경
         self._wait_til_download_ended()
@@ -365,6 +432,11 @@ class DotnetCrawlingManager(CrawlingManager):
         return f"{date[-1]}/{date[0]}/{int(date[1]) + 1}"
 
 
+    # TODO
+    def _get_default_summary(self):
+        return "수동 수집이 필요합니다."
+
+
     def _get_title_and_summary(self, file_dict) -> dict[str, dict[str, str]]:
         tmp = dict()
 
@@ -390,9 +462,9 @@ class DotnetCrawlingManager(CrawlingManager):
                     time.sleep(1)
 
                     soup = BeautifulSoup(driver.page_source, "html.parser")
-                    title = soup.find(name = "h1", attrs = {"id": "page-header"}).text.strip()
-                    section = soup.find(name = "section", attrs = {"id": "bkmk_summary"})
-                    ps = section.find_all(name = "p")
+                    title: str = soup.find(name = "h1", attrs = {"id": "page-header"}).text.strip()
+                    section = soup.find(name = "section", attrs = {"id": "bkmk_summary"})   # 없는 경우도 존재
+                    ps: ResultSet[BeautifulSoup] = section.find_all(name = "p")
             
                     summary = ""
                     for p in ps:
@@ -406,9 +478,9 @@ class DotnetCrawlingManager(CrawlingManager):
                     tmp[qnumber][nation]["summary"] = summary
 
                 except Exception as _:
-                    print(f"[WARN] {qnumber}에 대한 title, summary를 가져오지 못했습니다.")
+                    print(f"[WARN] {qnumber}에 대한 summary를 가져오지 못했습니다.")
                     err = True
-                    continue
+                    tmp[qnumber][nation]["summary"] = self._get_default_summary()
 
                 finally:
                     if not err:
@@ -474,8 +546,7 @@ class DotnetCrawlingManager(CrawlingManager):
                 "KBNumber": f"KB{qnumber}",
                 "BulletinID": f"MS-KB{qnumber}",
                 "cve": cve_string,
-                "PatchData": patch_date,
-                "중요도": "Important"
+                "PatchData": patch_date
             }
         
         return tmp
@@ -533,12 +604,15 @@ class DotnetCrawlingManager(CrawlingManager):
 
             # 패치 대상의 각 카탈로그 링크에서 패치 파일 다운로드
             # 각 패치 파일 이름과 vendor URL에 대한 Dict 반환
-            file_dict = self._download_patch_file()
+            file_dict = self._download_patch_file(common_dict)
             self._wait_til_download_ended()
             time.sleep(3)
 
             # msu 파일 압축 해제, WSUSSCAN 파일명 변경 작업, file_dict 업데이트
             self._extract_file_info(file_dict)
+
+            # 각 언어별 bulletin URL에서 제목과 요약 수집
+            title_and_summary = self._get_title_and_summary(file_dict)
 
             # 모든 파일이 정상적으로 존재하는지 검증
             self._check_msu_and_cab_file_exists()
@@ -553,9 +627,8 @@ class DotnetCrawlingManager(CrawlingManager):
             print("\n[INFO] 패치 파일 다운로드 작업 완료")
             self._save_result(self._data_file_path / "patch_file_info.json", file_dict)
 
-            # 각 언어별 bulletin URL에서 제목과 요약 수집
-            tmp = self._get_title_and_summary(file_dict)
-            self._save_result(self._data_file_path / "title_summary.json", tmp)
+            # 각 언어별 title, summary 수집 결과 json 파일로 저장
+            self._save_result(self._data_file_path / "title_summary.json", title_and_summary)
 
             os.system("cls")
             print("[INFO] 프로그램이 정상적으로 종료되었습니다")
