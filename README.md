@@ -17,17 +17,18 @@ Java, Oracle, MS 등의 벤더사에서 릴리즈하는 정기/비정기 패치 
     
 Click the "run.bat" file for batch processing.
 The batch process includes creating a virtual environment by Anaconda, downloading required libraries, and scraping.
+<br/>
 
 ### 2. exe 파일 실행
 코드를 따로 내려받을 필요 없이 "dist" 폴더 안에 main.exe 파일을 실행하여 pscraper를 실행할 수 있습니다.
-해당 방법은 Python 런타임 환경이 필요 없기 때문에 특히 유용하고, 패치 파일 및 수집 정보는 "%APPDATA%\Local\Temp\_MEI12722\bin" 경로에 생성됩니다. 
+해당 방법은 Python 런타임 환경이 필요 없기 때문에 특히 유용하고, 패치 파일 및 수집 정보는 "%APPDATA%\Local\Temp\\_MEI12722\bin" 경로에 생성됩니다. 
     
 You also can run pscraper by executing the main.exe file in the "dist" folder without having to download the code separately.
-This method is particularly useful because it does not require a Python runtime environment, and patch files and collection information are created in the path "%APPDATA%\Local\Temp\_MEI12722\bin"
+This method is particularly useful because it does not require a Python runtime environment, and patch files and collection information are created in the path "%APPDATA%\Local\Temp\\_MEI12722\bin"
+<br/>
 
 ### 3. 직접 실행
 만약 Anaconda가 설치되있지 않거나, exe 파일을 실행할 수 없는 환경이라면 "main.py" 파일을 직접 실행하여 pscraper를 작동할 수 있습니다.
-
     
 If Anaconda is not installed or the exe file cannot be run, you can run pscraper by directly executing the "main.py" file.
 
