@@ -18,10 +18,16 @@ class CrawlingManager:
     def __init__(self):
         os.system("cls")
 
-        # yaml 파일 읽기
+        # init 파일 경로 설정
         pdir = Path(__file__).parent
-        meta_path = pdir / ".." / "bin" / "metadata" / "meta.yaml"
+        meta_path = pdir / ".." / "bin" / "settings" / "meta.yaml"
 
+        # settings 경로 체크
+        if not os.path.exists(meta_path.parent):
+            print("[ERR] meta.yaml 파일을 읽어들일 수 없습니다.")
+            return
+
+        # 파일 읽어서 meta 객체 초기화
         with open(meta_path, "r", encoding="utf8") as fp:
             self.meta = yaml.load(fp, Loader = yaml.FullLoader)
 
@@ -30,51 +36,47 @@ class CrawlingManager:
         self._chrome_driver_path = pdir / Path(self._path['driver'])
         self._patch_file_path = pdir / Path(self._path['patchfile'])
         self._data_file_path = pdir / Path(self._path['data'])
-
+        
         # ./bin/patchfiles 폴더가 없으면 생성
         if not self._patch_file_path.exists():
             self._patch_file_path.mkdir()
-            (self._patch_file_path / "adobe").mkdir()
+
+        if "java" not in os.listdir(self._patch_file_path):
             (self._patch_file_path / "java").mkdir()
+
+        if "adobe" not in os.listdir(self._patch_file_path):
+            (self._patch_file_path / "adobe").mkdir()
+
+        if "dotnet" not in os.listdir(self._patch_file_path):
             (self._patch_file_path / "dotnet").mkdir()
 
         # ./bin/data 폴더가 없으면 생성
         if not self._data_file_path.exists():
-            self._data_file_path.mkdir()
-
-        # ./bin/patchfiles 폴더 비어있는지 검사 
-        while True:
-            cnt = 0
-
-            for f in self._patch_file_path.iterdir():
-                if f.is_file():
-                    cnt += 1
-
-            if cnt == 0:
-                break
-
-            input(f"{self._patch_file_path.absolute()} 폴더 내 모든 파일을 비우고 <Enter>를 입력하세요.")
+            self._data_file_path.mkdir()       
 
         # .NET Blog URL 입력받고 시작
         url = input("크롤링할 .NET 패치노트 주소를 입력해주세요: ")
 
         # 다운로드 경로 설정
         options = webdriver.ChromeOptions()
-        options.add_argument("--disable-popup-blocking")
-        options.add_argument("--disable-extensions")
-        options.add_argument("--disable-gpu")
-        options.add_argument("--no-sandbox")
-        options.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+
+        for option in self.meta['driver_options']:
+            print(f"Chrome Option {option} Added.")
+            options.add_argument(option)
+
         options.add_experimental_option("prefs", {
-            "download.default_directory": str(self._patch_file_path)
+            "download.default_directory": str(Path.cwd() / "bin" / "patchfiles" / "dotnet")
         })
-        
+
         # selenium 버전 높은 경우 -> executable_path Deprecated -> Service 객체 사용
         print(f"Python {sys.version} running")
+        print(self._chrome_driver_path)
+
         try:
             self.driver = webdriver.Chrome(options = options, service = Service(executable_path = self._chrome_driver_path))
+
         except Exception as _:
-            print("[INFO] 구버전 webdriver로 동작합니다.")
+            print("[INFO] 구버전 Selenium으로 동작합니다.")
             self.driver = webdriver.Chrome(executable_path = str(self._chrome_driver_path), options = options)
         
         # Get 요청 후 HTML 파싱
@@ -147,6 +149,7 @@ class CrawlingManager:
         try:
             del self.soup
             del self.driver
+            del self.meta
         
         except Exception as _:
             pass

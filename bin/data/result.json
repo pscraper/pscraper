@@ -1,0 +1,45 @@
+{
+    "5033917": {
+        "common": {
+            "BulletinID": "MS-KB5033917",
+            "KBNumber": "KB5033917",
+            "PatchData": "2024/01/23",
+            "cve": "CVE-2023-36042,CVE-2024-0056,CVE-2024-0057,CVE-2024-21312",
+            "중요도": "Important"
+        },
+        "files": [
+            {
+                "MD5": "14155c2562c5a57ea3904e910d8e6b82",
+                "SHA256": "c1a3cc77c67bc7e6f8c2028dab7893c659751f173fc46c6cda00c8c379d3acf5",
+                "WSUS 파일": "windows11.0-KB5033917-x64-ndp481_WSUSSCAN.cab",
+                "architecture": "x64",
+                "file_name": "windows11.0-KB5033917-x64-ndp481.msu",
+                "file_size": "60.1",
+                "product": "Microsoft server operating system, version 23H2",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/secu/2023/12/windows11.0-kb5033917-x64-ndp481_04a96aecc42a033e06774c8e9453f6548c879f1e.msu"
+            }
+        ],
+        "nations": {
+            "en-us": {
+                "bulletin_url": "https://support.microsoft.com/en-us/help/5033917",
+                "summary": "CVE-2023-36042 - .NET Framework Denial of Service Vulnerability\n              This security update addresses a security feature bypass vulnerability detailed in CVE-2023-36042.CVE-2024-0056  - .NET Framework Security Feature Bypass Vulnerability\n              This security update addresses a security feature bypass vulnerability detailed in CVE-2024-0056 .CVE-2024-0057 - .NET Framework Security Feature Vulnerability\n              This security update addresses a elevation of privilege vulnerability detailed in CVE-2024-0057.CVE-2024-21312 - .NET Framework Denial of Service Vulnerability\n              This security update addresses a denial of service vulnerability detailed in CVE-2024-21312 .",
+                "title": "January 9, 2024-KB5033917 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Microsoft server operating system, version 23H2"
+            },
+            "ja-jp": {
+                "bulletin_url": "https://support.microsoft.com/ja-jp/help/5033917",
+                "summary": "CVE-2023-36042 - .NET Framework のサービス拒否の脆弱性\n              このセキュリティ更新プログラムは、CVE-2023-36042 で詳述されているセキュリティ機能バイパスの脆弱性に対処します。CVE-2023-0056 - .NET Framework のセキュリティ機能バイパスの脆弱性\n              このセキュリティ更新プログラムは、CVE-2023-0056 で詳述されているセキュリティ機能バイパスの脆弱性に対処します。CVE-2023-0057 - .NET Framework のセキュリティ機能の脆弱性\n              このセキュリティ更新プログラムは、CVE-2023-0057 で詳述されている特権昇格の脆弱性に対処します。CVE-2023-21312 - .NET Framework のサービス拒否の脆弱性\n              このセキュリティ更新プログラムは、CVE-2023-21312 で詳述されているサービス拒否の脆弱性に対処します。",
+                "title": "2024 年 1 月 9 日 - KB5033917 Microsoft サーバー オペレーティング システム Version 23H2 用 .NET Framework 3.5 および 4.8.1 の累積的な更新プログラム"
+            },
+            "ko-kr": {
+                "bulletin_url": "https://support.microsoft.com/ko-kr/help/5033917",
+                "summary": "CVE-2023-36042  - .NET Framework 서비스 거부 취약성\n이 보안 업데이트는 CVE-2023-36042에 자세히 설명된 보안 기능 우회 취약성을 해결합니다.CVE-2023-0056  - .NET Framework 보안 기능 우회 취약성\n이 보안 업데이트는 CVE-2023-0056에 자세히 설명된 보안 기능 우회 취약성을 해결합니다.CVE-2023-0057  - .NET Framework 보안 기능 취약성\n이 보안 업데이트는 CVE-2023-0057에 설명된 권한 상승 취약성을 해결합니다.CVE-2023-21312 - .NET Framework 서비스 거부 취약성\n이 보안 업데이트는 CVE-2023-21312에 설명된 서비스 거부 취약성을 해결합니다.",
+                "title": "2024년 1월 9일-KB5033917 Microsoft 서버 운영 체제 버전 23H2용 .NET Framework 3.5 및 4.8.1용 누적 업데이트"
+            },
+            "zh-cn": {
+                "bulletin_url": "https://support.microsoft.com/zh-cn/help/5033917",
+                "summary": "CVE-2023-36042 - .NET Framework 拒绝服务漏洞\n此安全更新解决了 CVE-2023-36042 中详细介绍的安全功能绕过漏洞。CVE-2023-0056 - .NET Framework 安全功能绕过漏洞\n此安全更新解决了 CVE-2023-0056 中详细介绍的安全功能绕过漏洞。CVE-2023-0057 - .NET Framework 安全功能漏洞\n此安全更新解决了 CVE-2023-0057 中详细介绍的权限提升漏洞。CVE-2023-21312 - .NET Framework 拒绝服务漏洞\n此安全更新解决了 CVE-2023-21312 中详细介绍的拒绝服务漏洞。",
+                "title": "2024 年 1 月 9 日-KB5033917 适用于 Microsoft 服务器操作系统 Version 23H2 的 .NET Framework 3.5 和 4.8.1 累积更新"
+            }
+        }
+    }
+}

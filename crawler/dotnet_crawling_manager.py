@@ -8,7 +8,6 @@ import time
 import os
 import hashlib
 import shutil
-import yaml
 from crawling_manager import CrawlingManager
 from bs4 import BeautifulSoup
 from bs4 import ResultSet
@@ -22,35 +21,102 @@ class DotnetCrawlingManager(CrawlingManager):
     def __init__(self):
         super().__init__()
         
+        self._patch_file_path = self._patch_file_path / "dotnet"
         self._cab_file_path = self._patch_file_path / "cabs"
         self.qnumbers: dict[str, tuple[str, str, BeautifulSoup]] = dict()
         self.patch_info_dict: dict[str, list[tuple(str, str)]] = dict()
         self.error_patch_dict: dict[str, list[dict[str, str]]] = dict()
+        self.dotnet: dict[str, str] = self.meta['dotnet']
 
 
-    def _msu_file_name_change(self, name: str) -> str:
-        splt = name.split("_")
-        
-        # ndp가 안붙은 파일의 경우
-        if splt[0].find("ndp") == -1:
-            qnumber = name[name.find("kb") + 2:name.rfind("-")]
-            dotnet_version = self.qnumbers[qnumber][1]
-
-            print(f"[No ndp] {qnumber} {dotnet_version}", end="")
+    def run(self) -> None:
+        try:
+            # 패치 대상 데이터 초기화
+            self._init_patch_data()
             
-            tmp = ""
-            if "4.8" in dotnet_version:
-                tmp = "48"
-            elif "4.8.1" in dotnet_version:
-                tmp = "481"
-            else:
-                tmp = "472"
+            # 프롬프트 출력, 패치 대상 데이터 최종 결정(제거)
+            self._show_prompt()
+            
+            # 프롬프트 창 clear
+            os.system("cls")
 
-            splt[0] = splt[0] + "-ndp" + tmp
-            print(f" -> {splt[0].replace('kb', 'KB') + '.msu'}")
+            # 패치 날짜 정보 가져오기 (TODO 문서마다 다름)
+            print("------------------------------------------")
+            patch_date = datetime.today().strftime("%Y/%m/%d") # self._get_patch_date()
+            print("[Patch Date]", patch_date)
 
-        return splt[0].replace("kb", "KB") + ".msu" 
+            # 패치 CVE 문자열 가져오기
+            # 이 이후로 soup 객체를 사용하지 않으므로 메모리 해제
+            cve_string = self._get_cve_string()
+            print("[CVE List]", cve_string)
+            del self.soup
+            print("------------------------------------------\n\n")
+
+            # BulletinID, KBNumber, PatchDate, CVE, 중요도 정보 가져오기
+            # TODO 중요도 정보 가져오기 (MSRC)s
+            common_dict = self._get_common_info(patch_date, cve_string)
+            print("[Common Info]")
+
+            for qnumber in common_dict:
+                print(f"[{qnumber}]")
+
+                for key, val in common_dict[qnumber].items():
+                    print(f"\t- {key}: {val}")
+                
+                print()
+
+            # 패치 대상의 각 카탈로그 링크에서 패치 파일 다운로드
+            # 각 패치 파일 이름과 vendor URL에 대한 Dict 반환
+            file_dict = self._download_patch_file(common_dict)
+            self._wait_til_download_ended()
+            time.sleep(3)
+
+            # msu 파일 압축 해제, WSUSSCAN 파일명 변경 작업, file_dict 업데이트
+            self._extract_file_info(file_dict)
+
+            # 각 언어별 bulletin URL에서 제목과 요약 수집
+            title_and_summary = self._get_title_and_summary(file_dict)
+
+            # 모든 파일이 정상적으로 존재하는지 검증
+            self._check_msu_and_cab_file_exists()
+
+            # 모든 QNumber에 대해 수집되었는지 검증
+            self._check_all_qnumber_file_exists()
+
+            # 모든 검증이 끝나면 최종 JSON 파일 생성
+            self._make_result_file(common_dict, file_dict, title_and_summary)
+
+            os.system("cls")
+            print("[INFO] 프로그램이 정상적으로 종료되었습니다")
+        
+        except Exception as e:
+            self._error_report(e)
+
+        finally:
+            # 메모리 해제
+            self._del_driver()
     
+
+    def _make_result_file(self, common_dict, file_dict, title_and_summary):
+        save_path = self._data_file_path / "result.json"
+
+        result = dict()
+        qnums = self.qnumbers.keys()
+
+        for qnum in qnums:
+            result[qnum] = dict()
+            result[qnum]["common"] = common_dict[qnum]
+            result[qnum]['files'] = list()
+            result[qnum]['nations'] = dict()
+
+            for file in file_dict[qnum]:
+                result[qnum]['files'].append(file)
+
+            for nation in title_and_summary[qnum]:
+                result[qnum]['nations'][nation] = title_and_summary[qnum][nation]
+                
+        self._save_result(save_path, result)
+
 
     def _extract_file_info(self, file_dict):
         for qnumber in file_dict:
@@ -75,12 +141,12 @@ class DotnetCrawlingManager(CrawlingManager):
         print(file_dict)
 
         # 불필요한 파일 삭제
-        for file in os.listdir(self._cab_file_path):
-            if file.endswith("_WSUSSCAN.cab"):
+        for file in self._cab_file_path.iterdir():
+            if file.name.endswith("_WSUSSCAN.cab"):
                 continue
             
             # 관리자 권한이 아닌 경우 임시 파일을 삭제하려다 엑세스 거부 예외가 발생할 수 있음 
-            if file.endswith(".tmp"):
+            if file.name.endswith(".tmp"):
                 continue
 
             os.remove(self._cab_file_path / file)
@@ -90,8 +156,8 @@ class DotnetCrawlingManager(CrawlingManager):
     def _unzip_msu_file(self, file_name: str) -> str:
         file_abs_path = self._patch_file_path / file_name
 
-        if not os.path.exists(self._cab_file_path):
-            os.mkdir(self._cab_file_path)
+        if not self._cab_file_path.exists():
+            self._cab_file_path.mkdir()
 
         # msu 파일 압축해제 (WSUSSCAN 파일만)
         cmd = f"expand -f:* {file_abs_path} {self._cab_file_path}"
@@ -100,7 +166,7 @@ class DotnetCrawlingManager(CrawlingManager):
 
         try:
             cab_file_name = file_name.split(".msu")[0] + "_WSUSSCAN.cab"
-            os.rename(self._cab_file_path / "WSUSSCAN.cab", self._cab_file_path / cab_file_name)
+            Path.rename(self._cab_file_path / "WSUSSCAN.cab", self._cab_file_path / cab_file_name)
         
         except FileExistsError as e:    
             print(e)
@@ -123,8 +189,11 @@ class DotnetCrawlingManager(CrawlingManager):
         
 
     def _get_cve_string(self) -> str:
+        cve_id_reg = self.dotnet['re']['cve_id']
+        cve_reg = self.dotnet['re']['cve']
         div = self.soup.find("div", "entry-content")
-        cve_list = list(map(lambda x: re.match("CVE-\d+-\d+", x.text).group(), div.find_all(id = re.compile("^cve"))))
+
+        cve_list = list(map(lambda x: re.match(cve_reg, x.text).group(), div.find_all(id = re.compile(cve_id_reg))))
         return ",".join(cve_list)
     
 
@@ -188,11 +257,11 @@ class DotnetCrawlingManager(CrawlingManager):
                     
                     driver.switch_to.window(handle)
                     
-                    title_xpath = "//*[@id=\"ScopedViewHandler_titleText\"]"
+                    title_xpath = self.dotnet['xpath']['title']
                     self._driver_wait(by = By.XPATH, name = title_xpath)
                     patch_title = driver.find_element(by = By.XPATH, value = title_xpath).text
                     
-                    severity_xpath = "//*[@id=\"ScopedViewHandler_msrcSeverity\"]"
+                    severity_xpath = self.dotnet['xpath']['severity']
                     self._driver_wait(by = By.XPATH, name = severity_xpath)
                     severity = driver.find_element(by = By.XPATH, value = severity_xpath).text
                     severity_set.add(severity)
@@ -237,7 +306,7 @@ class DotnetCrawlingManager(CrawlingManager):
                     driver.switch_to.window(driver.window_handles[-1])
 
                     # 열린 다운로드 창에서 파일 다운로드 받기
-                    xpath = "//*[@id=\"downloadFiles\"]"
+                    xpath = self.dotnet['xpath']['download']
                     self._driver_wait(By.XPATH, xpath)
                     
                     box: WebElement = driver.find_element(by = By.XPATH, value = xpath)
@@ -271,6 +340,7 @@ class DotnetCrawlingManager(CrawlingManager):
                         })
 
                         time.sleep(4)
+
                     driver.close()
                 
                 # 다시 main window로 전환 (카탈로그 창)
@@ -307,7 +377,7 @@ class DotnetCrawlingManager(CrawlingManager):
                     os.rename(self._patch_file_path / file, self._patch_file_path / renamed)
                     print(f"\t{file} -> {renamed}")
 
-                except FileExistsError as fe:
+                except FileExistsError as _:
                     print("\n[INFO] 중복된 파일 삭제합니다")
                     print(file)
                     os.remove(self._patch_file_path / file)
@@ -442,8 +512,8 @@ class DotnetCrawlingManager(CrawlingManager):
         tmp = dict()
 
         driver = self.driver
-        nations = ["en-us", "ko-kr", "ja-jp", "zh-cn"]
-        bulletin = "https://support.microsoft.com/{}/help/{}"
+        nations = self.dotnet['common']['nations']
+        bulletin = self.dotnet['common']['bulletin']
         
         for qnumber in file_dict:
             tmp[qnumber] = dict()
@@ -458,13 +528,16 @@ class DotnetCrawlingManager(CrawlingManager):
                     bulletin_url = bulletin.format(nation, qnumber)
                     driver.get(bulletin_url)
 
-                    self._driver_wait(By.ID, "page-header")
-                    self._driver_wait(By.ID, "bkmk_summary")
+                    header = self.dotnet['id']['header']
+                    summary = self.dotnet['id']['summary']
+
+                    self._driver_wait(By.ID, header)
+                    self._driver_wait(By.ID, summary)
                     time.sleep(1)
 
                     soup = BeautifulSoup(driver.page_source, "html.parser")
-                    title: str = soup.find(name = "h1", attrs = {"id": "page-header"}).text.strip()
-                    section = soup.find(name = "section", attrs = {"id": "bkmk_summary"})   # 없는 경우도 존재
+                    title: str = soup.find(name = "h1", attrs = {"id": header}).text.strip()
+                    section = soup.find(name = "section", attrs = {"id": summary})   # 없는 경우도 존재
                     ps: ResultSet[BeautifulSoup] = section.find_all(name = "p")
             
                     summary = ""
@@ -539,7 +612,7 @@ class DotnetCrawlingManager(CrawlingManager):
             raise Exception(f"[{diff}] 수집되지 않은 QNumber가 존재합니다.")
 
     
-    def _get_common_info(self, cve_string: str, patch_date: str) -> dict[str, dict[str, str]]:
+    def _get_common_info(self, patch_date: str, cve_string: str) -> dict[str, dict[str, str]]:
         tmp = dict()
 
         for qnumber in self.qnumbers:
@@ -551,6 +624,26 @@ class DotnetCrawlingManager(CrawlingManager):
             }
         
         return tmp
+    
+
+    def _error_report(self, e):
+        print("----------------------- [ 에러 보고 ] -----------------------")
+        for qnumber in self.error_patch_dict:
+            print(f"[{qnumber}]")
+            for err_obj in self.error_patch_dict[qnumber]:
+                for key, val in err_obj.items():
+                    print(f"\t{key}: {val}")
+            print()
+        print("------------------------------------------------------------")
+        
+        print(e)
+        res = input("[ERR] 모든 파일을 삭제할까요? (y/n): ")
+
+        if res != 'y':
+            return
+        
+        shutil.rmtree(self._data_file_path)
+        shutil.rmtree(self._patch_file_path)
 
 
     def _del_driver(self):
@@ -559,6 +652,7 @@ class DotnetCrawlingManager(CrawlingManager):
             del self.patch_info_dict
             del self.error_patch_dict
             del self.driver
+            del self.dotnet
 
         except Exception as _:
             pass
@@ -567,98 +661,29 @@ class DotnetCrawlingManager(CrawlingManager):
             super()._del_driver()
 
 
-    def run(self) -> None:
-        try:
-            # 패치 대상 데이터 초기화
-            self._init_patch_data()
-            
-            # 프롬프트 출력, 패치 대상 데이터 최종 결정(제거)
-            self._show_prompt()
-            
-            # 프롬프트 창 clear
-            os.system("cls")
-
-            # 패치 날짜 정보 가져오기 (TODO 문서마다 다름)
-            print("------------------------------------------")
-            patch_date = datetime.today().strftime("%Y/%m/%d") # self._get_patch_date()
-            print("[Patch Date]", patch_date)
-
-            # 패치 CVE 문자열 가져오기
-            # 이 이후로 soup 객체를 사용하지 않으므로 메모리 해제
-            cve_string = self._get_cve_string()
-            print("[CVE List]", cve_string)
-            del self.soup
-            print("------------------------------------------\n\n")
-
-            # BulletinID, KBNumber, PatchDate, CVE, 중요도 정보 가져오기
-            # TODO 중요도 정보 가져오기 (MSRC)s
-            common_dict = self._get_common_info(patch_date, cve_string)
-            print("[Common Info]")
-
-            for qnumber in common_dict:
-                print(f"[{qnumber}]")
-
-                for key, val in common_dict[qnumber].items():
-                    print(f"\t- {key}: {val}")
-                
-                print()
-
-            # 패치 대상의 각 카탈로그 링크에서 패치 파일 다운로드
-            # 각 패치 파일 이름과 vendor URL에 대한 Dict 반환
-            file_dict = self._download_patch_file(common_dict)
-            self._wait_til_download_ended()
-            time.sleep(3)
-
-            # msu 파일 압축 해제, WSUSSCAN 파일명 변경 작업, file_dict 업데이트
-            self._extract_file_info(file_dict)
-
-            # 각 언어별 bulletin URL에서 제목과 요약 수집
-            title_and_summary = self._get_title_and_summary(file_dict)
-
-            # 모든 파일이 정상적으로 존재하는지 검증
-            self._check_msu_and_cab_file_exists()
-
-            # 모든 QNumber에 대해 수집되었는지 검증
-            self._check_all_qnumber_file_exists()
-
-            # 검증 이후에 공통 정보도 저장 
-            self._save_result(self._data_file_path / "common_info.json", common_dict)
-            
-            # 검증이 끝났으면 결과 json 파일로 저장
-            print("\n[INFO] 패치 파일 다운로드 작업 완료")
-            self._save_result(self._data_file_path / "patch_file_info.json", file_dict)
-
-            # 각 언어별 title, summary 수집 결과 json 파일로 저장
-            self._save_result(self._data_file_path / "title_summary.json", title_and_summary)
-
-            os.system("cls")
-            print("[INFO] 프로그램이 정상적으로 종료되었습니다")
+    def _msu_file_name_change(self, name: str) -> str:
+        splt = name.split("_")
         
-        except Exception as e:
-            print("------------------------------------------------------------")
-            print(e)
-            print("----------------------- [ 에러 보고 ] -----------------------")
-            for qnumber in self.error_patch_dict:
-                print(f"[{qnumber}]")
-                for err_obj in self.error_patch_dict[qnumber]:
-                    for key, val in err_obj.items():
-                        print(f"\t{key}: {val}")
-                print()
-            print("------------------------------------------------------------")
+        # ndp가 안붙은 파일의 경우
+        if splt[0].find("ndp") == -1:
+            qnumber = name[name.find("kb") + 2:name.rfind("-")]
+            dotnet_version = self.qnumbers[qnumber][1]
 
-            res = input("[ERR] 모든 파일을 삭제할까요? (y/n): ")
-
-            if res != 'y':
-                return
+            print(f"[No ndp] {qnumber} {dotnet_version}", end="")
             
-            shutil.rmtree(self._data_file_path)
-            shutil.rmtree(self._patch_file_path)
-            print(e)
+            tmp = ""
+            if "4.8" in dotnet_version:
+                tmp = "48"
+            elif "4.8.1" in dotnet_version:
+                tmp = "481"
+            else:
+                tmp = "472"
 
-        finally:
-            # 메모리 해제
-            self._del_driver()
+            splt[0] = splt[0] + "-ndp" + tmp
+            print(f" -> {splt[0].replace('kb', 'KB') + '.msu'}")
 
+        return splt[0].replace("kb", "KB") + ".msu" 
+    
 
 if __name__ == "__main__":
     dcm = DotnetCrawlingManager()
