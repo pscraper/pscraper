@@ -2,6 +2,7 @@ import os
 import json
 import time
 import sys
+import yaml
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver import ActionChains
@@ -14,32 +15,45 @@ from pathlib import Path
 
 
 class CrawlingManager:
-    _bin_path = Path(__file__).parent.parent / "bin"
-    
-    _patch_file_path = _bin_path / "patchfiles"
-    
-    _data_file_path = _bin_path / "data"
-    
-    _chrome_driver_path = _bin_path / "exe" / "chromedriver.exe"
-
-
     def __init__(self):
         os.system("cls")
 
+        # yaml 파일 읽기
+        pdir = Path(__file__).parent
+        meta_path = pdir / ".." / "bin" / "metadata" / "meta.yaml"
+
+        with open(meta_path, "r", encoding="utf8") as fp:
+            self.meta = yaml.load(fp, Loader = yaml.FullLoader)
+
+        self._path = self.meta['path']
+        self._bin_path = pdir / Path(self._path['bin'])
+        self._chrome_driver_path = pdir / Path(self._path['driver'])
+        self._patch_file_path = pdir / Path(self._path['patchfile'])
+        self._data_file_path = pdir / Path(self._path['data'])
+
         # ./bin/patchfiles 폴더가 없으면 생성
-        if not os.path.exists(self._patch_file_path):
-            os.mkdir(self._patch_file_path)
+        if not self._patch_file_path.exists():
+            self._patch_file_path.mkdir()
+            (self._patch_file_path / "adobe").mkdir()
+            (self._patch_file_path / "java").mkdir()
+            (self._patch_file_path / "dotnet").mkdir()
 
         # ./bin/data 폴더가 없으면 생성
-        if not os.path.exists(self._data_file_path):
-            os.mkdir(self._data_file_path)
+        if not self._data_file_path.exists():
+            self._data_file_path.mkdir()
 
         # ./bin/patchfiles 폴더 비어있는지 검사 
         while True:
-            if len(os.listdir(self._patch_file_path)) == 0:
+            cnt = 0
+
+            for f in self._patch_file_path.iterdir():
+                if f.is_file():
+                    cnt += 1
+
+            if cnt == 0:
                 break
 
-            input(f"{self._patch_file_path} 폴더를 비우고 <Enter>를 입력하세요.")
+            input(f"{self._patch_file_path.absolute()} 폴더 내 모든 파일을 비우고 <Enter>를 입력하세요.")
 
         # .NET Blog URL 입력받고 시작
         url = input("크롤링할 .NET 패치노트 주소를 입력해주세요: ")
@@ -73,8 +87,8 @@ class CrawlingManager:
 
     # patchfiles 폴더에 중복된 파일이 있는지 검사
     def _is_already_exists(self, name) -> bool:
-        for file in os.listdir(self._patch_file_path):
-            if file.startswith(name):
+        for file in self._patch_file_path.iterdir():
+            if file.name.startswith(name):
                 return True
         
         return False
@@ -83,8 +97,8 @@ class CrawlingManager:
     def _wait_til_download_ended(self):
         while True: 
             dl = False
-            for file in os.listdir(self._patch_file_path):
-                if file.endswith("crdownload"):
+            for file in self._patch_file_path.iterdir():
+                if file.name.endswith("crdownload"):
                     dl = True
 
             time.sleep(1)
@@ -139,5 +153,4 @@ class CrawlingManager:
 
 
 if __name__ == "__main__":
-    # cm = CrawlingManager()
-    print(Path(__file__).cwd())
+    cm = CrawlingManager()

@@ -1,0 +1,5 @@
+path:
+    bin: "../bin"
+    driver: "../exe/chromedriver.exe"
+    patchfile: "../bin/patchfile"
+    data: "../bin/data"

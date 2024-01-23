@@ -8,6 +8,7 @@ import time
 import os
 import hashlib
 import shutil
+import yaml
 from crawling_manager import CrawlingManager
 from bs4 import BeautifulSoup
 from bs4 import ResultSet
