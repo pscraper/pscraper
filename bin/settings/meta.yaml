@@ -23,6 +23,7 @@ dotnet:
     re:
         cve: "CVE-\\d+-\\d+"
         cve_id: "^cve"
+        kb: "^KB\\d{7}"
 
     xpath:
         title: "//*[@id=\"ScopedViewHandler_titleText\"]"

@@ -70,7 +70,6 @@ class CrawlingManager:
 
         # selenium 버전 높은 경우 -> executable_path Deprecated -> Service 객체 사용
         print(f"Python {sys.version} running")
-        print(self._chrome_driver_path)
 
         try:
             self.driver = webdriver.Chrome(options = options, service = Service(executable_path = self._chrome_driver_path))

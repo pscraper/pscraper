@@ -28,8 +28,13 @@ class DotnetCrawlingManager(CrawlingManager):
         self.error_patch_dict: dict[str, list[dict[str, str]]] = dict()
         self.dotnet: dict[str, str] = self.meta['dotnet']
 
+        if not self._cab_file_path.exists():
+            self._cab_file_path.mkdir()
+
 
     def run(self) -> None:
+        err = False
+
         try:
             # 패치 대상 데이터 초기화
             self._init_patch_data()
@@ -91,26 +96,81 @@ class DotnetCrawlingManager(CrawlingManager):
         
         except Exception as e:
             self._error_report(e)
+            err = True
 
         finally:
-            # 메모리 해제
+            if not err:
+                self._move_and_remove_dir()
+            else:
+                self._remove_all_files()
+
             self._del_driver()
-    
+
+
+    # 에러 발생 시 다운로드한 모든 패치 파일을 삭제한다.
+    def _remove_all_files(self):
+        shutil.rmtree(self._patch_file_path)
+        print("[ERR] 에러가 발생하여 모든 패치 파일을 제거하였습니다.")
+
+
+    # pathfiles/dotnet 폴더를 통째로 복사해서 옮기고 삭제한다.
+    def _move_and_remove_dir(self):
+        dst = Path.home() / "Desktop" / "patchfiles_dotnet"
+
+        if not os.path.exists(dst):
+            dst.mkdir()
+
+        if not os.path.exists(dst / "cabs"):
+            (dst / "cabs").mkdir()
+
+        for path in os.listdir(self._patch_file_path):
+            if os.path.isdir(path):
+                for cab in os.listdir(self._patch_file_path / path):
+                    os.rename(self._patch_file_path / path / cab, dst / "cabs" / cab)
+                    os.remove(self._patch_file_path / path / cab)
+
+                if len(os.listdir(self._patch_file_path / path)) == 0:
+                    os.rmdir(self._patch_file_path / path)
+
+            else:
+                os.rename(self._patch_file_path / path, dst / path)
+                os.remove(self._patch_file_path / path)
+
+        print(f"{str(dst)} 경로에 파일을 옮기는 중입니다.", end="")
+
+        while len(os.listdir(self._patch_file_path)) != 0:
+            time.sleep(3)
+            print(".", end="")
+
+        print()
+
 
     def _make_result_file(self, common_dict, file_dict, title_and_summary):
         save_path = self._data_file_path / "result.json"
-
+        kb_reg = self.dotnet['re']['kb']
         result = dict()
         qnums = self.qnumbers.keys()
 
         for qnum in qnums:
-            result[qnum] = dict()
+            if qnum not in result:
+                result[qnum] = dict()
+
             result[qnum]["common"] = common_dict[qnum]
             result[qnum]['files'] = list()
             result[qnum]['nations'] = dict()
 
             for file in file_dict[qnum]:
-                result[qnum]['files'].append(file)
+                # 가끔 파일명 내 QNumber와 실제 수집하려한 QNumber가 불일치하는 상황이 있음
+                fname = re.match(kb_reg, file['file_name'][13:])
+                
+                if fname == None:
+                    result[qnum]['files'].append(file)
+                else:
+                    real_qnum = fname[2:]
+                    if real_qnum not in result:
+                        result[real_qnum] = dict()
+
+                    result[real_qnum]['files'].append(file)
 
             for nation in title_and_summary[qnum]:
                 result[qnum]['nations'][nation] = title_and_summary[qnum][nation]
@@ -155,9 +215,6 @@ class DotnetCrawlingManager(CrawlingManager):
     
     def _unzip_msu_file(self, file_name: str) -> str:
         file_abs_path = self._patch_file_path / file_name
-
-        if not self._cab_file_path.exists():
-            self._cab_file_path.mkdir()
 
         # msu 파일 압축해제 (WSUSSCAN 파일만)
         cmd = f"expand -f:* {file_abs_path} {self._cab_file_path}"
@@ -209,6 +266,18 @@ class DotnetCrawlingManager(CrawlingManager):
         
         return "undefined"
 
+    def _get_max_severity(self, severity_set: set[str]):
+        if "Critical" in severity_set or "critical" in severity_set:
+            return "Critical"
+        
+        elif "Important" in severity_set or "important" in severity_set:
+            return "Important"
+        
+        elif "Normal" in severity_set or "normal" in severity_set:
+            return "Normal"
+        
+        return "Low"
+    
 
     def _download_patch_file(self, common_dict: dict[str, dict[str, str]]) -> dict[str, list[dict[str, str]]]:
         driver = self.driver
@@ -271,19 +340,12 @@ class DotnetCrawlingManager(CrawlingManager):
                     
                     driver.close()
                     
-                # 중요도 업데이트
-                max_severity = ""
-                if "Critical" in severity_set or "critical" in severity_set:
-                    max_severity = "Critical"
                 
-                elif "Important" in severity_set or "important" in severity_set:
-                    max_severity = "Important"
-
+                max_severity = self._get_max_severity(severity_set)
                 common_dict[qnumber].update({"중요도": max_severity})
 
                 # 다운로드 작업 시작 세팅
                 time.sleep(3)
-
                 driver.switch_to.window(main_window)
 
                 # 다운로드 버튼 클릭
@@ -332,13 +394,14 @@ class DotnetCrawlingManager(CrawlingManager):
                         print(f"\t[Vendor URL] {vendor_url}")
                         print("\t--------------------------------------------\n")
 
-                        file_dict[qnumber].append({
+                        file_info = {   
                             "file_name": file_name,
                             "vendor_url": vendor_url,
                             "product": product_version,
                             "architecture": self._get_architecture(file_name)
-                        })
+                        }
 
+                        file_dict[qnumber].append(file_info)
                         time.sleep(4)
 
                     driver.close()
@@ -635,15 +698,7 @@ class DotnetCrawlingManager(CrawlingManager):
                     print(f"\t{key}: {val}")
             print()
         print("------------------------------------------------------------")
-        
         print(e)
-        res = input("[ERR] 모든 파일을 삭제할까요? (y/n): ")
-
-        if res != 'y':
-            return
-        
-        shutil.rmtree(self._data_file_path)
-        shutil.rmtree(self._patch_file_path)
 
 
     def _del_driver(self):
