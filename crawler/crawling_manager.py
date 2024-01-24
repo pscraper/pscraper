@@ -32,12 +32,10 @@ class CrawlingManager:
             self.meta = yaml.load(fp, Loader = yaml.FullLoader)
 
         self._path = self.meta['path']
-        self._bin_path = pdir / Path(self._path['bin'])
         self._chrome_driver_path = pdir / Path(self._path['driver'])
-        self._patch_file_path = pdir / Path(self._path['patchfile'])
         self._data_file_path = pdir / Path(self._path['data'])
-        
-        # ./bin/patchfiles 폴더가 없으면 생성
+        self._patch_file_path = Path.cwd() / "bin" / "patchfiles" 
+
         if not self._patch_file_path.exists():
             self._patch_file_path.mkdir()
 
@@ -50,12 +48,11 @@ class CrawlingManager:
         if "dotnet" not in os.listdir(self._patch_file_path):
             (self._patch_file_path / "dotnet").mkdir()
 
-        # ./bin/data 폴더가 없으면 생성
         if not self._data_file_path.exists():
             self._data_file_path.mkdir()       
 
-        # .NET Blog URL 입력받고 시작
-        url = input("크롤링할 .NET 패치노트 주소를 입력해주세요: ")
+        patch_name = input("어떤 패치를 수집하시나요? (java/adobe/dotnet) ")
+        url = input("크롤링할 패치노트 주소를 입력해주세요: ")
 
         # 다운로드 경로 설정
         options = webdriver.ChromeOptions()
@@ -65,7 +62,7 @@ class CrawlingManager:
             options.add_argument(option)
 
         options.add_experimental_option("prefs", {
-            "download.default_directory": str(Path.cwd() / "bin" / "patchfiles" / "dotnet")
+            "download.default_directory": str(self._patch_file_path / patch_name)
         })
 
         # selenium 버전 높은 경우 -> executable_path Deprecated -> Service 객체 사용
@@ -155,4 +152,5 @@ class CrawlingManager:
 
 
 if __name__ == "__main__":
-    cm = CrawlingManager()
+    # cm = CrawlingManager()
+    print(Path.cwd())

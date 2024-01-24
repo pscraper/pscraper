@@ -1,8 +1,8 @@
 path:
-    bin: "../bin"
     driver: "../bin/exe/chromedriver.exe"
-    patchfile: "../bin/patchfiles"
     data: "../bin/data"
+    # patchfile: "../bin/patchfiles"
+    # bin: "../bin"
 
 driver_options:
     - "--disable-popup-blocking"

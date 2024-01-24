@@ -102,7 +102,9 @@ class DotnetCrawlingManager(CrawlingManager):
             if not err:
                 self._move_and_remove_dir()
             else:
-                self._remove_all_files()
+                res = input("[ERR] 에러가 발생했습니다. 모든 파일을 제거할까요? ")
+                if res == 'y':
+                    self._remove_all_files()
 
             self._del_driver()
 
@@ -115,34 +117,9 @@ class DotnetCrawlingManager(CrawlingManager):
 
     # pathfiles/dotnet 폴더를 통째로 복사해서 옮기고 삭제한다.
     def _move_and_remove_dir(self):
-        dst = Path.home() / "Desktop" / "patchfiles_dotnet"
-
-        if not os.path.exists(dst):
-            dst.mkdir()
-
-        if not os.path.exists(dst / "cabs"):
-            (dst / "cabs").mkdir()
-
-        for path in os.listdir(self._patch_file_path):
-            if os.path.isdir(path):
-                for cab in os.listdir(self._patch_file_path / path):
-                    os.rename(self._patch_file_path / path / cab, dst / "cabs" / cab)
-                    os.remove(self._patch_file_path / path / cab)
-
-                if len(os.listdir(self._patch_file_path / path)) == 0:
-                    os.rmdir(self._patch_file_path / path)
-
-            else:
-                os.rename(self._patch_file_path / path, dst / path)
-                os.remove(self._patch_file_path / path)
-
-        print(f"{str(dst)} 경로에 파일을 옮기는 중입니다.", end="")
-
-        while len(os.listdir(self._patch_file_path)) != 0:
-            time.sleep(3)
-            print(".", end="")
-
-        print()
+        dst = Path.home() / "Desktop"
+        shutil.move(self._patch_file_path, dst)
+        shutil.copy(self._data_file_path / "result.json", dst / "dotnet" / "result.json")
 
 
     def _make_result_file(self, common_dict, file_dict, title_and_summary):
@@ -265,6 +242,7 @@ class DotnetCrawlingManager(CrawlingManager):
             return "arm64"
         
         return "undefined"
+
 
     def _get_max_severity(self, severity_set: set[str]):
         if "Critical" in severity_set or "critical" in severity_set:
@@ -432,22 +410,25 @@ class DotnetCrawlingManager(CrawlingManager):
         self._wait_til_download_ended()
         print("\n[INFO] .msu 파일명에서 해시값 제거")
 
-        for file in os.listdir(self._patch_file_path):
-            renamed = self._msu_file_name_change(file)
+        for file in self._patch_file_path.iterdir():
+            if not file.name.endswith(".msu"):
+                continue
 
-            if file != renamed:
+            renamed = self._msu_file_name_change(file.name)
+
+            if file.name != renamed:
                 try:
-                    os.rename(self._patch_file_path / file, self._patch_file_path / renamed)
-                    print(f"\t{file} -> {renamed}")
+                    os.rename(self._patch_file_path / file.name, self._patch_file_path / renamed)
+                    print(f"\t{file.name} -> {renamed}")
 
-                except FileExistsError as _:
+                except FileExistsError as e:
                     print("\n[INFO] 중복된 파일 삭제합니다")
-                    print(file)
-                    os.remove(self._patch_file_path / file)
+                    print("[ERR]", e)
+                    print(file.name)
+                    os.remove(self._patch_file_path / file.name)
                     continue
 
         return file_dict
-    
 
     # 수집할 OS 대상, QNUMBER, CATALOG URL을 미리 수집해두고 시작
     def _init_patch_data(self) -> None:
@@ -743,4 +724,3 @@ class DotnetCrawlingManager(CrawlingManager):
 if __name__ == "__main__":
     dcm = DotnetCrawlingManager()
     dcm.run()
-    
