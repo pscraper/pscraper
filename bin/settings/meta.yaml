@@ -33,3 +33,27 @@ dotnet:
     id:
         header: "page-header"
         summary: "bkmk_summary"
+
+    excel:
+        sheet_name: "dotnet"
+
+        # A열 제목을 기준으로한 상대 위치
+        relative_location:
+            meta:
+                Bit Type Flag:
+                    - "14 6" 
+                    - "14 7"
+                nations:
+                    - "0 1"
+                    - "0 2"
+                    - "0 3"
+                    - "0 4"
+
+            common:
+                Bulletine ID: "7 1"
+                KBNumber: "8 1"
+                PatchDate: "9 1"
+                중요도: "10 1"
+                cve: "15 3"
+
+
