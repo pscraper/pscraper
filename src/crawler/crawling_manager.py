@@ -23,6 +23,15 @@ class CrawlingManager:
         bin = Path.cwd() / "bin"
         meta = bin / "settings" / "meta.yaml"
 
+        logging.basicConfig(
+            filename = bin / "log.txt", 
+            level = logging.INFO,
+            format = '%(asctime)s %(levelname)s:%(message)s',
+            datefmt='[%m/%d/%Y %I:%M:%S] %p'
+        )
+
+        self.logger = logging
+
         # settings 경로 체크
         if not os.path.exists(meta):
             logging.warn("meta.yaml 파일을 읽어들일 수 없습니다.")

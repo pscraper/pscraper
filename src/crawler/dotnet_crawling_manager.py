@@ -8,7 +8,6 @@ import time
 import os
 import hashlib
 import shutil
-import logging
 from crawling_manager import CrawlingManager
 from bs4 import BeautifulSoup
 from bs4 import ResultSet
@@ -48,24 +47,24 @@ class DotnetCrawlingManager(CrawlingManager):
 
             # 패치 날짜 정보 가져오기 (TODO 문서마다 다름)
             patch_date = datetime.today().strftime("%Y/%m/%d") # self._get_patch_date()
-            logging.info("[Patch Date]", patch_date)
+            self.logger.info("[Patch Date]", patch_date)
 
             # 패치 CVE 문자열 가져오기
             # 이 이후로 soup 객체를 사용하지 않으므로 메모리 해제
             cve_string = self._get_cve_string()
-            logging.info("[CVE List]", cve_string)
+            self.logger.info("[CVE List]", cve_string)
             del self.soup
 
             # BulletinID, KBNumber, PatchDate, CVE, 중요도 정보 가져오기
             # TODO 중요도 정보 가져오기 (MSRC)s
             common_dict = self._get_common_info(patch_date, cve_string)
-            logging.info("[Common Info]")
+            self.logger.info("[Common Info]")
 
             for qnumber in common_dict:
-                logging.info(f"[{qnumber}]")
+                self.logger.info(f"[{qnumber}]")
 
                 for key, val in common_dict[qnumber].items():
-                    logging.info(f"\t- {key}: {val}")
+                    self.logger.info(f"\t- {key}: {val}")
                 
             # 패치 대상의 각 카탈로그 링크에서 패치 파일 다운로드
             # 각 패치 파일 이름과 vendor URL에 대한 Dict 반환
@@ -89,10 +88,10 @@ class DotnetCrawlingManager(CrawlingManager):
             self._make_result_file(common_dict, file_dict, title_and_summary)
 
             os.system("cls")
-            logging.info("프로그램이 정상적으로 종료되었습니다")
-            logging.info("바탕화면으로 패치 파일과 결과 정보 파일을 이동하였습니다.")
-            logging.info("result.json 파일을 열어 불필요한 유니코드 문자를 제거해주세요.")
-            logging.info("Title과 패치 날짜를 KST 기준으로 변경해주세요.")
+            self.logger.info("프로그램이 정상적으로 종료되었습니다")
+            self.logger.info("바탕화면으로 패치 파일과 결과 정보 파일을 이동하였습니다.")
+            self.logger.info("result.json 파일을 열어 불필요한 유니코드 문자를 제거해주세요.")
+            self.logger.info("Title과 패치 날짜를 KST 기준으로 변경해주세요.")
         
         except Exception as e:
             self._error_report(e)
@@ -112,7 +111,7 @@ class DotnetCrawlingManager(CrawlingManager):
     # 에러 발생 시 다운로드한 모든 패치 파일을 삭제한다.
     def _remove_all_files(self):
         shutil.rmtree(self._patch_file_path)
-        logging.warn("에러가 발생하여 모든 패치 파일을 제거하였습니다.")
+        self.logger.warning("에러가 발생하여 모든 패치 파일을 제거하였습니다.")
 
 
     # pathfiles/dotnet 폴더를 통째로 복사해서 옮기고 삭제한다.
@@ -164,12 +163,12 @@ class DotnetCrawlingManager(CrawlingManager):
             for info in file_dict[qnumber]:
                 file_name = info["file_name"]
                 
-                logging.info(f"\n{file_name} 압축 해제")
+                self.logger.info(f"\n{file_name} 압축 해제")
                 cab_file_name = self._unzip_msu_file(file_name)
 
                 time.sleep(1)
 
-                logging.info(f"\n{file_name} 해시값 추출")
+                self.logger.info(f"\n{file_name} 해시값 추출")
                 file_size, md5, sha256 = self._extract_file_hash(file_name)
 
                 info.update({
@@ -189,7 +188,7 @@ class DotnetCrawlingManager(CrawlingManager):
                 continue
 
             os.remove(self._cab_file_path / file)
-            logging.info(f"[Delete] {self._cab_file_path / file}")
+            self.logger.info(f"[Delete] {self._cab_file_path / file}")
 
     
     def _unzip_msu_file(self, file_name: str) -> str:
@@ -205,8 +204,8 @@ class DotnetCrawlingManager(CrawlingManager):
             Path.rename(self._cab_file_path / "WSUSSCAN.cab", self._cab_file_path / cab_file_name)
         
         except FileExistsError as e:    
-            logging.warn("msu 파일 압축 해제 과정에서 에러 발생")
-            logging.warn(e)
+            self.logger.warning("msu 파일 압축 해제 과정에서 에러 발생")
+            self.logger.warning(e)
             raise e
 
         return cab_file_name
@@ -284,8 +283,8 @@ class DotnetCrawlingManager(CrawlingManager):
 
                 os.system("cls")
 
-                logging.info(f"[{product_version} {dotnet_version}] 다운로드 작업 시작")
-                logging.info(f"Vendor URL: {link}")
+                self.logger.info(f"[{product_version} {dotnet_version}] 다운로드 작업 시작")
+                self.logger.info(f"Vendor URL: {link}")
 
                 severity_set = set()
 
@@ -317,8 +316,8 @@ class DotnetCrawlingManager(CrawlingManager):
                     severity = driver.find_element(by = By.XPATH, value = severity_xpath).text
                     severity_set.add(severity)
 
-                    logging.info(f"[Patch Titke] {patch_title}")
-                    logging.info(f"[Severity] {severity}")
+                    self.logger.info(f"[Patch Titke] {patch_title}")
+                    self.logger.info(f"[Severity] {severity}")
                     
                     driver.close()
                     
@@ -361,8 +360,8 @@ class DotnetCrawlingManager(CrawlingManager):
                         vendor_url = atag.get_attribute('href')
                         
                         if self._is_already_exists(atag.text.split("_")[0]):
-                            logging.info("\n\t[INFO] 중복된 파일 제외")
-                            logging.info(f"\t{atag.text}")
+                            self.logger.info("\n\t[INFO] 중복된 파일 제외")
+                            self.logger.info(f"\t{atag.text}")
                             continue
                         
                         time.sleep(1)
@@ -371,9 +370,9 @@ class DotnetCrawlingManager(CrawlingManager):
 
                         file_name = self._msu_file_name_change(atag.text)
 
-                        logging.info("\n\t------------ [Downloading] ---------------")
-                        logging.info(f"\t[파일명] {file_name}")
-                        logging.info(f"\t[Vendor URL] {vendor_url}")
+                        self.logger.info("\n\t------------ [Downloading] ---------------")
+                        self.logger.info(f"\t[파일명] {file_name}")
+                        self.logger.info(f"\t[Vendor URL] {vendor_url}")
 
                         file_info = {   
                             "file_name": file_name,
@@ -394,8 +393,8 @@ class DotnetCrawlingManager(CrawlingManager):
                 self._wait_til_download_ended()
 
             except Exception as e:
-                logging.warn(f"\"{link}\"를 처리하던 중 에러가 발생했습니다.")
-                logging.warn(e)
+                self.logger.warning(f"{link}를 처리하던 중 에러가 발생했습니다.")
+                self.logger.warning(e)
 
                 self.error_patch_dict[qnumber].append({
                     "product": product_version,
@@ -411,7 +410,7 @@ class DotnetCrawlingManager(CrawlingManager):
 
         # msu 파일명 전부 변경
         self._wait_til_download_ended()
-        logging.info("\n.msu 파일명에서 해시값 제거")
+        self.logger.info("\n.msu 파일명에서 해시값 제거")
 
         for file in self._patch_file_path.iterdir():
             if not file.name.endswith(".msu"):
@@ -425,9 +424,9 @@ class DotnetCrawlingManager(CrawlingManager):
                     print(f"\t{file.name} -> {renamed}")
 
                 except FileExistsError as e:
-                    logging.warn("\n[INFO] 중복된 파일 삭제합니다")
-                    logging.warn("[ERR]", e)
-                    logging.warn(file.name)
+                    self.logger.warning("\n[INFO] 중복된 파일 삭제합니다")
+                    self.logger.warning("[ERR]", e)
+                    self.logger.warning(file.name)
                     os.remove(self._patch_file_path / file.name)
                     continue
 
@@ -563,7 +562,7 @@ class DotnetCrawlingManager(CrawlingManager):
             
             for nation in nations:
                 if err:
-                    logging.warn(f"[WARN] {qnumber}에 대한 Title, Summary 정보 수집 실패")
+                    self.logger.warning(f"[warning] {qnumber}에 대한 Title, Summary 정보 수집 실패")
                     continue
 
                 try:
@@ -599,14 +598,14 @@ class DotnetCrawlingManager(CrawlingManager):
                     tmp[qnumber][nation]["summary"] = summary
 
                 except Exception as _:
-                    logging.warn(f"{qnumber}에 대한 summary를 가져오지 못했습니다.")
+                    self.logger.warning(f"{qnumber}에 대한 summary를 가져오지 못했습니다.")
                     err = True
 
                 finally:
                     if not err:
-                        logging.info(bulletin_url)
-                        logging.info(title)
-                        logging.info(summary)
+                        self.logger.info(bulletin_url)
+                        self.logger.info(title)
+                        self.logger.info(summary)
 
         return tmp
 
@@ -623,7 +622,7 @@ class DotnetCrawlingManager(CrawlingManager):
             tmp = "-".join([splt[1], splt[2], splt[3]]).replace(".msu", "")
             flag = False
 
-            logging.info(f"{tmp} -> ", end="")
+            self.logger.info(f"{tmp} -> ", end="")
 
             for cab in os.listdir(self._cab_file_path):
                 if tmp in cab:
@@ -672,12 +671,12 @@ class DotnetCrawlingManager(CrawlingManager):
 
     def _error_report(self, e):
         for qnumber in self.error_patch_dict:
-            logging.warn(f"[{qnumber}]")
-            logging.warn(e)
+            self.logger.warning(f"[{qnumber}]")
+            self.logger.warning(e)
 
             for err_obj in self.error_patch_dict[qnumber]:
                 for key, val in err_obj.items():
-                    logging.warn(f"\t{key}: {val}")
+                    self.logger.warning(f"\t{key}: {val}")
 
 
     def _del_driver(self):
@@ -713,8 +712,8 @@ class DotnetCrawlingManager(CrawlingManager):
 
             splt[0] = splt[0] + "-ndp" + tmp
 
-            logging.info(f"[No ndp] {qnumber} {dotnet_version}", end="")
-            logging.info(f" -> {splt[0].replace('kb', 'KB') + '.msu'}")
+            self.logger.info(f"[No ndp] {qnumber} {dotnet_version}", end="")
+            self.logger.info(f" -> {splt[0].replace('kb', 'KB') + '.msu'}")
 
         return splt[0].replace("kb", "KB") + ".msu" 
     
