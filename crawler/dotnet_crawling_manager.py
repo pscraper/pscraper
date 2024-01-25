@@ -72,7 +72,7 @@ class DotnetCrawlingManager(CrawlingManager):
 
             # 패치 대상의 각 카탈로그 링크에서 패치 파일 다운로드
             # 각 패치 파일 이름과 vendor URL에 대한 Dict 반환
-            file_dict = self._download_patch_file(common_dict)
+            file_dict = self._download_patch_file(common_dict, cve_string)
             self._wait_til_download_ended()
             time.sleep(3)
 
@@ -80,7 +80,7 @@ class DotnetCrawlingManager(CrawlingManager):
             self._extract_file_info(file_dict)
 
             # 각 언어별 bulletin URL에서 제목과 요약 수집
-            title_and_summary = self._get_title_and_summary(file_dict)
+            title_and_summary = self._get_title_and_summary(file_dict, cve_string)
 
             # 모든 파일이 정상적으로 존재하는지 검증
             self._check_msu_and_cab_file_exists()
@@ -93,6 +93,9 @@ class DotnetCrawlingManager(CrawlingManager):
 
             os.system("cls")
             print("[INFO] 프로그램이 정상적으로 종료되었습니다")
+            print("[INFO] 바탕화면에 패치 파일과 결과 정보 파일을 복사하였습니다.")
+            print("[INFO] result.json 파일을 열어 불필요한 유니코드 문자를 제거해주세요. 오류를 야기할 수 있습니다.")
+            print("[INFO] Title과 패치 날짜를 KST 기준으로 변경해주세요.")
         
         except Exception as e:
             self._error_report(e)
@@ -118,6 +121,10 @@ class DotnetCrawlingManager(CrawlingManager):
     # pathfiles/dotnet 폴더를 통째로 복사해서 옮기고 삭제한다.
     def _move_and_remove_dir(self):
         dst = Path.home() / "Desktop"
+
+        if (dst / "dotnet").exists():
+            shutil.rmtree(dst / "dotnet")
+
         shutil.move(self._patch_file_path, dst)
         shutil.copy(self._data_file_path / "result.json", dst / "dotnet" / "result.json")
 
@@ -251,13 +258,13 @@ class DotnetCrawlingManager(CrawlingManager):
         elif "Important" in severity_set or "important" in severity_set:
             return "Important"
         
-        elif "Normal" in severity_set or "normal" in severity_set:
-            return "Normal"
+        elif "Moderate" in severity_set or "moderate" in severity_set or "n/a" in severity_set or "N/A" in severity_set:
+            return "Moderate"
         
         return "Low"
     
 
-    def _download_patch_file(self, common_dict: dict[str, dict[str, str]]) -> dict[str, list[dict[str, str]]]:
+    def _download_patch_file(self, common_dict: dict[str, dict[str, str]], cve_string: str) -> dict[str, list[dict[str, str]]]:
         driver = self.driver
         file_dict: dict[str, list[dict[str, str]]] = dict()
         
@@ -318,8 +325,15 @@ class DotnetCrawlingManager(CrawlingManager):
                     
                     driver.close()
                     
+                # CVE가 없으면 기본 보안 등급 Moderate 적용
+                max_severity = ""
+
+                if cve_string == "":
+                    max_severity = "Moderate"
+
+                else:
+                    max_severity = self._get_max_severity(severity_set)
                 
-                max_severity = self._get_max_severity(severity_set)
                 common_dict[qnumber].update({"중요도": max_severity})
 
                 # 다운로드 작업 시작 세팅
@@ -552,7 +566,7 @@ class DotnetCrawlingManager(CrawlingManager):
         return "수동 수집이 필요합니다."
 
 
-    def _get_title_and_summary(self, file_dict) -> dict[str, dict[str, str]]:
+    def _get_title_and_summary(self, file_dict, cve_string: str) -> dict[str, dict[str, str]]:
         tmp = dict()
 
         driver = self.driver
@@ -589,6 +603,11 @@ class DotnetCrawlingManager(CrawlingManager):
                         pstrip: str = p.text.strip()
                         if pstrip.startswith("CVE"):
                             summary += pstrip.replace(u"\u2013", "-")
+
+                    # CVE가 없는 Cumulative 패치는 요약을 따로 가져온다.
+                    if cve_string == "" and summary == "":
+                        ps = section.find_all("p")[1]
+                        summary = ps.text[1:-1].strip()
                     
                     tmp[qnumber][nation] = dict()
                     tmp[qnumber][nation]["bulletin_url"] = bulletin_url 
