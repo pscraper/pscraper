@@ -23,14 +23,14 @@ class CrawlingManager:
         bin = Path.cwd() / "bin"
         meta = bin / "settings" / "meta.yaml"
 
-        logging.basicConfig(
+        self.logger = logging
+
+        self.logger.basicConfig(
             filename = bin / "log.txt", 
             level = logging.INFO,
             format = '%(asctime)s %(levelname)s:%(message)s',
-            datefmt='[%m/%d/%Y %I:%M:%S] %p'
+            datefmt = '[%m/%d/%Y %I:%M:%S] %p'
         )
-
-        self.logger = logging
 
         # settings 경로 체크
         if not os.path.exists(meta):
