@@ -94,7 +94,7 @@ class DotnetCrawlingManager(CrawlingManager):
             self.logger.info("Title과 패치 날짜를 KST 기준으로 변경해주세요.")
         
         except Exception as e:
-            self._error_report(e)
+            self._error_report(e, self.error_patch_dict)
             err = True
 
         finally:
@@ -260,6 +260,99 @@ class DotnetCrawlingManager(CrawlingManager):
         return "Low"
     
 
+    def _search_severity(self, trs: list[WebElement], main_window: str) -> set[str]:
+        driver = self.driver
+        severity_set = set()
+
+        # 중요도 조사
+        for tr in trs:
+            self._driver_wait(By.TAG_NAME, "td")
+            tds: list[WebElement] = tr.find_elements(by = By.TAG_NAME, value = "td")[1:]
+            patch_title_elem = tds[0]
+            patch_title = patch_title_elem.text
+
+            if "Embedded" in patch_title or "Itanium" in patch_title:
+                continue
+
+            patch_title_elem.click()
+            time.sleep(2)
+
+        for handle in driver.window_handles:
+            if handle == main_window:
+                continue
+            
+            driver.switch_to.window(handle)
+            
+            title_xpath = self.dotnet['xpath']['title']
+            self._driver_wait(by = By.XPATH, name = title_xpath)
+            patch_title = driver.find_element(by = By.XPATH, value = title_xpath).text
+            
+            severity_xpath = self.dotnet['xpath']['severity']
+            self._driver_wait(by = By.XPATH, name = severity_xpath)
+            severity = driver.find_element(by = By.XPATH, value = severity_xpath).text
+            severity_set.add(severity)
+
+            self.logger.info(f"[Patch Titke] {patch_title}")
+            self.logger.info(f"[Severity] {severity}")
+            
+            driver.close()
+
+        return severity_set
+    
+    
+    def _search_patch_file(self, trs: list[WebElement], main_window: str) -> tuple[str, str]:
+        driver = self.driver
+
+        # 다운로드 버튼 클릭
+        for tr in trs:
+            self._driver_wait(By.TAG_NAME, "td")
+            tds: list[WebElement] = tr.find_elements(by = By.TAG_NAME, value = "td")[1:]
+            patch_title = tds[0].text
+
+            if "Embedded" in patch_title or "Itanium" in patch_title:
+                continue
+            
+            tds[-1].click()
+            time.sleep(2)
+
+        for handle in driver.window_handles:
+            if handle == main_window:
+                continue
+
+            driver.switch_to.window(driver.window_handles[-1])
+
+            # 열린 다운로드 창에서 파일 다운로드 받기
+            xpath = self.dotnet['xpath']['download']
+            self._driver_wait(By.XPATH, xpath)
+            
+            box: WebElement = driver.find_element(by = By.XPATH, value = xpath)
+            divs: list[WebElement] = box.find_elements(by = By.TAG_NAME, value = "div")[1:]
+
+            for div in divs:
+                atag: WebElement = div.find_element(by = By.TAG_NAME, value = "a")
+                vendor_url = atag.get_attribute('href')
+                
+                if self._is_already_exists(atag.text.split("_")[0]):
+                    self.logger.info("\n\t[INFO] 중복된 파일 제외")
+                    self.logger.info(f"\t{atag.text}")
+                    continue
+                
+                time.sleep(1)
+
+                atag.click()
+
+                file_name = self._msu_file_name_change(atag.text)
+
+                self.logger.info("\n\t------------ [Downloading] ---------------")
+                self.logger.info(f"\t[파일명] {file_name}")
+                self.logger.info(f"\t[Vendor URL] {vendor_url}")
+
+             
+            driver.close()
+
+        return file_name, vendor_url
+
+
     def _download_patch_file(self, common_dict: dict[str, dict[str, str]], cve_string: str) -> dict[str, list[dict[str, str]]]:
         driver = self.driver
         file_dict: dict[str, list[dict[str, str]]] = dict()
@@ -286,40 +379,8 @@ class DotnetCrawlingManager(CrawlingManager):
                 self.logger.info(f"[{product_version} {dotnet_version}] 다운로드 작업 시작")
                 self.logger.info(f"Vendor URL: {link}")
 
-                severity_set = set()
-
                 # 중요도 조사
-                for tr in trs:
-                    self._driver_wait(By.TAG_NAME, "td")
-                    tds: list[WebElement] = tr.find_elements(by = By.TAG_NAME, value = "td")[1:]
-                    patch_title_elem = tds[0]
-                    patch_title = patch_title_elem.text
-
-                    if "Embedded" in patch_title or "Itanium" in patch_title:
-                        continue
-
-                    patch_title_elem.click()
-                    time.sleep(2)
-
-                for handle in driver.window_handles:
-                    if handle == main_window:
-                        continue
-                    
-                    driver.switch_to.window(handle)
-                    
-                    title_xpath = self.dotnet['xpath']['title']
-                    self._driver_wait(by = By.XPATH, name = title_xpath)
-                    patch_title = driver.find_element(by = By.XPATH, value = title_xpath).text
-                    
-                    severity_xpath = self.dotnet['xpath']['severity']
-                    self._driver_wait(by = By.XPATH, name = severity_xpath)
-                    severity = driver.find_element(by = By.XPATH, value = severity_xpath).text
-                    severity_set.add(severity)
-
-                    self.logger.info(f"[Patch Titke] {patch_title}")
-                    self.logger.info(f"[Severity] {severity}")
-                    
-                    driver.close()
+                severity_set = self._search_severity(trs, main_window)
                     
                 # CVE가 없으면 기본 보안 등급 Moderate 적용
                 max_severity = self._get_max_severity(severity_set, cve_string)
@@ -329,63 +390,18 @@ class DotnetCrawlingManager(CrawlingManager):
                 time.sleep(2)
                 driver.switch_to.window(main_window)
 
-                # 다운로드 버튼 클릭
-                for tr in trs:
-                    self._driver_wait(By.TAG_NAME, "td")
-                    tds: list[WebElement] = tr.find_elements(by = By.TAG_NAME, value = "td")[1:]
-                    patch_title = tds[0].text
+                file_name, vendor_url = self._search_patch_file(trs, main_window)
 
-                    if "Embedded" in patch_title or "Itanium" in patch_title:
-                        continue
-                    
-                    tds[-1].click()
-                    time.sleep(2)
-        
-                # 다운로드 수행
-                for handle in driver.window_handles:
-                    if handle == main_window:
-                        continue
+                file_info = {   
+                    "file_name": file_name,
+                    "vendor_url": vendor_url,
+                    "product": product_version,
+                    "architecture": self._get_architecture(file_name)
+                }
 
-                    driver.switch_to.window(driver.window_handles[-1])
-
-                    # 열린 다운로드 창에서 파일 다운로드 받기
-                    xpath = self.dotnet['xpath']['download']
-                    self._driver_wait(By.XPATH, xpath)
-                    
-                    box: WebElement = driver.find_element(by = By.XPATH, value = xpath)
-                    divs: list[WebElement] = box.find_elements(by = By.TAG_NAME, value = "div")[1:]
-
-                    for div in divs:
-                        atag: WebElement = div.find_element(by = By.TAG_NAME, value = "a")
-                        vendor_url = atag.get_attribute('href')
-                        
-                        if self._is_already_exists(atag.text.split("_")[0]):
-                            self.logger.info("\n\t[INFO] 중복된 파일 제외")
-                            self.logger.info(f"\t{atag.text}")
-                            continue
-                        
-                        time.sleep(1)
-
-                        atag.click()
-
-                        file_name = self._msu_file_name_change(atag.text)
-
-                        self.logger.info("\n\t------------ [Downloading] ---------------")
-                        self.logger.info(f"\t[파일명] {file_name}")
-                        self.logger.info(f"\t[Vendor URL] {vendor_url}")
-
-                        file_info = {   
-                            "file_name": file_name,
-                            "vendor_url": vendor_url,
-                            "product": product_version,
-                            "architecture": self._get_architecture(file_name)
-                        }
-
-                        file_dict[qnumber].append(file_info)
-                        time.sleep(3)
-
-                    driver.close()
-                
+                file_dict[qnumber].append(file_info)
+                time.sleep(3)
+ 
                 # 다시 main window로 전환 (카탈로그 창)
                 driver.switch_to.window(main_window)
                 
@@ -410,6 +426,12 @@ class DotnetCrawlingManager(CrawlingManager):
 
         # msu 파일명 전부 변경
         self._wait_til_download_ended()
+        self._remove_hash_from_file_name()        
+
+        return file_dict
+
+
+    def _remove_hash_from_file_name(self):
         self.logger.info("\n.msu 파일명에서 해시값 제거")
 
         for file in self._patch_file_path.iterdir():
@@ -430,7 +452,6 @@ class DotnetCrawlingManager(CrawlingManager):
                     os.remove(self._patch_file_path / file.name)
                     continue
 
-        return file_dict
 
     # 수집할 OS 대상, QNUMBER, CATALOG URL을 미리 수집해두고 시작
     def _init_patch_data(self) -> None:
@@ -493,29 +514,30 @@ class DotnetCrawlingManager(CrawlingManager):
             del patch_info_dict[product]
         
 
+    def _remove_patch(self, removed: str):
+        if removed not in self.qnumbers:
+            print(f"[{removed}] 목록에 없는 QNumber 입니다.")
+            return
+
+        info = self.qnumbers[removed]
+        product_version = info[0]
+        dotnet_version = info[1]
+        tmp = list()
+
+        for tup in self.patch_info_dict[product_version]:
+            if tup[1] == removed:
+                self.patch_info_dict[product_version].remove((dotnet_version, removed))
+
+                if len(self.patch_info_dict[product_version]) == 0:
+                    tmp.append(product_version)
+
+        for t in tmp:
+            del self.patch_info_dict[t]
+
+        del self.qnumbers[removed]
+
+
     def _show_prompt(self) -> None:
-        def _remove_patch(removed: str):
-            if removed not in self.qnumbers:
-                print(f"[{removed}] 목록에 없는 QNumber 입니다.")
-                return
-
-            info = self.qnumbers[removed]
-            product_version = info[0]
-            dotnet_version = info[1]
-            tmp = list()
-
-            for tup in self.patch_info_dict[product_version]:
-                if tup[1] == removed:
-                    self.patch_info_dict[product_version].remove((dotnet_version, removed))
-
-                    if len(self.patch_info_dict[product_version]) == 0:
-                        tmp.append(product_version)
-
-            for t in tmp:
-                del self.patch_info_dict[t]
-
-            del self.qnumbers[removed]
-
         patch_info_dict = self.patch_info_dict
 
         while True:
@@ -536,7 +558,7 @@ class DotnetCrawlingManager(CrawlingManager):
 
             for removed in res.split(","):
                 print(f"[removed] {removed.strip()} 삭제")
-                _remove_patch(removed.strip())
+                self._remove_patch(removed.strip())
 
 
     def _get_patch_date(self) -> str:
@@ -668,16 +690,6 @@ class DotnetCrawlingManager(CrawlingManager):
         
         return tmp
     
-
-    def _error_report(self, e):
-        for qnumber in self.error_patch_dict:
-            self.logger.warning(f"[{qnumber}]")
-            self.logger.warning(e)
-
-            for err_obj in self.error_patch_dict[qnumber]:
-                for key, val in err_obj.items():
-                    self.logger.warning(f"\t{key}: {val}")
-
 
     def _del_driver(self):
         try:

@@ -26,8 +26,8 @@ class CrawlingManager:
         logging.basicConfig(
             filename = bin / "log.txt", 
             level = logging.INFO,
-            format = '%(asctime)s %(levelname)s:%(message)s',
-            datefmt='[%m/%d/%Y %I:%M:%S] %p'
+            format = r'%(asctime)s %(levelname)s:%(message)s',
+            datefmt = r'[%m/%d/%Y %I:%M:%S] %p'
         )
 
         self.logger = logging
@@ -158,6 +158,16 @@ class CrawlingManager:
         
         except Exception as _:
             pass
+
+    
+    def _error_report(self, e: Exception, error_patch_dict: dict[str, list[dict[str, str]]]):
+        for qnumber in error_patch_dict:
+            self.logger.warning(f"[{qnumber}]")
+            self.logger.warning(e)
+
+            for err_obj in error_patch_dict[qnumber]:
+                for key, val in err_obj.items():
+                    self.logger.warning(f"\t{key}: {val}")
 
 
 if __name__ == "__main__":
