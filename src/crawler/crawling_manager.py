@@ -34,37 +34,35 @@ class CrawlingManager:
             category(str) : Enum value of Adobe / Java / .Net (defined classes.py)
             url(str) : Base URL for crawling
         """
-        name = __class__.__name__
-
         # 파일 읽어서 meta 객체 초기화
         with open(META_FILE_PATH, "r", encoding = ENC_TYPE) as fp:
             self.meta = yaml.load(fp, Loader = yaml.FullLoader)
 
         # bin\patchfiles 폴더 생성
         if not PATCH_FILE_PATH.exists():
-            logger.info(f"[{name}] Make Dir: {PATCH_FILE_PATH}")
+            logger.info(f"Make Dir: {PATCH_FILE_PATH}")
             os.mkdir(PATCH_FILE_PATH)
 
         # bin\data 폴더 생성
         if not DATA_PATH.exists():
-            logger.info(f"[{name}] Make Dir: {DATA_PATH}")
+            logger.info(f"Make Dir: {DATA_PATH}")
             os.mkdir(DATA_PATH)
 
         # bin\patchfiles\{type} 폴더 생성
         # 기존에 존재하면 삭제
         SUB_DIR = PATCH_FILE_PATH / category.lower()
         if os.path.exists(SUB_DIR):
-            logger.warning(f"[{name}] Remove Dir Tree: {SUB_DIR}")
+            logger.warning(f"Remove Dir Tree: {SUB_DIR}")
             shutil.rmtree(SUB_DIR)
         
         SUB_DIR.mkdir()
-        logger.info(f"[{name}] Make Dir: {SUB_DIR}")
+        logger.info(f"Make Dir: {SUB_DIR}")
 
         # 다운로드 경로 설정
         options = webdriver.ChromeOptions()
 
         for option in self.meta['driver_options']:
-            logger.info(f"[{name}] Chrome Option {option} Added.")
+            logger.info(f"Chrome Option {option} Added.")
             options.add_argument(option)
 
         options.add_experimental_option("prefs", {
@@ -76,7 +74,7 @@ class CrawlingManager:
             self.driver = webdriver.Chrome(options = options, service = Service(executable_path = str(CHROME_DRIVER_PATH)))
 
         except Exception as _:
-            logger.info(f"[{name}] 구버전 Selenium으로 동작합니다.")
+            logger.info(f"구버전 ChromeDriver 객체로 동작합니다.")
             self.driver = webdriver.Chrome(executable_path = str(CHROME_DRIVER_PATH), options = options)
         
         # Get 요청 후 HTML 파싱
@@ -85,11 +83,11 @@ class CrawlingManager:
         self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
         
         # Logging
-        logger.info(f"[{name}] Successfully initlaize")
-        logger.info(f"[{name}] Base URL: {url}")
-        logger.info(f"[{name}] Category: {category}")
-        logger.info(f"[{name}] Python Version: {sys.version}")
-        logger.info(f"[{name}] HTML parsing OK")
+        logger.info(f"Successfully initlaize")
+        logger.info(f"Base URL: {url}")
+        logger.info(f"Category: {category}")
+        logger.info(f"Python Version: {sys.version}")
+        logger.info(f"HTML parsing OK")
 
 
     # patchfiles 폴더에 중복된 파일이 있는지 검사

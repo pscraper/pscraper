@@ -23,7 +23,8 @@ SRC_PATH = CWD / "src"
 CRAWLER_PATH = SRC_PATH / "crawler"
 REGISTER_PATH = SRC_PATH / "register"
 VALIDATOR_PATH = SRC_PATH / "validator"
-SYS_APPENDED_PATHS = [CWD, SRC_PATH, CRAWLER_PATH, REGISTER_PATH, VALIDATOR_PATH]
+RUNNER_PATH = SRC_PATH / "runner"
+SYS_APPENDED_PATHS = [SRC_PATH, RUNNER_PATH, CRAWLER_PATH, REGISTER_PATH, VALIDATOR_PATH]
 
 
 # File Path
@@ -49,7 +50,7 @@ stdout_handler = logger.StreamHandler(stream = sys.stdout)              # 콘솔
 file_handler = logger.FileHandler(LOG_FILE_PATH, encoding = "utf8")     # 파일 출력을 위한 핸들러
 logger.basicConfig(
     level = logging.INFO,
-    format = '%(asctime)s %(levelname)s: %(message)s',
+    format = '%(asctime)s %(levelname)s: [%(module)s.%(funcName)s] %(message)s',
     datefmt = '[%m/%d/%Y %I:%M:%S] %p',
     handlers = [stdout_handler, file_handler]
 )

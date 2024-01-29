@@ -10,15 +10,14 @@ class ValidatorManager:
         This __init__ function executes validating process for all files required  
         """
 
-        name = __class__.__name__
-        logger.info(f"[{name}] 파일 목록 검사")
+        logger.info(f"파일 목록 검사")
         
         for path in REQUIRED_BEFORE_STARTED:
             if not path.exists():
                 err = err_format.format(str(path))
-                logger.critical(f"[{name}] err")
+                logger.critical(f"{err}")
                 raise Exception(err)
             
-            logger.info(f"[{name}] - {path.name} OK")
+            logger.info(f"{path.name} OK")
             
-        logger.info(f"[{name}] 필요한 파일 목록이 모두 확인되었습니다.")    
+        logger.info(f"필요한 파일 목록이 모두 확인되었습니다.")    
