@@ -1,33 +1,32 @@
-from pathlib import Path
 import sys
-
-sys.path.append(str(Path(__file__).parent))
-
 import re
 import time
 import os
 import hashlib
 import shutil
-from crawling_manager import CrawlingManager
+from pathlib import Path
 from bs4 import BeautifulSoup
 from bs4 import ResultSet
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from datetime import datetime
-
+from crawling_manager import CrawlingManager
+from classes import Category
+from const import (
+    logger,
+    DOTNET_FILE_PATH,
+    DOTNET_CAB_PATH
+)
 
 
 class DotnetCrawlingManager(CrawlingManager):
-    def __init__(self):
-        super().__init__()
-        
-        self._patch_file_path = self._patch_file_path / "dotnet"
-        self._cab_file_path = self._patch_file_path / "cabs"
-        self.error_patch_dict: dict[str, list[dict[str, str]]] = dict()
-        self.dotnet: dict[str, str] = self.meta['dotnet']
+    def __init__(self, url: str):
+        super().__init__(category = str(Category.DOTNET.name), url = url)
+        self.name = __class__.__name__
 
-        if not self._cab_file_path.exists():
-            self._cab_file_path.mkdir()
+        if not DOTNET_CAB_PATH.exists():
+            logger.info(f"[{self.name}] {DOTNET_CAB_PATH} 생성")
+            DOTNET_CAB_PATH.mkdir()
 
 
     def run(self) -> None:
@@ -448,7 +447,8 @@ class DotnetCrawlingManager(CrawlingManager):
     # 수집할 OS 대상, QNUMBER, CATALOG URL을 미리 수집해두고 시작
     def _init_patch_data(self) -> tuple[dict[str, tuple[str, str, BeautifulSoup]], dict[str, list[tuple[str, str]]]]:
         '''
-        return: tuple[qnumbers, patch_info_dict]
+        Return: 
+        tuple[qnumbers, patch_info_dict]
             - qnumbers: 
                 - key: QNumber
                 - val: tuple of product version, .NET version, catalog link
@@ -730,5 +730,5 @@ class DotnetCrawlingManager(CrawlingManager):
     
 
 if __name__ == "__main__":
-    dcm = DotnetCrawlingManager()
+    dcm = DotnetCrawlingManager("http://www.naver.com")
     dcm.run()

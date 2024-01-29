@@ -3,10 +3,8 @@ import sys
 from pathlib import Path
 
 
-# Categories
-DOTNET = ".Net"
-JAVA = "java"
-ADOBE = "adobe"
+# Type
+ENC_TYPE = "utf8"
 
 
 # Folder Path
@@ -14,14 +12,18 @@ BIN_PATH = Path.cwd() / "bin"
 SETTINGS_PATH = BIN_PATH / "settings"
 EXE_PATH = BIN_PATH / "exe"
 DATA_PATH = BIN_PATH / "data"
+PATCH_FILE_PATH = BIN_PATH / "patchfiles"
+DOTNET_FILE_PATH = PATCH_FILE_PATH / "dotnet"
+DOTNET_CAB_PATH = DOTNET_FILE_PATH / "cabs"
 
 
 # Src Path
-SRC_PATH = Path.cwd() / "src"
+CWD = Path.cwd()
+SRC_PATH = CWD / "src"
 CRAWLER_PATH = SRC_PATH / "crawler"
 REGISTER_PATH = SRC_PATH / "register"
 VALIDATOR_PATH = SRC_PATH / "validator"
-SYS_APPENDED_PATHS = [CRAWLER_PATH, REGISTER_PATH, VALIDATOR_PATH]
+SYS_APPENDED_PATHS = [CWD, SRC_PATH, CRAWLER_PATH, REGISTER_PATH, VALIDATOR_PATH]
 
 
 # File Path

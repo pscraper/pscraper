@@ -3,7 +3,6 @@ from excel_manager import ExcelManager
 
 
 class DotnetExcelManager(ExcelManager):
-    
     # 엑셀 파일 내 상대위치
     nation_rel_locs: dict[str, dict[str, tuple[int, int]]] = {
         "en-us": {

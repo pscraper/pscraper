@@ -1,35 +1,55 @@
 import sys
-from const import SYS_APPENDED_PATHS, DOTNET, JAVA, ADOBE
+import os
+from classes import Category
+from const import (
+    SYS_APPENDED_PATHS,
+    logger
+)
 
 
 def run() -> None:
-    for path in SYS_APPENDED_PATHS:
-        abs_path = r"{}".format(path.absolute())
-        sys.path.append(abs_path)
-    
+    os.system("cls")
+
     print("어떤 파트를 수집하시나요?")
-    category = input(f"1. {DOTNET}, 2. {JAVA}, 3. {ADOBE} ")
-    funcs = {DOTNET: run_dotnet, JAVA: run_java, ADOBE: run_adobe}
-    funcs[category]()
+    
+    DOTNET = Category.DOTNET.name
+    JAVA = Category.JAVA.name
+    ADOBE = Category.ADOBE.name
+
+    category = input(f"(1) {DOTNET} \t (2) {JAVA} \t (3) {ADOBE}\n")
+    url = input("URL: ")
+
+    funcs = {
+        DOTNET: run_dotnet, "1": run_dotnet,
+        JAVA: run_java, "2": run_java,
+        ADOBE: run_adobe, "3": run_adobe
+    }
+
+    funcs[category](url)
 
 
-def run_dotnet():
-    from src.validator.dotnet_validator import DotnetValidatorManager
-    from src.crawler.dotnet_crawling_manager import DotnetCrawlingManager
-    from src.register.dotnet_excel_manager import DotnetExcelManager
+def run_dotnet(url: str):
+    from validator.dotnet_validator import DotnetValidatorManager
+    from crawler.dotnet_crawling_manager import DotnetCrawlingManager
+    from register.dotnet_excel_manager import DotnetExcelManager
     
     dvm = DotnetValidatorManager()
-    dcm = DotnetCrawlingManager()
+    dcm = DotnetCrawlingManager(url)
     dem = DotnetExcelManager()
     
 
-def run_java():
+def run_java(url: str):
     pass
 
 
-def run_adobe():
+def run_adobe(url: str):
     pass
 
 
 if __name__ == "__main__":
+    for path in SYS_APPENDED_PATHS:
+        abs_path = r"{}".format(path.absolute())
+        logger.info(f"path appended to sys: {abs_path}")
+        sys.path.append(abs_path)
+
     run()
