@@ -23,8 +23,6 @@ class DotnetCrawlingManager(CrawlingManager):
         
         self._patch_file_path = self._patch_file_path / "dotnet"
         self._cab_file_path = self._patch_file_path / "cabs"
-        self.qnumbers: dict[str, tuple[str, str, BeautifulSoup]] = dict()
-        self.patch_info_dict: dict[str, list[tuple(str, str)]] = dict()
         self.error_patch_dict: dict[str, list[dict[str, str]]] = dict()
         self.dotnet: dict[str, str] = self.meta['dotnet']
 
@@ -33,26 +31,24 @@ class DotnetCrawlingManager(CrawlingManager):
 
 
     def run(self) -> None:
-        err = False
-
         try:
             # 패치 대상 데이터 초기화
-            self._init_patch_data()
+            qnumbers, patch_info_dict = self._init_patch_data()
             
             # 프롬프트 출력, 패치 대상 데이터 최종 결정(제거)
-            self._show_prompt()
+            self._show_prompt(patch_info_dict)
             
             # 프롬프트 창 clear
             os.system("cls")
 
             # 패치 날짜 정보 가져오기 (TODO 문서마다 다름)
             patch_date = datetime.today().strftime("%Y/%m/%d") # self._get_patch_date()
-            self.logger.info("[Patch Date]", patch_date)
+            self.logger.info(f"[Patch Date] {patch_date}")
 
             # 패치 CVE 문자열 가져오기
             # 이 이후로 soup 객체를 사용하지 않으므로 메모리 해제
             cve_string = self._get_cve_string()
-            self.logger.info("[CVE List]", cve_string)
+            self.logger.info(f"[CVE List] {cve_string}")
             del self.soup
 
             # BulletinID, KBNumber, PatchDate, CVE, 중요도 정보 가져오기
@@ -88,23 +84,15 @@ class DotnetCrawlingManager(CrawlingManager):
             self._make_result_file(common_dict, file_dict, title_and_summary)
 
             os.system("cls")
-            self.logger.info("프로그램이 정상적으로 종료되었습니다")
-            self.logger.info("바탕화면으로 패치 파일과 결과 정보 파일을 이동하였습니다.")
-            self.logger.info("result.json 파일을 열어 불필요한 유니코드 문자를 제거해주세요.")
-            self.logger.info("Title과 패치 날짜를 KST 기준으로 변경해주세요.")
+            print("프로그램이 정상적으로 종료되었습니다")
+            print("바탕화면으로 패치 파일과 결과 정보 파일을 이동하였습니다.")
+            print("result.json 파일을 열어 불필요한 유니코드 문자를 제거해주세요.")
+            print("Title과 패치 날짜를 KST 기준으로 변경해주세요.")
         
         except Exception as e:
             self._error_report(e, self.error_patch_dict)
-            err = True
 
         finally:
-            if not err:
-                self._move_and_remove_dir()
-            else:
-                res = input("[ERR] 에러가 발생했습니다. 모든 파일을 제거할까요? ")
-                if res == 'y':
-                    self._remove_all_files()
-
             self._del_driver()
 
 
@@ -163,12 +151,8 @@ class DotnetCrawlingManager(CrawlingManager):
             for info in file_dict[qnumber]:
                 file_name = info["file_name"]
                 
-                self.logger.info(f"\n{file_name} 압축 해제")
+                self.logger.info(f"{file_name} 압축 해제")
                 cab_file_name = self._unzip_msu_file(file_name)
-
-                time.sleep(1)
-
-                self.logger.info(f"\n{file_name} 해시값 추출")
                 file_size, md5, sha256 = self._extract_file_hash(file_name)
 
                 info.update({
@@ -193,23 +177,34 @@ class DotnetCrawlingManager(CrawlingManager):
     
     def _unzip_msu_file(self, file_name: str) -> str:
         file_abs_path = self._patch_file_path / file_name
-
-        # msu 파일 압축해제 (WSUSSCAN 파일만)
+        cab_file_name = file_name.split(".msu")[0] + "_WSUSSCAN.cab" 
         cmd = f"expand -f:* {file_abs_path} {self._cab_file_path}"
-        os.system(cmd)
-        time.sleep(2)
-
+        
         try:
-            cab_file_name = file_name.split(".msu")[0] + "_WSUSSCAN.cab"
+            os.system(cmd)
+            self._wait_til_tmp_folder_exists()
             Path.rename(self._cab_file_path / "WSUSSCAN.cab", self._cab_file_path / cab_file_name)
         
         except FileExistsError as e:    
             self.logger.warning("msu 파일 압축 해제 과정에서 에러 발생")
             self.logger.warning(e)
-            raise e
-
+            
         return cab_file_name
-
+    
+    
+    def _wait_til_tmp_folder_exists(self):
+        while True:
+            tmp = False
+            
+            for path in os.listdir(self._cab_file_path):
+                if path.endswith(".tmp"):
+                    tmp = True
+                    break
+                    
+            if not tmp:
+                time.sleep(2)
+                break
+                    
 
     def _extract_file_hash(self, file_name: str) -> tuple[str, str, str]:
         file_abs_path = self._patch_file_path / file_name
@@ -333,21 +328,18 @@ class DotnetCrawlingManager(CrawlingManager):
                 vendor_url = atag.get_attribute('href')
                 
                 if self._is_already_exists(atag.text.split("_")[0]):
-                    self.logger.info("\n\t[INFO] 중복된 파일 제외")
+                    self.logger.info("\t[INFO] 중복된 파일 제외")
                     self.logger.info(f"\t{atag.text}")
                     continue
                 
                 time.sleep(1)
-
                 atag.click()
-
                 file_name = self._msu_file_name_change(atag.text)
 
-                self.logger.info("\n\t------------ [Downloading] ---------------")
+                self.logger.info("------------ [Downloading] ---------------")
                 self.logger.info(f"\t[파일명] {file_name}")
                 self.logger.info(f"\t[Vendor URL] {vendor_url}")
 
-             
             driver.close()
 
         return file_name, vendor_url
@@ -396,11 +388,12 @@ class DotnetCrawlingManager(CrawlingManager):
                     "file_name": file_name,
                     "vendor_url": vendor_url,
                     "product": product_version,
-                    "architecture": self._get_architecture(file_name)
+                    "architecture": self._get_architecture(file_name),
+                    "subject": file_name
                 }
 
                 file_dict[qnumber].append(file_info)
-                time.sleep(3)
+                time.sleep(2)
  
                 # 다시 main window로 전환 (카탈로그 창)
                 driver.switch_to.window(main_window)
@@ -425,14 +418,13 @@ class DotnetCrawlingManager(CrawlingManager):
                 self._wait_til_download_ended()
 
         # msu 파일명 전부 변경
-        self._wait_til_download_ended()
         self._remove_hash_from_file_name()        
 
         return file_dict
 
 
     def _remove_hash_from_file_name(self):
-        self.logger.info("\n.msu 파일명에서 해시값 제거")
+        self.logger.info(".msu 파일명에서 해시값 제거")
 
         for file in self._patch_file_path.iterdir():
             if not file.name.endswith(".msu"):
@@ -446,19 +438,29 @@ class DotnetCrawlingManager(CrawlingManager):
                     print(f"\t{file.name} -> {renamed}")
 
                 except FileExistsError as e:
-                    self.logger.warning("\n[INFO] 중복된 파일 삭제합니다")
-                    self.logger.warning("[ERR]", e)
+                    self.logger.warning("[INFO] 중복된 파일 삭제합니다")
+                    self.logger.warning(f"[ERR] {e}")
                     self.logger.warning(file.name)
                     os.remove(self._patch_file_path / file.name)
                     continue
 
 
     # 수집할 OS 대상, QNUMBER, CATALOG URL을 미리 수집해두고 시작
-    def _init_patch_data(self) -> None:
-        patch_info_dict = self.patch_info_dict
+    def _init_patch_data(self) -> tuple[dict[str, tuple[str, str, BeautifulSoup]], dict[str, list[tuple[str, str]]]]:
+        '''
+        return: tuple[qnumbers, patch_info_dict]
+            - qnumbers: 
+                - key: QNumber
+                - val: tuple of product version, .NET version, catalog link
+            
+            - patch_info_dict
+                - key: product version
+                - val: list of tuple (.NET version, QNumber)
+        '''
+        
         soup = self.soup
-        qnumbers = self.qnumbers
-
+        patch_info_dict: dict[str, list] = dict()
+        qnumbers: dict[str, tuple[str, str, BeautifulSoup]] = dict()
         tbody: BeautifulSoup = soup.find("table").find("tbody")
         tds: list[BeautifulSoup] = tbody.find_all("td") 
         
@@ -512,6 +514,8 @@ class DotnetCrawlingManager(CrawlingManager):
         
         for product in tmp:
             del patch_info_dict[product]
+            
+        return qnumbers, patch_info_dict
         
 
     def _remove_patch(self, removed: str):
@@ -537,9 +541,7 @@ class DotnetCrawlingManager(CrawlingManager):
         del self.qnumbers[removed]
 
 
-    def _show_prompt(self) -> None:
-        patch_info_dict = self.patch_info_dict
-
+    def _show_prompt(self, patch_info_dict: dict[str, list]) -> None:
         while True:
             print("\n\n-------------------- 패치 대상 정보가 수집되었습니다 ----------------------")
             for product in patch_info_dict:
@@ -644,11 +646,9 @@ class DotnetCrawlingManager(CrawlingManager):
             tmp = "-".join([splt[1], splt[2], splt[3]]).replace(".msu", "")
             flag = False
 
-            self.logger.info(f"{tmp} -> ", end="")
-
             for cab in os.listdir(self._cab_file_path):
                 if tmp in cab:
-                    print(f"{cab} 확인", end="")
+                    self.logger.info(f"{tmp} -> {cab} 확인")
                     flag = True
                     break
            
@@ -685,7 +685,7 @@ class DotnetCrawlingManager(CrawlingManager):
                 "KBNumber": f"KB{qnumber}",
                 "BulletinID": f"MS-KB{qnumber}",
                 "cve": cve_string,
-                "PatchData": patch_date
+                "PatchDate": patch_date
             }
         
         return tmp
@@ -714,7 +714,6 @@ class DotnetCrawlingManager(CrawlingManager):
             qnumber = name[name.find("kb") + 2:name.rfind("-")]
             dotnet_version = self.qnumbers[qnumber][1]
 
-            tmp = ""
             if "4.8" in dotnet_version:
                 tmp = "48"
             elif "4.8.1" in dotnet_version:
@@ -724,7 +723,7 @@ class DotnetCrawlingManager(CrawlingManager):
 
             splt[0] = splt[0] + "-ndp" + tmp
 
-            self.logger.info(f"[No ndp] {qnumber} {dotnet_version}", end="")
+            self.logger.info(f"[No ndp] {qnumber} {dotnet_version}")
             self.logger.info(f" -> {splt[0].replace('kb', 'KB') + '.msu'}")
 
         return splt[0].replace("kb", "KB") + ".msu" 
