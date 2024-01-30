@@ -1,4 +1,4 @@
-from const import REQUIRED_BEFORE_STARTED, logger, err_format
+from const import REQUIRED_BEFORE_STARTED, logger, ERR_STR_FORMAT 
 
 
 class ValidatorManager:
@@ -14,7 +14,7 @@ class ValidatorManager:
         
         for path in REQUIRED_BEFORE_STARTED:
             if not path.exists():
-                err = err_format.format(str(path))
+                err = ERR_STR_FORMAT.format(str(path))
                 logger.critical(f"{err}")
                 raise Exception(err)
             

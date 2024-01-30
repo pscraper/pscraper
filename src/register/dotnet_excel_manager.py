@@ -1,5 +1,11 @@
 import yaml
 from excel_manager import ExcelManager
+from const import (
+    MAPPER_FILE_PATH,
+    ERR_STR_FORMAT,
+    ENC_TYPE,
+    logger
+)
 
 
 class DotnetExcelManager(ExcelManager):
@@ -79,17 +85,15 @@ class DotnetExcelManager(ExcelManager):
     }
     
     
-    def __init__(self):
-        super().__init__()
-        self.dotnet = self.meta_dict['dotnet']
-        mapper_file_path = self._settings_path / "mapper.yaml"
+    def __init__(self, category: str):
+        super().__init__(category)
         
-        if not mapper_file_path.exists():
-            raise Exception(self.error_string.format(mapper_file_path))
+        if not MAPPER_FILE_PATH.exists():
+            raise Exception(ERR_STR_FORMAT.format(MAPPER_FILE_PATH))
         
-        with open(mapper_file_path, "r", encoding="utf8") as fp:
-            self.mapper = yaml.load(fp, Loader = yaml.FullLoader)
-        
+        with open(MAPPER_FILE_PATH, "r", encoding = ENC_TYPE) as fp:
+            lines = fp.readlines()
+            
 
     def start(self):
         row = 1
@@ -107,7 +111,6 @@ class DotnetExcelManager(ExcelManager):
                 continue
             
             qnumber = str(self.mapper[cell_value])
-            print(f"[{qnumber}]{cell_value} 진행 중....")
             
             # Title, Summary, BulletinUrl 기록
             nations = result_dict[qnumber]['nations']
@@ -124,7 +127,7 @@ class DotnetExcelManager(ExcelManager):
             # 다음 행으로
             row += 1
         
-        print("작업 완료...")
+        logger.info("작업 완료")
             
             
     def _fill_nations_info(self, row: int, nations: dict[str, dict[str, str]]) -> None:

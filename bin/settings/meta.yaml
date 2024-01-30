@@ -1,7 +1,4 @@
-path:
-    driver: "./exe/chromedriver.exe"
-    data: "./data"
-
+# Chrome Driver 옵션
 driver_options:
     - "--disable-popup-blocking"
     - "--disable-extensions"
@@ -9,25 +6,15 @@ driver_options:
     - "--no-sandbox"
     - "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 
-dotnet:
-    common:
-        bulletin: "https://support.microsoft.com/{}/help/{}"
-        nations:
-            - ja-jp
-            - ko-kr
-            - zh-cn
-            - en-us
-
-    re:
-        cve: "CVE-\\d+-\\d+"
-        cve_id: "^cve"
-        kb: "^KB\\d{7}"
-
-    xpath:
-        title: "//*[@id=\"ScopedViewHandler_titleText\"]"
-        severity: "//*[@id=\"ScopedViewHandler_msrcSeverity\"]"
-        download: "//*[@id=\"downloadFiles\"]"
-
-    id:
-        header: "page-header"
-        summary: "bkmk_summary"
+# 엑셀에 수집하려는 버전 리스트
+excel_key:
+    - 11 22H2, 23H2 3.5, 4.8.1
+    - 11 21H2 3.5, 4.8
+    #- 11 21H2 3.5, 4.8.1
+    #- 2022 3.5, 4.8
+    #- 2022 3.5, 4.8.1
+    #- 10 21H2, 22H2 3.5, 4.8
+    #- 10 21H2, 22H2 3.5, 4.8.1
+    #- 1809 3.5, 4.7.2
+    #- 1809 3.5, 4.8
+    #- 1607 4.8

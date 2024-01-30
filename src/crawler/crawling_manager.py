@@ -1,10 +1,8 @@
 import os
-import json
 import time
 import sys
 import yaml
 import shutil
-from pathlib import Path
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver import ActionChains
@@ -18,6 +16,8 @@ from const import (
     PATCH_FILE_PATH,
     DATA_PATH,
     CHROME_DRIVER_PATH,
+    DOTNET_FILE_PATH,
+    DOTNET_CAB_PATH,
     ENC_TYPE,
     logger
 )
@@ -50,24 +50,20 @@ class CrawlingManager:
 
         # bin\patchfiles\{type} 폴더 생성
         # 기존에 존재하면 삭제
-        SUB_DIR = PATCH_FILE_PATH / category.lower()
-        if os.path.exists(SUB_DIR):
-            logger.warning(f"Remove Dir Tree: {SUB_DIR}")
-            shutil.rmtree(SUB_DIR)
+        if os.path.exists(DOTNET_FILE_PATH):
+            logger.warning(f"Remove Dir Tree: {DOTNET_FILE_PATH}")
+            shutil.rmtree(DOTNET_FILE_PATH)
         
-        SUB_DIR.mkdir()
-        logger.info(f"Make Dir: {SUB_DIR}")
+        DOTNET_FILE_PATH.mkdir()
+        logger.info(f"Make Dir: {DOTNET_FILE_PATH}")
 
         # 다운로드 경로 설정
         options = webdriver.ChromeOptions()
-
+        options.add_experimental_option("prefs", {"download.default_directory": str(DOTNET_FILE_PATH)})
+        
         for option in self.meta['driver_options']:
             logger.info(f"Chrome Option {option} Added.")
             options.add_argument(option)
-
-        options.add_experimental_option("prefs", {
-            "download.default_directory": str(SUB_DIR)
-        })
 
         # selenium 버전 높은 경우 -> executable_path Deprecated -> Service 객체 사용
         try:
@@ -90,37 +86,42 @@ class CrawlingManager:
         logger.info(f"HTML parsing OK")
 
 
-    # patchfiles 폴더에 중복된 파일이 있는지 검사
+    # patchfiles\dotnet 폴더에 중복된 파일이 있는지 검사
     def _is_already_exists(self, name) -> bool:
-        for file in PATCH_FILE_PATH.iterdir():
+        for file in DOTNET_FILE_PATH.iterdir():
             if file.name.startswith(name):
                 return True
         
         return False
 
-
+    # patchfiles\dotnet 폴더에 다운로드 중인 파일이 있는지 검사
     def _wait_til_download_ended(self):
         while True: 
             dl = False
-            for file in PATCH_FILE_PATH.iterdir():
+            for file in DOTNET_FILE_PATH.iterdir():
                 if file.name.endswith("crdownload"):
                     dl = True
+                    break
 
-            time.sleep(0.5)
+            time.sleep(1)
 
             if not dl:
                 break
-
-
-    def _save_result(self, file_name: str, result_dict: dict):
-        with open(file_name, "w", encoding = "utf8") as fp:
-            json.dump(
-                obj = result_dict, 
-                fp = fp, 
-                indent = 4,
-                sort_keys = True, 
-                ensure_ascii = False
-            )
+            
+    # patchfiles\dotnet\cabs 폴더에 tmp 폴더가 있는지 검사
+    def _wait_til_tmp_folder_exists(self):
+        while True:
+            tmp = False
+            for path in os.listdir(DOTNET_CAB_PATH):
+                if path.endswith(".tmp"):
+                    tmp = True
+                    break
+                
+            time.sleep(1)
+                    
+            if not tmp:
+                time.sleep(2)
+                break
 
 
     # 동적 페이지의 경우 로딩을 위해 전체 페이지 탐색 
@@ -155,17 +156,3 @@ class CrawlingManager:
         
         except Exception as _:
             pass
-
-    
-    def _error_report(self, e: Exception, error_patch_dict: dict[str, list[dict[str, str]]]):
-        for qnumber in error_patch_dict:
-            logger.warning(f"[{qnumber}]")
-            logger.warning(e)
-
-            for err_obj in error_patch_dict[qnumber]:
-                for key, val in err_obj.items():
-                    logger.warning(f"\t{key}: {val}")
-
-
-if __name__ == "__main__":
-    test = CrawlingManager("dotnet", "http://www.naver.com")
