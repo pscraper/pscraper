@@ -35,7 +35,7 @@ REGISTER_PATH = SRC_PATH / "register"
 VALIDATOR_PATH = SRC_PATH / "validator"
 FUNCS_PATH = SRC_PATH / "funcs"
 UTILS_PATH = SRC_PATH / "utils"
-SYS_APPENDED_PATHS = [CRAWLER_PATH, REGISTER_PATH, VALIDATOR_PATH, UTILS_PATH]
+FILE_HANDLER_PATH = SRC_PATH / "filehandler"
 
 
 # File Path
@@ -50,6 +50,8 @@ MAPPER_FILE_PATH = DATA_PATH / "mapper.txt"             # 엑셀 파일의 제�
 # 프로그램 시작 전 모듈 import를 위한 경로 리스트
 REQUIRED_BEFORE_STARTED = [META_FILE_PATH, EXCEL_FILE_PATH, CHROME_DRIVER_PATH]
 
+# 각 모듈의 루트 경로 모음 (sys 경로에 등록)
+SYS_APPENDED_PATHS = [CRAWLER_PATH, REGISTER_PATH, VALIDATOR_PATH, UTILS_PATH, FILE_HANDLER_PATH]
 
 # 대체해야 하는 특정 유니코드 모음 리스트
 UNREQUIRED_UNICODES = [{u'\u2013': '-'}] 

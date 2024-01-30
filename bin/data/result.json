@@ -10,20 +10,6 @@
             "os_version": "Windows 11, version 21H2",
             "patch_date": "2024/01/30"
         },
-        "files": [
-            {
-                "architecture": "arm64",
-                "file_name": "windows10.0-KB5033912-arm64-ndp48.msu",
-                "subject": "windows10.0-KB5033912-arm64-ndp48.msu",
-                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/secu/2023/12/windows10.0-kb5033912-arm64-ndp48_32caea4a94323fe13ddc1c5d3ac88a5bfd236cb2.msu"
-            },
-            {
-                "architecture": "x64",
-                "file_name": "windows10.0-KB5033912-x64-ndp48.msu",
-                "subject": "windows10.0-KB5033912-x64-ndp48.msu",
-                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/secu/2023/12/windows10.0-kb5033912-x64-ndp48_88e032d58f5127300f7198ef4c778b6573e3c3f5.msu"
-            }
-        ],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5033912",
@@ -58,20 +44,6 @@
             "os_version": "Windows 11, version 22H2 and Windows 11, version 23H2",
             "patch_date": "2024/01/30"
         },
-        "files": [
-            {
-                "architecture": "x64",
-                "file_name": "windows11.0-KB5033920-x64-ndp481.msu",
-                "subject": "windows11.0-KB5033920-x64-ndp481.msu",
-                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/secu/2024/01/windows11.0-kb5033920-x64-ndp481_b171658bdaca6fe0af3550a48f691d4ceb4ee0d3.msu"
-            },
-            {
-                "architecture": "arm64",
-                "file_name": "windows11.0-KB5033920-arm64-ndp481.msu",
-                "subject": "windows11.0-KB5033920-arm64-ndp481.msu",
-                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/secu/2024/01/windows11.0-kb5033920-arm64-ndp481_db150d56b386de5d2771beaccfd609237bfa81f7.msu"
-            }
-        ],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5033920",

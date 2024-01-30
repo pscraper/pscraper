@@ -1,4 +1,4 @@
-from const import REQUIRED_BEFORE_STARTED, logger, ERR_STR_FORMAT 
+from const import REQUIRED_BEFORE_STARTED, ERR_STR_FORMAT, logger
 
 
 class ValidatorManager:
@@ -9,7 +9,6 @@ class ValidatorManager:
         Top object of validator.
         This __init__ function executes validating process for all files required  
         """
-
         logger.info(f"파일 목록 검사")
         
         for path in REQUIRED_BEFORE_STARTED:

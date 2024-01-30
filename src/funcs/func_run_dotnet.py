@@ -1,7 +1,8 @@
 from validator.dotnet_validator import DotnetValidatorManager
 from crawler.dotnet_crawling_manager import DotnetCrawlingManager
 from register.dotnet_excel_manager import DotnetExcelManager
-from utils.util_func_dotnet import update_common_info, read_mapper_file, replace_specific_unicode
+from filehandler.dotnet_file_handler import DotnetFileHandler
+from utils.util_func_dotnet import update_common_info, read_mapper_file
 from utils.util_func_json import read_json_result, save_json_result
 from const import (
     MAPPER_FILE_PATH,
@@ -66,6 +67,16 @@ def run_dotnet(url: str, category: str):
     # 수집 대상 qnumber에 대한 모든 msu 패치 파일이 존재하는지 검사
     validator._check_all_qnumber_file_exists(qnumbers)     
     
+    # 파일 핸들링 작업 시작
+    result = read_json_result(RESULT_FILE_PATH)
+    dfh = DotnetFileHandler()
+    dfh.start(result)
     
     # msu 파일과 cab 파일의 짝이 맞는지 검사
-    # validator._check_msu_and_cab_file_exists()              
+    validator._check_msu_and_cab_file_exists()
+
+    # 엑셀 등록 작업 시작
+    dem = DotnetExcelManager(category)
+    dem.start()
+    
+              

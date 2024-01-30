@@ -8,7 +8,6 @@ class DotnetValidatorManager(ValidatorManager):
         super().__init__()
         
         
-        
     def _check_msu_and_cab_file_exists(self):
         # cab 파일과 msu 파일이 모두 있는지 검사
         for file in os.listdir(DOTNET_FILE_PATH):

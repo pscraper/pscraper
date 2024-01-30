@@ -1,4 +1,3 @@
-import json
 from util_func_json import save_json_result
 from const import (
     RESULT_FILE_PATH,
@@ -20,7 +19,6 @@ def replace_specific_unicode(raw: str) -> str:
     return raw
 
 
-
 def read_mapper_file() -> list[list[str]]:
     with open(MAPPER_FILE_PATH, "r", encoding = ENC_TYPE) as fp:
         lines = list(map(lambda x: x.strip(), fp.readlines()))
@@ -31,7 +29,41 @@ def read_mapper_file() -> list[list[str]]:
             lines[idx] = list(map(lambda x: x.strip(), line.split("|")))    
 
     return lines
+
+
+def read_mapper_file_and_transform_dict() -> dict[str, dict[str, str]]:
+    result = dict()
+    mappers = read_mapper_file()
+
+    for mapper in mappers:
+        result[mapper[0]] = {
+            "os_version": mapper[1],
+            "dotnet_version": mapper[2],
+            "catalog_link": mapper[3],
+            "excel_key": mapper[4]
+        }
+
+    return result
+
+
+def read_mapper_file_and_transform_qnumber_set() -> set[str]:
+    qnumbers = set()
+    mappers = read_mapper_file()
+
+    for mapper in mappers:
+        qnumbers.add(mapper[0])
     
+    return qnumbers
+
+
+def read_mapper_file_and_excel_key_qnumber_dict() -> dict[str, str]:
+    key_qnumber_dict = dict()
+    mappers = read_mapper_file()
+    
+    for mapper in mappers:
+        key_qnumber_dict[mapper[-1]] = mapper[0]
+
+    return key_qnumber_dict
 
 
 def update_common_info(lines: list[list[str]], patch_date: str, common_cve: str) -> None:
