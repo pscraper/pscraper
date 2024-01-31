@@ -79,10 +79,10 @@ class CrawlingManager:
         self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
         
         # Logging
-        logger.info(f"Successfully initlaize")
-        logger.info(f"Base URL: {url}")
-        logger.info(f"Category: {category}")
+        logger.info(f"Successfully Initialized")
         logger.info(f"Python Version: {sys.version}")
+        logger.info(f"Category: {category}")
+        logger.info(f"Base URL: {url}")
         logger.info(f"HTML parsing OK")
 
 

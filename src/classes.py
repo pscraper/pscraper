@@ -58,7 +58,7 @@ class DotnetLocs:
     }
 
     # 엑셀 파일과 json 파일의 키를 맞추기 위한 Mapper
-    KEY_MAPPER = {
+    KEY_MAPPER: dict[str, str] = {
         "MD5": "MD5",
         "SHA256": "SHA256",
         "WSUS 파일": "Wsus 파일",
@@ -66,7 +66,11 @@ class DotnetLocs:
         "file_name": "파일명",
         "file_size": "파일크기",
         "vendor_url": "VendorUrl",
-        "subject": "SubJect"
+        "subject": "SubJect",
+        "bulletin_id": "BulletinID",
+        "common_cve": "cve",
+        "kb_number": "KBNumber",
+        "patch_date": "PatchDate"
     }
 
     # Architecture 정보
@@ -82,3 +86,4 @@ class DotnetLocs:
         "1809 3.5, 4.8": ["x64", "x86"],
         "1607 4.8": ["x86", "x64"]
     }
+    

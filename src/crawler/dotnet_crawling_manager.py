@@ -1,12 +1,13 @@
 import re
 import time
 import os
+from utils.util_func_dotnet import extract_qnumber_from_kb_file_name
 from datetime import datetime
 from bs4 import BeautifulSoup
 from bs4 import ResultSet
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
-from crawling_manager import CrawlingManager
+from crawler.crawling_manager import CrawlingManager
 from utils.util_func_dotnet import replace_specific_unicode
 from const import (
     CVE_STR,
@@ -44,7 +45,7 @@ class DotnetCrawlingManager(CrawlingManager):
         return "Undefined"
     
     
-    def _search_patch_file(self, trs: list[WebElement], main_window: str) -> tuple[str, str]:
+    def _search_patch_file(self, qnumber: str, trs: list[WebElement], main_window: str) -> tuple[str, str]:
         driver = self.driver
         files = list()
 
@@ -59,7 +60,7 @@ class DotnetCrawlingManager(CrawlingManager):
                 continue
             
             tds[-1].click()
-            time.sleep(2)
+            time.sleep(2.5)
 
         for handle in driver.window_handles:
             if handle == main_window:
@@ -69,20 +70,25 @@ class DotnetCrawlingManager(CrawlingManager):
 
             # 열린 다운로드 창에서 파일 다운로드 받기
             self._driver_wait(By.XPATH, PF_DOWNLOAD)
+            time.sleep(3)
             box: WebElement = driver.find_element(by = By.XPATH, value = PF_DOWNLOAD)
             divs: list[WebElement] = box.find_elements(by = By.TAG_NAME, value = "div")[1:]
 
             for div in divs:
+                self._driver_wait(By.TAG_NAME, "a")
+                time.sleep(1.5)
                 atag: WebElement = div.find_element(by = By.TAG_NAME, value = "a")
                 vendor_url = atag.get_attribute('href')
-                
-                time.sleep(2)
                 
                 if self._is_already_exists(atag.text.split("_")[0]):
                     logger.info(f"중복된 파일 제외: {atag.text}")
                     continue
                 
-                time.sleep(2)
+                ext_qnumber = extract_qnumber_from_kb_file_name(atag.text)
+                
+                if qnumber != ext_qnumber:
+                    logger.info(f"일치하지 않는 파일 제외: {qnumber} != {ext_qnumber}")
+                    continue
                 
                 atag.click()
                 file_name = atag.text
@@ -124,7 +130,7 @@ class DotnetCrawlingManager(CrawlingManager):
                 # 다운로드 작업 시작 세팅
                 driver.switch_to.window(main_window)
                 time.sleep(2)
-                files = self._search_patch_file(trs, main_window)
+                files = self._search_patch_file(trs, qnumber, main_window)
                 driver.switch_to.window(main_window)
 
                 file_dict[qnumber] = files
@@ -135,6 +141,7 @@ class DotnetCrawlingManager(CrawlingManager):
 
             except Exception as e:
                 logger.critical(e)
+                driver.close()
                 continue
             
             finally:
@@ -250,6 +257,7 @@ class DotnetCrawlingManager(CrawlingManager):
                         pstrip: str = p.text.strip()
                         if pstrip.startswith("CVE"):
                             summary += replace_specific_unicode(pstrip)
+                            summary += "\n"
                     
                     # Summary가 수집되지 않으면 기본 문자열을 가져온다.
                     if not summary:

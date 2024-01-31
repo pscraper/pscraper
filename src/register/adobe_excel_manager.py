@@ -1,4 +1,4 @@
-from excel_manager import ExcelManager
+from register.excel_manager import ExcelManager
 
 
 class AdobeExcelManager(ExcelManager):

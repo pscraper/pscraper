@@ -1,4 +1,4 @@
-from util_func_json import save_json_result
+from utils.util_func_json import save_json_result
 from const import (
     RESULT_FILE_PATH,
     MAPPER_FILE_PATH,
@@ -9,6 +9,25 @@ from const import (
     logger
 )
 
+
+
+def extract_qnumber_from_kb_file_name(file_name: str) -> str:
+    idx = extract_idx_from_file_name(file_name, "kb")
+    return file_name[(idx + 2):(idx + 9)]
+    
+    
+def extract_qnumber_from_KB_file_name(file_name: str) -> str:
+    idx = extract_idx_from_file_name(file_name, "KB")
+    return file_name[(idx + 2):(idx + 9)]
+
+
+def extract_idx_from_file_name(file_name: str, find_str: str) -> int:
+    idx = file_name.find(find_str)
+    
+    if idx == -1:
+        raise Exception(f"파일명에서 {find_str} 추출 불가")
+    
+    return idx
 
 
 def replace_specific_unicode(raw: str) -> str:

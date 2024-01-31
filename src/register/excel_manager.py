@@ -4,7 +4,7 @@ import openpyxl
 import shutil
 from classes import Category
 from const import (
-    SETTINGS_PATH,
+    DATA_PATH,
     EXCEL_FILE_PATH,
     RESULT_FILE_PATH,
     ENC_TYPE,
@@ -28,17 +28,18 @@ class ExcelManager:
             
         # 엑셀 파일 copy
         now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-        self.new_excel_file_path = SETTINGS_PATH / f"patch{now}.xlsx"
+        self.new_excel_file_path = DATA_PATH / f"patch{now}.xlsx"
         shutil.copy(EXCEL_FILE_PATH, self.new_excel_file_path)
 
         # sheet 이름 
-        if category.lower() == Category.DOTNET.name:
+        if category.lower() == Category.DOTNET.name.lower():
             sheet = category.lower()
         else:
             sheet = "3rdparty"
-        
+            
         self.excel_file = openpyxl.load_workbook(self.new_excel_file_path)
         self.excel_sheet = self.excel_file.get_sheet_by_name(sheet)
+        logger.info(f"{sheet} 시트 오픈")
         logger.info("엑셀 파일 로딩 완료")
     
 
@@ -50,16 +51,11 @@ class ExcelManager:
         self.excel_sheet.cell(row, self._col_to_int(col), val)
 
 
-    def save_workbook(self):
+    def save_workbook(self) -> str:
         self.excel_file.save(self.new_excel_file_path)
+        return self.new_excel_file_path
 
 
     def _col_to_int(self, col: str) -> int:
         val = ord(col) - ord('A') if col.isupper() else ord(col) - ord('a')
         return val + 1
-    
-
-if __name__ == "__main__":
-    em = ExcelManager()
-    # em.save_workbook()
-    # em._work_sheet_props()
