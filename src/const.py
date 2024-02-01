@@ -1,10 +1,18 @@
 import logging
 import sys
+import os
 from pathlib import Path
+from datetime import datetime
 
 
 # Type
 ENC_TYPE = "utf8"
+
+
+# SLEEP
+SLEEP_LONG = 3
+SLEEP_MEDIUM = 2
+SLEEP_SHORT = 1
 
 
 # DOM STRINGS
@@ -66,8 +74,44 @@ DOTNET_BULLETIN_URL_FORMAT = "https://support.microsoft.com/{}/help/{}"
 DOTNET_NATIONS_LIST = ['en-us', 'ja-jp', 'ko-kr', 'zh-cn']
 
 
-# Logging
+
+# Log, Result 파일 관리
+DEFAULT_REMOVE_HOUR = 5000   # 30분
 logger = logging
+
+def remove_before_one_hour_files(path: Path, now: str):
+    for file in path.iterdir():
+        if not (file.name.startswith("log2") or file.name.startswith("result2") or file.name.startswith("patch2")):
+            continue
+            
+        time_str = file.name[file.name.find('2'):file.name.find('.')]
+        
+        if int(now) - int(time_str) >= DEFAULT_REMOVE_HOUR:
+            os.remove(path / file)
+            logger.info(f"Remove Old File: {file}")
+            
+
+def add_time_str_to_exists_file_name(path: Path, now: str):
+    for file in path.iterdir():
+        name = file.name
+        
+        if not (name == "result.json" or name == "log.txt"):
+            continue
+        
+        name_splt = name.split('.')
+        new_name = name_splt[0] + now + '.' + name_splt[1]
+        os.rename(path / file, path / new_name)
+        
+
+# logging   
+now = datetime.now().strftime("%Y%m%d%H%M%S")
+paths = [LOG_PATH, DATA_PATH]
+    
+for path in paths:
+    add_time_str_to_exists_file_name(path, now)
+    remove_before_one_hour_files(path, now)
+    
+    
 stdout_handler = logger.StreamHandler(stream = sys.stdout)                # 콘솔 출력을 위한 핸들러
 file_handler = logger.FileHandler(LOG_FILE_PATH, encoding = ENC_TYPE)     # 파일 출력을 위한 핸들러
 logger.basicConfig(
@@ -76,4 +120,3 @@ logger.basicConfig(
     datefmt = '[%m/%d/%Y %I:%M:%S] %p',
     handlers = [stdout_handler, file_handler]
 )
-

@@ -9,7 +9,7 @@ class ValidatorManager:
         Top object of validator.
         This __init__ function executes validating process for all files required  
         """
-        logger.info(f"파일 목록 검사")
+        logger.info(f"필수 파일 목록 검사")
         
         for path in REQUIRED_BEFORE_STARTED:
             if not path.exists():

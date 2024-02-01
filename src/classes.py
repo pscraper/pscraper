@@ -70,7 +70,8 @@ class DotnetLocs:
         "bulletin_id": "BulletinID",
         "common_cve": "cve",
         "kb_number": "KBNumber",
-        "patch_date": "PatchDate"
+        "patch_date": "PatchDate",
+        "severity": "중요도"
     }
 
     # Architecture 정보

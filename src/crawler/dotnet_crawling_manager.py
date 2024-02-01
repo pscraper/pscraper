@@ -1,17 +1,17 @@
 import re
 import time
 import os
+from utils.util_func_common import replace_to_kst, replace_specific_unicode
 from utils.util_func_dotnet import extract_qnumber_from_kb_file_name
-from datetime import datetime
 from bs4 import BeautifulSoup
 from bs4 import ResultSet
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from crawler.crawling_manager import CrawlingManager
-from utils.util_func_dotnet import replace_specific_unicode
 from const import (
     CVE_STR,
     CVE_ID,
+    SLEEP_SHORT,
     TS_HEADER,
     TS_SUMMARY,
     PF_DOWNLOAD,
@@ -19,6 +19,9 @@ from const import (
     DOTNET_BULLETIN_URL_FORMAT,
     DOTNET_NATIONS_LIST,
     ENC_TYPE,
+    SLEEP_LONG,
+    SLEEP_MEDIUM,
+    SLEEP_SHORT,
     logger
 )
 
@@ -60,7 +63,7 @@ class DotnetCrawlingManager(CrawlingManager):
                 continue
             
             tds[-1].click()
-            time.sleep(2.5)
+            time.sleep(SLEEP_MEDIUM)
 
         for handle in driver.window_handles:
             if handle == main_window:
@@ -70,13 +73,13 @@ class DotnetCrawlingManager(CrawlingManager):
 
             # 열린 다운로드 창에서 파일 다운로드 받기
             self._driver_wait(By.XPATH, PF_DOWNLOAD)
-            time.sleep(3)
+            time.sleep(SLEEP_LONG)
             box: WebElement = driver.find_element(by = By.XPATH, value = PF_DOWNLOAD)
             divs: list[WebElement] = box.find_elements(by = By.TAG_NAME, value = "div")[1:]
 
             for div in divs:
                 self._driver_wait(By.TAG_NAME, "a")
-                time.sleep(1.5)
+                time.sleep(SLEEP_MEDIUM)
                 atag: WebElement = div.find_element(by = By.TAG_NAME, value = "a")
                 vendor_url = atag.get_attribute('href')
                 
@@ -129,23 +132,22 @@ class DotnetCrawlingManager(CrawlingManager):
 
                 # 다운로드 작업 시작 세팅
                 driver.switch_to.window(main_window)
-                time.sleep(2)
-                files = self._search_patch_file(trs, qnumber, main_window)
+                time.sleep(SLEEP_MEDIUM)
+                files = self._search_patch_file(qnumber, trs, main_window)
                 driver.switch_to.window(main_window)
 
                 file_dict[qnumber] = files
-                time.sleep(2)
+                time.sleep(SLEEP_MEDIUM)
  
                 # 다운로드 완료 대기 
-                self._wait_til_download_ended()
+                self._wait_("crdownload")
 
             except Exception as e:
                 logger.critical(e)
-                driver.close()
                 continue
             
             finally:
-                self._wait_til_download_ended()
+                self._wait_("crdownload")
 
         
         return file_dict
@@ -217,20 +219,17 @@ class DotnetCrawlingManager(CrawlingManager):
             logger.info(f"{MAPPER_FILE_PATH.name} 파일 초기화 완료")
                 
 
-    # TODO 패치 일자 긁어오기
     def _get_patch_date(self) -> str:
-        date_elem = self.soup.find("em").find("strong")
-        
-        if date_elem == None:
-            logger.warn("PatchDate 정보를 찾을 수 없어 현재 날짜를 반환합니다.")
-            return datetime.today().strftime("%Y/%m/%d")
-            
-        # date = date_elem.text[1:-1].strip().split("/")
-        # return f"{date[-1]}/{date[0]}/{int(date[1]) + 1}"
-        return datetime.today().strftime("%Y/%m/%d")
+        patch_date = input("(ex. 2024/2/1) 패치 노트에 기록된 날짜를 입력해주세요: ")
+        splt = patch_date.split('/')
+        return '/'.join([splt[0], splt[1], str(int(splt[2]) + 1)])
+    
+    
+    def _get_severity(self) -> str:
+        return input("패치의 보안 중요도를 입력해주세요: ").capitalize()
 
 
-    def _get_title_and_summary(self, qnumbers: set[str]):
+    def _get_title_and_summary(self, patch_date: str, category: str, qnumbers: set[str]):
         driver = self.driver
         ts_dict = dict()
         
@@ -245,10 +244,10 @@ class DotnetCrawlingManager(CrawlingManager):
                     driver.get(bulletin_url)
                     self._driver_wait(By.ID, TS_HEADER)
                     self._driver_wait(By.ID, TS_SUMMARY)
-                    time.sleep(1)
+                    time.sleep(SLEEP_SHORT)
 
                     soup = BeautifulSoup(driver.page_source, "html.parser")
-                    title: str = soup.find(name = "h1", attrs = {"id": TS_HEADER}).text.strip()
+                    title: str = replace_specific_unicode(soup.find(name = "h1", attrs = {"id": TS_HEADER}).text.strip())
                     section = soup.find(name = "section", attrs = {"id": TS_SUMMARY})  
                     ps: ResultSet[BeautifulSoup] = section.find_all(name = "p")
             
@@ -264,11 +263,13 @@ class DotnetCrawlingManager(CrawlingManager):
                         ps = section.find_all("p")[1]
                         summary = replace_specific_unicode(ps.text[1:-1].strip())
 
-                except Exception as _:
-                    pass
+                except Exception as e:
+                    logger.critical(e)
+                    raise e
+                    
                 
                 ts_dict[qnumber][nation]['bulletin_url'] = bulletin_url
-                ts_dict[qnumber][nation]['title'] = title
+                ts_dict[qnumber][nation]['title'] = replace_to_kst(patch_date, title, category)
                 ts_dict[qnumber][nation]['summary'] = summary
                 
         

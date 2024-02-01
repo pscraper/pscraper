@@ -59,6 +59,7 @@ class DotnetExcelManager(ExcelManager):
                 r, c = self._calc_relative_locations(row, loc)
                 self.set_cell_value(r, c, val)
                 logger.info(f"- ({r}, {c}) {val}")
+                
         
     
     def _fill_common_info(self, row: int, commons: dict[str, str]) -> None:
@@ -99,8 +100,3 @@ class DotnetExcelManager(ExcelManager):
         r = row + loc[0]
         c = chr(ord('A') + loc[1])
         return r, c
-    
-            
-if __name__ == "__main__":
-    dem = DotnetExcelManager()
-    dem.start()

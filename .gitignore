@@ -4,6 +4,7 @@
 ./back_office/crwaling/patchfiles
 ./build/*
 ./build/main/*
+./bin/data/*.xlsx
 
 *.log
 *.csv
@@ -13,7 +14,6 @@
 *.xml
 # *.txt
 *.cab
-# *.xlsx
 *.toc
 *.pkg
 *.html

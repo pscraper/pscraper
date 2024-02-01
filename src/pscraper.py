@@ -8,7 +8,7 @@ from funcs.func_run_java import run_java
 
 # conda activate {env_name}
 # python pscraper.py {Category} {url}
-def run(category: str, url: str) -> None:
+def run(category: str, url: str) -> None:    
     DOTNET = Category.DOTNET.name.lower()
     JAVA = Category.JAVA.name.lower()
     ADOBE = Category.ADOBE.name.lower()

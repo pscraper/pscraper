@@ -1,8 +1,5 @@
-from utils.util_func_json import save_json_result
 from const import (
-    RESULT_FILE_PATH,
     MAPPER_FILE_PATH,
-    UNREQUIRED_UNICODES,
     ENC_TYPE,
     DOTNET_KB_FORMAT as KB_FORMAT,
     DOTNET_BULLETIN_FORMAT as BULLETIN_FORMAT,
@@ -28,14 +25,6 @@ def extract_idx_from_file_name(file_name: str, find_str: str) -> int:
         raise Exception(f"파일명에서 {find_str} 추출 불가")
     
     return idx
-
-
-def replace_specific_unicode(raw: str) -> str:
-    for code in UNREQUIRED_UNICODES:
-        for key, val in code.items():
-            raw = raw.replace(key, val)
-            
-    return raw
 
 
 def read_mapper_file() -> list[list[str]]:
@@ -85,7 +74,7 @@ def read_mapper_file_and_excel_key_qnumber_dict() -> dict[str, str]:
     return key_qnumber_dict
 
 
-def update_common_info(lines: list[list[str]], patch_date: str, common_cve: str) -> None:
+def update_common_info(lines: list[list[str]], patch_date: str, common_cve: str, severity: str) -> None:
     # result.json 공통 정보 쓰기
     result = dict()
     
@@ -105,8 +94,36 @@ def update_common_info(lines: list[list[str]], patch_date: str, common_cve: str)
             "catalog_link": catalog_link,
             "excel_key": excel_key,
             "kb_number": KB_FORMAT.format(qnumber),
-            "bulletin_id": BULLETIN_FORMAT.format(qnumber)
+            "bulletin_id": BULLETIN_FORMAT.format(qnumber),
+            "severity": severity
         }
-    
-    save_json_result(RESULT_FILE_PATH, result)
         
+    return result
+
+
+def update_nation_info(ts_dict, result):
+    for qnumber in ts_dict.keys():
+        result[qnumber]['nations'] = dict()
+        
+        for nation in ts_dict[qnumber]:
+            result[qnumber]['nations'][nation] = dict()
+            result[qnumber]['nations'][nation]['bulletin_url'] = ts_dict[qnumber][nation]['bulletin_url']
+            result[qnumber]['nations'][nation]['title'] = ts_dict[qnumber][nation]['title']
+            result[qnumber]['nations'][nation]['summary'] = ts_dict[qnumber][nation]['summary']
+        
+    return result
+        
+
+def update_file_info(file_dict, result):
+    for qnumber in file_dict:
+        result[qnumber]['files'] = list()
+    
+        for file in file_dict[qnumber]:
+            file_name: str = file['file_name']
+            idx = file_name.find("kb") + 2
+            fqnumber = file_name[(idx):(idx + 7)]
+        
+            if qnumber == fqnumber:
+                result[qnumber]['files'].append(file) 
+            
+    return result

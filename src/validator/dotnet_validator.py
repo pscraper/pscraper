@@ -64,20 +64,20 @@ class DotnetValidatorManager(ValidatorManager):
                 excel_key = commons['excel_key']
                 architecture = file['architecture']
                 arch_dict[qnumber].append((os_version, architecture, excel_key))
-                logger.info(f"- {os_version}")
-                logger.info(f"- {architecture}")
+                logger.info(f"- {os_version} {architecture}")
                 
         logger.info("------- 검증 대상 아키텍쳐 목록 구성 완료 -------")
         
         # result.json에서 추출한 excel_key에 해당하는 아키텍쳐가 DotnetLocs.ARCH_DICT에 사전 정의된 아키텍쳐와 모두 동일한지 검증
-        last_os_version = ""
-        last_excel_key = ""
-        arch_set = set()
+
         
         for qnumber in arch_dict:
             logger.info(f"[{qnumber}] 검증 시작")
             validate_file_list = arch_dict[qnumber]
-                
+            last_os_version = ""
+            last_excel_key = ""
+            arch_set = set()
+            
             for file in validate_file_list:
                 arch_set.add(file[1])
                 last_os_version = file[0]
@@ -91,4 +91,4 @@ class DotnetValidatorManager(ValidatorManager):
             
                 logger.info(f"- {last_os_version} {last_excel_key} {inter} 확인")
                 
-    
+                

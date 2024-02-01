@@ -19,6 +19,8 @@ from const import (
     DOTNET_FILE_PATH,
     DOTNET_CAB_PATH,
     ENC_TYPE,
+    SLEEP_MEDIUM,
+    SLEEP_SHORT,
     logger
 )
 
@@ -95,34 +97,19 @@ class CrawlingManager:
         return False
 
     # patchfiles\dotnet 폴더에 다운로드 중인 파일이 있는지 검사
-    def _wait_til_download_ended(self):
+    def _wait_(self, ends: str):
         while True: 
             dl = False
             for file in DOTNET_FILE_PATH.iterdir():
-                if file.name.endswith("crdownload"):
+                if file.name.endswith(ends):
                     dl = True
                     break
 
-            time.sleep(1)
+            time.sleep(SLEEP_SHORT)
 
             if not dl:
                 break
             
-    # patchfiles\dotnet\cabs 폴더에 tmp 폴더가 있는지 검사
-    def _wait_til_tmp_folder_exists(self):
-        while True:
-            tmp = False
-            for path in os.listdir(DOTNET_CAB_PATH):
-                if path.endswith(".tmp"):
-                    tmp = True
-                    break
-                
-            time.sleep(1)
-                    
-            if not tmp:
-                time.sleep(2)
-                break
-
 
     # 동적 페이지의 경우 로딩을 위해 전체 페이지 탐색 
     def _load_all_page(self):
@@ -130,7 +117,7 @@ class CrawlingManager:
 
         for _ in range(10):
             chains.send_keys(Keys.PAGE_DOWN).perform()
-            time.sleep(0.5)
+            time.sleep(SLEEP_SHORT)
 
         chains.send_keys(Keys.HOME).perform()
 
@@ -142,7 +129,7 @@ class CrawlingManager:
                 f"[ERR] Can't Find {by}, {name}"            
             )
 
-            time.sleep(1)
+            time.sleep(SLEEP_SHORT)
 
         except Exception as e:
             logger.warn(e)

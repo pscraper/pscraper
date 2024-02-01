@@ -1,7 +1,7 @@
-import datetime
 import json
 import openpyxl
 import shutil
+from utils.util_func_common import get_today_strftime_til_second
 from classes import Category
 from const import (
     DATA_PATH,
@@ -27,13 +27,13 @@ class ExcelManager:
             logger.info("JSON 파일 로딩 완료")
             
         # 엑셀 파일 copy
-        now = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
+        now = get_today_strftime_til_second()
         self.new_excel_file_path = DATA_PATH / f"patch{now}.xlsx"
         shutil.copy(EXCEL_FILE_PATH, self.new_excel_file_path)
 
         # sheet 이름 
-        if category.lower() == Category.DOTNET.name.lower():
-            sheet = category.lower()
+        if category == Category.DOTNET.name.lower():
+            sheet = category
         else:
             sheet = "3rdparty"
             
