@@ -1,0 +1,21 @@
+[02/07/2024 09:50:56] AM INFO: [__init__.<module>] F:\seungsu\pscraper\src\crawler appended to path
+[02/07/2024 09:50:56] AM INFO: [__init__.<module>] F:\seungsu\pscraper\src\register appended to path
+[02/07/2024 09:50:56] AM INFO: [__init__.<module>] F:\seungsu\pscraper\src\validator appended to path
+[02/07/2024 09:50:56] AM INFO: [__init__.<module>] F:\seungsu\pscraper\src\utils appended to path
+[02/07/2024 09:50:56] AM INFO: [__init__.<module>] F:\seungsu\pscraper\src\filehandler appended to path
+[02/07/2024 09:50:57] AM INFO: [pscraper.<module>] pscraper.py Running
+[02/07/2024 09:50:57] AM INFO: [validator_manager.__init__] 필수 파일 목록 검사
+[02/07/2024 09:50:57] AM INFO: [validator_manager.__init__] meta.yaml OK
+[02/07/2024 09:50:57] AM INFO: [validator_manager.__init__] patch.xlsx OK
+[02/07/2024 09:50:57] AM INFO: [validator_manager.__init__] chromedriver.exe OK
+[02/07/2024 09:50:57] AM INFO: [validator_manager.__init__] 필요한 파일 목록이 모두 확인되었습니다.
+[02/07/2024 09:50:57] AM WARNING: [crawling_manager.__init__] Remove Dir Tree: F:\seungsu\pscraper\bin\patchfiles\dotnet
+[02/07/2024 09:50:57] AM INFO: [crawling_manager.__init__] Make Dir: F:\seungsu\pscraper\bin\patchfiles\dotnet
+[02/07/2024 09:50:57] AM INFO: [crawling_manager.__init__] Chrome Option --disable-popup-blocking Added.
+[02/07/2024 09:50:57] AM INFO: [crawling_manager.__init__] Chrome Option --disable-extensions Added.
+[02/07/2024 09:50:57] AM INFO: [crawling_manager.__init__] Chrome Option --disable-gpu Added.
+[02/07/2024 09:50:57] AM INFO: [crawling_manager.__init__] Chrome Option --no-sandbox Added.
+[02/07/2024 09:50:57] AM INFO: [crawling_manager.__init__] Chrome Option user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Added.
+[02/07/2024 09:51:01] AM INFO: [crawling_manager.__init__] 구버전 ChromeDriver 객체로 동작합니다.
+[02/07/2024 09:51:01] AM CRITICAL: [func_run_dotnet.run_dotnet] 예상치 못한 예외 발생
+[02/07/2024 09:51:01] AM CRITICAL: [func_run_dotnet.run_dotnet] WebDriver.__init__() got an unexpected keyword argument 'executable_path'

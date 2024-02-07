@@ -22,6 +22,6 @@ venv/*
 *.pkg
 *.manifest
 *.pyz
-*.txt
+# *.txt
 *.spec
 *.crdownload

@@ -1,0 +1,6 @@
+[02/07/2024 09:50:45] AM INFO: [__init__.<module>] F:\seungsu\pscraper\src\crawler appended to path
+[02/07/2024 09:50:45] AM INFO: [__init__.<module>] F:\seungsu\pscraper\src\register appended to path
+[02/07/2024 09:50:45] AM INFO: [__init__.<module>] F:\seungsu\pscraper\src\validator appended to path
+[02/07/2024 09:50:45] AM INFO: [__init__.<module>] F:\seungsu\pscraper\src\utils appended to path
+[02/07/2024 09:50:45] AM INFO: [__init__.<module>] F:\seungsu\pscraper\src\filehandler appended to path
+[02/07/2024 09:50:47] AM INFO: [pscraper.<module>] pscraper.py Running
