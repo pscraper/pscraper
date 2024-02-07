@@ -17,9 +17,7 @@ from const import (
     DATA_PATH,
     CHROME_DRIVER_PATH,
     DOTNET_FILE_PATH,
-    DOTNET_CAB_PATH,
     ENC_TYPE,
-    SLEEP_MEDIUM,
     SLEEP_SHORT,
     logger
 )

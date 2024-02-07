@@ -1,6 +1,10 @@
+import shutil
+import os
 from datetime import datetime
-from const import UNREQUIRED_UNICODES
+from pathlib import Path
+from const import PATCH_FILE_PATH, UNREQUIRED_UNICODES, DOTNET_FILE_PATH, RESULT_FILE_PATH, logger
 from classes import Category
+
 
 
 # 초단위까지 날짜 반환
@@ -31,3 +35,36 @@ def replace_specific_unicode(raw: str) -> str:
             raw = raw.replace(key, val)
             
     return raw
+
+
+# pathfiles 폴더를 통째로 복사
+def copy_file_dir(folder: str) -> bool:
+    dst = Path.home() / "Desktop"
+
+    try:
+        if os.path.exists(dst / folder):
+            shutil.rmtree(dst / folder)
+
+        shutil.copy(DOTNET_FILE_PATH, dst)
+        shutil.copy(RESULT_FILE_PATH, dst / "result.json") 
+        return True
+        
+    except Exception as e:
+        logger.warn("권한 관련 에러가 발생하여 파일을 복사하지 못하였습니다.")
+        logger.warn(e)
+        return False
+        
+        
+def remove_file_dir(folder: str) -> bool:
+    try:
+        if os.path.exists(PATCH_FILE_PATH / folder):
+            res = input(f"{str(PATCH_FILE_PATH / folder)} 폴더를 삭제할까요?")
+            if res != 'y': 
+                return
+            
+            shutil.rmtree(PATCH_FILE_PATH / folder)
+            return True
+            
+    except Exception as e:
+        logger.warning(e)
+        return False

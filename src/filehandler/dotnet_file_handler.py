@@ -1,7 +1,6 @@
 import os
-import shutil
 import hashlib
-from const import DOTNET_FILE_PATH, DOTNET_CAB_PATH, RESULT_FILE_PATH, ERR_ARCH_FORMAT, logger
+from const import DOTNET_FILE_PATH, DOTNET_CAB_PATH, ERR_ARCH_FORMAT, logger
 from pathlib import Path
 
 
@@ -54,9 +53,6 @@ class DotnetFileHandler:
 
         # 불필요한 파일 삭제
         self._remove_unnecessary_files()
-
-        # 바탕화면으로 결과 폴더 복사
-        self._copy_file_dir()
 
     
     # 파일명에서 아키텍쳐 추출
@@ -144,22 +140,6 @@ class DotnetFileHandler:
                 os.remove(file)
                 logger.info(f"Remove {file.name}")
     
-
-   # pathfiles/dotnet 폴더를 통째로 복사
-    def _copy_file_dir(self):
-        dst = Path.home() / "Desktop"
-
-        try:
-            if os.path.exists(dst / "dotnet"):
-                shutil.rmtree(dst / "dotnet")
-
-            shutil.copy(DOTNET_FILE_PATH, dst)
-            shutil.copy(RESULT_FILE_PATH, dst / "result.json") 
-            
-        except Exception as e:
-            logger.warn("권한 관련 에러가 발생하여 파일을 이동하지 못하였습니다.")
-            logger.warn(e)
-
 
     # 파일의 MD5, SHA256, SIZE 추출
     def _extract_file_hash(self, file_name: str) -> tuple[str, str, str]:

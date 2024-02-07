@@ -1,11 +1,12 @@
 .idea/*
 .venv/*
+venv/*
 ./*/__pycache__/*
 ./back_office/crwaling/patchfiles
 ./build/*
 ./build/main/*
 ./bin/data/*.xlsx
-
+.vscode/*
 *.log
 *.csv
 *.pyc

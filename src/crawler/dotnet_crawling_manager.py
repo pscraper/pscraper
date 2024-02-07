@@ -1,6 +1,7 @@
 import re
 import time
 import os
+from typing import Any
 from utils.util_func_common import replace_to_kst, replace_specific_unicode
 from utils.util_func_dotnet import extract_qnumber_from_kb_file_name
 from bs4 import BeautifulSoup
@@ -115,7 +116,7 @@ class DotnetCrawlingManager(CrawlingManager):
 
     def _download_patch_file(self, result, qnumbers: set[str]):
         driver = self.driver
-        file_dict: dict[str, list[dict[str, str]]] = dict()
+        file_dict: dict[str, Any] = dict()
         
         for qnumber in qnumbers:
             common_dict = result[qnumber]['common']
@@ -229,7 +230,7 @@ class DotnetCrawlingManager(CrawlingManager):
         return input("패치의 보안 중요도를 입력해주세요: ").capitalize()
 
 
-    def _get_title_and_summary(self, patch_date: str, category: str, qnumbers: set[str]):
+    def _get_title_and_summary(self, patch_date: str, category: str, qnumbers: set[str]) -> dict[str, Any]:
         driver = self.driver
         ts_dict = dict()
         

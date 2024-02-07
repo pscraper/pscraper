@@ -1,3 +1,4 @@
+from typing import Any
 from register.excel_manager import ExcelManager
 from classes import DotnetLocs
 from const import logger
@@ -47,7 +48,7 @@ class DotnetExcelManager(ExcelManager):
         return self.save_workbook()
             
             
-    def _fill_nations_info(self, row: int, nations: dict[str, dict[str, str]]) -> None:
+    def _fill_nations_info(self, row: int, nations: dict[str, Any]) -> None:
         for nation in nations:
             infos = nations[nation]
             rel_loc = DotnetLocs.NATION_REL_LOCS[nation]

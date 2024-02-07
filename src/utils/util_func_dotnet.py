@@ -1,3 +1,4 @@
+from typing import Any
 from const import (
     MAPPER_FILE_PATH,
     ENC_TYPE,
@@ -39,7 +40,7 @@ def read_mapper_file() -> list[list[str]]:
     return lines
 
 
-def read_mapper_file_and_transform_dict() -> dict[str, dict[str, str]]:
+def read_mapper_file_and_transform_dict() -> dict[str, Any]:
     result = dict()
     mappers = read_mapper_file()
 
@@ -101,7 +102,7 @@ def update_common_info(lines: list[list[str]], patch_date: str, common_cve: str,
     return result
 
 
-def update_nation_info(ts_dict, result):
+def update_nation_info(ts_dict, result) -> dict[str, Any]:
     for qnumber in ts_dict.keys():
         result[qnumber]['nations'] = dict()
         
@@ -114,7 +115,7 @@ def update_nation_info(ts_dict, result):
     return result
         
 
-def update_file_info(file_dict, result):
+def update_file_info(file_dict, result) -> dict[str, Any]:
     for qnumber in file_dict:
         result[qnumber]['files'] = list()
     
