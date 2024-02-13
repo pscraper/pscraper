@@ -1,4 +1,5 @@
 import subprocess
+from pathlib import Path
 from validator.dotnet_validator import DotnetValidatorManager
 from crawler.dotnet_crawling_manager import DotnetCrawlingManager
 from register.dotnet_excel_manager import DotnetExcelManager
@@ -84,6 +85,33 @@ def _run_dotnet(url: str, category: str) -> None:
     # qnumber에 해당하는 아키텍쳐별 패치파일들이 모두 존재하는지 검증해야 한다.
     validator._check_msu_and_cab_file_exists()
     
+    # 엑셀 등록 과정
+    # 따로 옵션을 주어 빼고자 분리   
+    _run_dotnet_after_scraping(category)
+    
+
+# 엑셀 등록 과정부터 시작하기
+# 이미 모든 패치 파일 및 정보가 수집된 이후
+# python pscraper.py dotnet --process-excel
+def _run_dotnet_after_scraping(category: str) -> None:
+    # 재시작 했다면 result.json 파일 이름이 바뀌었을 것이므로 다시 원상복귀
+    max_num = -1
+    max_file = ""
+    
+    for path in DATA_PATH.iterdir():
+        if not path.name.startswith("result"):
+            continue
+        
+        num = int(path.name[path.name.find("2"):path.name.find(".")])
+        
+        if num > max_num:
+            max_num = num
+            max_file = path.name
+            
+    if not RESULT_FILE_PATH.exists() and max_file:
+        Path.rename(DATA_PATH / max_file, RESULT_FILE_PATH)      
+    
+    
     # 엑셀 등록 작업 시작
     dem = DotnetExcelManager(category)
     excel_file_name = dem.start()
@@ -93,3 +121,4 @@ def _run_dotnet(url: str, category: str) -> None:
         ["start", "/d", str(DATA_PATH.absolute()), excel_file_name],
         shell = True
     )
+    

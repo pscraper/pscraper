@@ -1,0 +1,46 @@
+[02/13/2024 06:08:07] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\crawler appended to path
+[02/13/2024 06:08:07] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\register appended to path
+[02/13/2024 06:08:07] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\validator appended to path
+[02/13/2024 06:08:07] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\utils appended to path
+[02/13/2024 06:08:07] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\filehandler appended to path
+[02/13/2024 06:08:07] PM INFO: [pscraper.<module>] pscraper.py Running
+[02/13/2024 06:08:07] PM INFO: [validator_manager.__init__] 필수 파일 목록 검사
+[02/13/2024 06:08:07] PM INFO: [validator_manager.__init__] meta.yaml OK
+[02/13/2024 06:08:07] PM INFO: [validator_manager.__init__] patch.xlsx OK
+[02/13/2024 06:08:07] PM INFO: [validator_manager.__init__] chromedriver.exe OK
+[02/13/2024 06:08:07] PM INFO: [validator_manager.__init__] 필요한 파일 목록이 모두 확인되었습니다.
+[02/13/2024 06:08:07] PM WARNING: [crawling_manager.__init__] Remove Dir Tree: F:\seungsu\projects\pscraper\bin\patchfiles\dotnet
+[02/13/2024 06:08:07] PM INFO: [crawling_manager.__init__] Make Dir: F:\seungsu\projects\pscraper\bin\patchfiles\dotnet
+[02/13/2024 06:08:07] PM INFO: [crawling_manager.__init__] Chrome Option --disable-popup-blocking Added.
+[02/13/2024 06:08:07] PM INFO: [crawling_manager.__init__] Chrome Option --disable-extensions Added.
+[02/13/2024 06:08:07] PM INFO: [crawling_manager.__init__] Chrome Option --disable-gpu Added.
+[02/13/2024 06:08:07] PM INFO: [crawling_manager.__init__] Chrome Option --no-sandbox Added.
+[02/13/2024 06:08:07] PM INFO: [crawling_manager.__init__] Chrome Option user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Added.
+[02/13/2024 06:08:09] PM CRITICAL: [func_run_dotnet.run_dotnet] 예상치 못한 예외 발생
+[02/13/2024 06:08:09] PM CRITICAL: [func_run_dotnet.run_dotnet] Message: invalid argument
+  (Session info: chrome=121.0.6167.161)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6293C5E42+3538674]
+	(No symbol) [0x00007FF628FE4C02]
+	(No symbol) [0x00007FF628E9599D]
+	(No symbol) [0x00007FF628E833C6]
+	(No symbol) [0x00007FF628E813F1]
+	(No symbol) [0x00007FF628E81C8C]
+	(No symbol) [0x00007FF628E98179]
+	(No symbol) [0x00007FF628F1C757]
+	(No symbol) [0x00007FF628EFF0AA]
+	(No symbol) [0x00007FF628F1BDE3]
+	(No symbol) [0x00007FF628EFEE53]
+	(No symbol) [0x00007FF628ECF514]
+	(No symbol) [0x00007FF628ED0631]
+	GetHandleVerifier [0x00007FF6293F6CAD+3738973]
+	GetHandleVerifier [0x00007FF62944C506+4089270]
+	GetHandleVerifier [0x00007FF629444823+4057299]
+	GetHandleVerifier [0x00007FF629115C49+720121]
+	(No symbol) [0x00007FF628FF126F]
+	(No symbol) [0x00007FF628FEC304]
+	(No symbol) [0x00007FF628FEC432]
+	(No symbol) [0x00007FF628FDBD04]
+	BaseThreadInitThunk [0x00007FF8CA197344+20]
+	RtlUserThreadStart [0x00007FF8CA8626B1+33]
+

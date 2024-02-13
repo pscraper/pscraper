@@ -2,7 +2,7 @@ import sys
 from classes import Category
 from const import logger
 from funcs.func_run_adobe import run_adobe
-from funcs.func_run_dotnet import run_dotnet
+from funcs.func_run_dotnet import run_dotnet, _run_dotnet_after_scraping
 from funcs.func_run_java import run_java
 
 
@@ -14,7 +14,11 @@ def run(category: str, url: str) -> None:
     ADOBE = Category.ADOBE.name.lower()
     
     if category == DOTNET:
-        run_dotnet(url, DOTNET)
+        if sys.argv[2] == "--process":
+            _run_dotnet_after_scraping(category)
+        
+        else:
+            run_dotnet(url, DOTNET)
     
     elif category == JAVA:
         run_java(url, JAVA)

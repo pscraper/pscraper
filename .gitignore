@@ -1,6 +1,8 @@
 .idea/*
 .venv/*
 venv/*
+venv_local/*
+venv_vm/*
 ./*/__pycache__/*
 ./back_office/crwaling/patchfiles
 ./build/*
