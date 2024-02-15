@@ -3,6 +3,9 @@
 venv/*
 venv_local/*
 venv_vm/*
+pscraper.egg-info/*
+dist/*
+pyproject.toml
 ./*/__pycache__/*
 ./back_office/crwaling/patchfiles
 ./build/*
