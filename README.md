@@ -17,13 +17,14 @@ python -m pip install -r requirements.txt
 
 ### Pypi
 ```shell
-python -m pip install pscraper==0.1.1
+python -m pip install pscraper
 ```
 
 ### Options
 ```shell
 pscraper --help
 pscraper {category} --write-excel
+pscraper --category {category} --url {patch_note_url}
 ```
 
 ---

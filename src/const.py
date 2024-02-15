@@ -5,6 +5,8 @@ from pathlib import Path
 from datetime import datetime
 
 
+APP_NAME = "pscraper"
+
 # Type
 ENC_TYPE = "utf8"
 
