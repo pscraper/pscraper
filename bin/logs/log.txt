@@ -1,215 +1,343 @@
-[02/13/2024 06:16:14] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\crawler appended to path
-[02/13/2024 06:16:14] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\register appended to path
-[02/13/2024 06:16:14] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\validator appended to path
-[02/13/2024 06:16:14] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\utils appended to path
-[02/13/2024 06:16:14] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\filehandler appended to path
-[02/13/2024 06:16:14] PM INFO: [pscraper.<module>] pscraper.py Running
-[02/13/2024 06:16:14] PM INFO: [excel_manager.__init__] JSON 파일 로딩 완료
-[02/13/2024 06:16:14] PM INFO: [excel_manager.__init__] dotnet 시트 오픈
-[02/13/2024 06:16:14] PM INFO: [excel_manager.__init__] 엑셀 파일 로딩 완료
-[02/13/2024 06:16:14] PM INFO: [util_func_dotnet.read_mapper_file] mapper.txt 로딩 완료
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager.start] 5033909 엑셀 작업 시작
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (125, D) https://support.microsoft.com/en-us/help/5033909
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (125, C) CVE-2024-0056  - .NET Framework Security Feature Bypass Vulnerability              This security update addresses a security feature bypass vulnerability detailed in CVE-2024-0056 .
-CVE-2024-0057 - .NET Framework Security Feature Vulnerability              This security update addresses a elevation of privilege vulnerability detailed in CVE-2024-0057.
-CVE-2024-21312 - .NET Framework Denial of Service Vulnerability              This security update addresses a denial of service vulnerability detailed in CVE-2024-21312 .
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (125, B) January 10, 2024 - KB5033909 Cumulative Update for .NET Framework 3.5 and 4.8 for Windows 10 Version 21H2 and Windows 10 Version 22H2
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (126, D) https://support.microsoft.com/ja-jp/help/5033909
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (126, C) CVE-2023-0056 - .NET Framework のセキュリティ機能バイパスの脆弱性このセキュリティ更新プログラムは、CVE-2023-0056 で詳述されているセキュリティ機能バイパスの脆弱性に対処します。
-CVE-2023-0057 - .NET Framework のセキュリティ機能の脆弱性このセキュリティ更新プログラムは、CVE-2023-0057 で詳述されている特権昇格の脆弱性に対処します。
-CVE-2023-21312 - .NET Framework のサービス拒否の脆弱性このセキュリティ更新プログラムは、CVE-2023-21312 で詳述されているサービス拒否の脆弱性に対処します。
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (126, B) 2024 年 1 月 10 日 -  KB5033909 Windows 10 Version 21H2 および Windows 10 Version 22H2 用 .NET Framework 3.5 および 4.8 の累積的な更新プログラム
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (127, D) https://support.microsoft.com/ko-kr/help/5033909
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (127, C) CVE-2023-0056  - .NET Framework 보안 기능 우회 취약성              이 보안 업데이트는 CVE-2023-0056에 자세히 설명된 보안 기능 우회 취약성을 해결합니다.
-CVE-2023-0057 - .NET Framework 보안 기능 취약성              이 보안 업데이트는 CVE-2023-0057에 설명된 보안 기능 취약성을 해결합니다.
-CVE-2023-21312 - .NET Framework 서비스 거부 취약성              이 보안 업데이트는 CVE-2023-21312에 설명된 서비스 거부 취약성을 해결합니다.
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (127, B) 2024년 1월 10일 - KB5033909 Windows 10 버전 21H2, Windows 10 버전 22H2의 .NET Framework 3.5 및 4.8용 누적 업데이트
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (128, D) https://support.microsoft.com/zh-cn/help/5033909
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (128, C) CVE-2023-0056 - .NET Framework 安全功能绕过漏洞此安全更新解决了 CVE-2023-0056 中详细介绍的安全功能绕过漏洞。
-CVE-2023-0057 - .NET Framework 安全功能漏洞此安全更新解决了 CVE-2023-0057 中详细介绍的权限提升漏洞。
-CVE-2023-21312 - .NET Framework 拒绝服务漏洞此安全更新解决了 CVE-2023-21312 中详细介绍的拒绝服务漏洞。
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (128, B) 2024 年 1 月 10 日 - KB5033909 适用于 Windows 10 Version 21H2 和 Windows 10 Version 22H2 的 .NET Framework 3.5 和 4.8 累积更新
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (125, H) MS-KB5033909
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (127, P) CVE-2023-36042,CVE-2024-0056,CVE-2024-0057,CVE-2024-21312
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (125, I) KB5033909
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (125, J) 2024/01/10
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (125, K) Important
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (130, J) b054fafb27de204935549f67618b1254
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (130, U) 8342ab6207bdce55f7d7220d422bdd2b588851bbd90223b9c93e463063ec1245
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (130, L) windows10.0-KB5033909-x86-ndp48_WSUSSCAN.cab
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (130, O) x86
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (130, A) windows10.0-KB5033909-x86-ndp48.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (130, B) 45.0
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (130, P) windows10.0-KB5033909-x86-ndp48.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (130, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/secu/2023/12/windows10.0-kb5033909-x86-ndp48_b4789dbc838881950b33393fd206901c726274d7.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (131, J) be6a8c3dbed05c4348f615e2e2a01b4f
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (131, U) bbe29a7ceb22b4b2f4e902574ea4ca41ff8667c7765f0baeb88329ef67657912
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (131, L) windows10.0-KB5033909-x64-ndp48_WSUSSCAN.cab
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (131, O) x64
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (131, A) windows10.0-KB5033909-x64-ndp48.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (131, B) 70.2
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (131, P) windows10.0-KB5033909-x64-ndp48.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (131, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/secu/2023/12/windows10.0-kb5033909-x64-ndp48_ae6d65030ae80a9661685579932305f66be1907a.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (132, J) 23738e972f2522846f228e8a65cc9371
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (132, U) 2a4d05b673990d7edb6c62ac0bf086543b8ecdeb37f81f022e395af75a1e40e6
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (132, L) windows10.0-KB5033909-arm64-ndp48_WSUSSCAN.cab
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (132, O) arm64
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (132, A) windows10.0-KB5033909-arm64-ndp48.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (132, B) 45.0
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (132, P) windows10.0-KB5033909-arm64-ndp48.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (132, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/secu/2023/12/windows10.0-kb5033909-arm64-ndp48_0dd03b82148c00284341e6a3957ed400575bd6b8.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager.start] 5033918 엑셀 작업 시작
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (135, D) https://support.microsoft.com/en-us/help/5033918
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (135, C) CVE-2023-36042 - .NET Framework Denial of Service Vulnerability              This security update addresses a security feature bypass vulnerability detailed in CVE-2023-36042.
-CVE-2024-0056  - .NET Framework Security Feature Bypass Vulnerability              This security update addresses a security feature bypass vulnerability detailed in CVE-2024-0056 .
-CVE-2024-0057 - .NET Framework Security Feature Vulnerability              This security update addresses a elevation of privilege vulnerability detailed in CVE-2024-0057.
-CVE-2024-21312 - .NET Framework Denial of Service Vulnerability              This security update addresses a denial of service vulnerability detailed in CVE-2024-21312 .
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (135, B) January 10, 2024 - KB5033918 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Windows 10 Version 21H2 and Windows 10 Version 22H2
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (136, D) https://support.microsoft.com/ja-jp/help/5033918
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (136, C) CVE-2023-36042 - .NET Framework のサービス拒否の脆弱性このセキュリティ更新プログラムは、CVE-2023-36042 で詳述されているセキュリティ機能バイパスの脆弱性に対処します。
-CVE-2023-0056 - .NET Framework のセキュリティ機能バイパスの脆弱性このセキュリティ更新プログラムは、CVE-2023-0056 で詳述されているセキュリティ機能バイパスの脆弱性に対処します。
-CVE-2023-0057 - .NET Framework のセキュリティ機能の脆弱性このセキュリティ更新プログラムは、CVE-2023-0057 で詳述されている特権昇格の脆弱性に対処します。
-CVE-2023-21312 - .NET Framework のサービス拒否の脆弱性このセキュリティ更新プログラムは、CVE-2023-21312 で詳述されているサービス拒否の脆弱性に対処します。
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (136, B) 2024 年 1 月 10 日 -  KB5033918 Windows 10 Version 21H2 および Windows 10 Version 22H2 用 .NET Framework 3.5 および 4.8.1 の累積的な更新プログラム
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (137, D) https://support.microsoft.com/ko-kr/help/5033918
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (137, C) CVE-2023-36042  - .NET Framework 서비스 거부 취약성이 보안 업데이트는 CVE-2023-36042에 자세히 설명된 보안 기능 우회 취약성을 해결합니다.
-CVE-2023-0056 - .NET Framework 보안 기능 우회 취약성이 보안 업데이트는 CVE-2023-0056에 자세히 설명된 보안 기능 우회 취약성을 해결합니다.
-CVE-2023-0057  - .NET Framework 보안 기능 취약성이 보안 업데이트는 CVE-2023-0057에 설명된 권한 상승 취약성을 해결합니다.
-CVE-2023-21312 - .NET Framework 서비스 거부 취약성이 보안 업데이트는 CVE-2023-21312에 설명된 서비스 거부 취약성을 해결합니다.
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (137, B) 2024년 1월 10일 - KB5033918 Windows 10 버전 21H2, Windows 10 버전 22H2의 .NET Framework 3.5 및 4.8.1용 누적 업데이트
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (138, D) https://support.microsoft.com/zh-cn/help/5033918
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (138, C) CVE-2023-36042 - .NET Framework 拒绝服务漏洞此安全更新解决了 CVE-2023-36042 中详细介绍的安全功能绕过漏洞。
-CVE-2023-0056 - .NET Framework 安全功能绕过漏洞此安全更新解决了 CVE-2023-0056 中详细介绍的安全功能绕过漏洞。
-CVE-2023-0057 - .NET Framework 安全功能漏洞此安全更新解决了 CVE-2023-0057 中详细介绍的权限提升漏洞。
-CVE-2023-21312 - .NET Framework 拒绝服务漏洞此安全更新解决了 CVE-2023-21312 中详细介绍的拒绝服务漏洞。
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (138, B) 2024 年 1 月 10 日 - KB5033918 适用于 Windows 10 Version 21H2 和 Windows 10 Version 22H2 的 .NET Framework 3.5、4.8.1 累积更新
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (135, H) MS-KB5033918
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (137, P) CVE-2023-36042,CVE-2024-0056,CVE-2024-0057,CVE-2024-21312
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (135, I) KB5033918
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (135, J) 2024/01/10
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (135, K) Important
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (140, J) d48b65957308cda246bca034bed9628e
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (140, U) 294656a8906f8efa2f094b6c62f706640cc15f43e5bfe3e9dc14ac37eb18c7e8
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (140, L) windows10.0-KB5033918-x64-ndp481_WSUSSCAN.cab
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (140, O) x64
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (140, A) windows10.0-KB5033918-x64-ndp481.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (140, B) 64.7
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (140, P) windows10.0-KB5033918-x64-ndp481.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (140, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/secu/2023/12/windows10.0-kb5033918-x64-ndp481_6af6ff5ac78463775555a866d6c1dde9d9ec68ad.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (141, J) 7b1beac889d9c8775cf948ccb920a7fd
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (141, U) 8d18f860a6a68840afa4c31db4daacd5700f1ead6e4a4c776d2fdd620c88b329
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (141, L) windows10.0-KB5033918-x86-ndp481_WSUSSCAN.cab
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (141, O) x86
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (141, A) windows10.0-KB5033918-x86-ndp481.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (141, B) 41.9
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (141, P) windows10.0-KB5033918-x86-ndp481.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (141, K) https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/secu/2023/12/windows10.0-kb5033918-x86-ndp481_39d5c4cbac33f83d46814041b17645e60b81251e.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager.start] 5033919 엑셀 작업 시작
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (169, D) https://support.microsoft.com/en-us/help/5033919
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (169, C) CVE-2023-36042 - .NET Framework Denial of Service Vulnerability              This security update addresses a security feature bypass vulnerability detailed in CVE-2023-36042.
-CVE-2024-0056  - .NET Framework Security Feature Bypass Vulnerability              This security update addresses a security feature bypass vulnerability detailed in CVE-2024-0056 .
-CVE-2024-0057 - .NET Framework Security Feature Vulnerability              This security update addresses a elevation of privilege vulnerability detailed in CVE-2024-0057.
-CVE-2024-21312 - .NET Framework Denial of Service Vulnerability              This security update addresses a denial of service vulnerability detailed in CVE-2024-21312 .
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (169, B) January 10, 2024 - KB5033919 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Windows 11, version 21H2
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (170, D) https://support.microsoft.com/ja-jp/help/5033919
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (170, C) CVE-2023-36042 - .NET Framework のサービス拒否の脆弱性このセキュリティ更新プログラムは、CVE-2023-36042 で詳述されているセキュリティ機能バイパスの脆弱性に対処します。
-CVE-2023-0056 - .NET Framework のセキュリティ機能バイパスの脆弱性このセキュリティ更新プログラムは、CVE-2023-0056 で詳述されているセキュリティ機能バイパスの脆弱性に対処します。
-CVE-2023-0057 - .NET Framework のセキュリティ機能の脆弱性このセキュリティ更新プログラムは、CVE-2023-0057 で詳述されている特権昇格の脆弱性に対処します。
-CVE-2023-21312 - .NET Framework のサービス拒否の脆弱性このセキュリティ更新プログラムは、CVE-2023-21312 で詳述されているサービス拒否の脆弱性に対処します。
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (170, B) 2024 年 1 月 10 日 -  KB5033919 Windows 11 Version 21H2 用 .NET Framework 3.5 および 4.8.1 の累積的な更新プログラム
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (171, D) https://support.microsoft.com/ko-kr/help/5033919
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (171, C) CVE-2023-36042  - .NET Framework 서비스 거부 취약성이 보안 업데이트는 CVE-2023-36042에 자세히 설명된 보안 기능 우회 취약성을 해결합니다.
-CVE-2023-0056- .NET Framework 보안 기능 우회 취약성이 보안 업데이트는 CVE-2023-0056에 자세히 설명된 보안 기능 우회 취약성을 해결합니다.
-CVE-2023-0057  - .NET Framework 보안 기능 취약성이 보안 업데이트는 CVE-2023-0057에 설명된 권한 상승 취약성을 해결합니다.
-CVE-2023-21312 - .NET Framework 서비스 거부 취약성이 보안 업데이트는 CVE-2023-21312에 설명된 서비스 거부 취약성을 해결합니다.
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (171, B) 2024년 1월 10일 - KB5033919 Windows 11 버전 21H2의 .NET Framework 3.5 및 4.8.1용 누적 업데이트
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (172, D) https://support.microsoft.com/zh-cn/help/5033919
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (172, C) CVE-2023-36042 - .NET Framework 拒绝服务漏洞此安全更新解决了 CVE-2023-36042 中详细介绍的安全功能绕过漏洞。
-CVE-2023-0056 - .NET Framework 安全功能绕过漏洞此安全更新解决了 CVE-2023-0056 中详细介绍的安全功能绕过漏洞。
-CVE-2023-0057 - .NET Framework 安全功能漏洞此安全更新解决了 CVE-2023-0057 中详细介绍的权限提升漏洞。
-CVE-2023-21312 - .NET Framework 拒绝服务漏洞此安全更新解决了 CVE-2023-21312 中详细介绍的拒绝服务漏洞。
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (172, B) 2024 年 1 月 10 日 - KB5033919 适用于 Windows 11 Version 21H2 的 .NET Framework 3.5 和 4.8.1 累积更新
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (169, H) MS-KB5033919
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (171, P) CVE-2023-36042,CVE-2024-0056,CVE-2024-0057,CVE-2024-21312
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (169, I) KB5033919
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (169, J) 2024/01/10
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (169, K) Important
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (174, J) 1a1235c06e884c58c08d34026a6f9119
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (174, U) 612c98111e7c778af8aeae9c44a76ec43e67f8516620f4a177a04ca9d2381aaa
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (174, L) windows11.0-KB5033919-x64-ndp481_WSUSSCAN.cab
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (174, O) x64
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (174, A) windows11.0-KB5033919-x64-ndp481.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (174, B) 61.1
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (174, P) windows11.0-KB5033919-x64-ndp481.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (174, K) https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/secu/2023/12/windows11.0-kb5033919-x64-ndp481_f636514a78c7d86686856fa1877d3fa00a0a630a.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (175, J) 43d52b56a82706e154d1b0b2a4c35210
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (175, U) 1b04dd14fac5c007363d53fe4ec73484bc8933330bcee519403e2733854b4e37
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (175, L) windows11.0-KB5033919-arm64-ndp481_WSUSSCAN.cab
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (175, O) arm64
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (175, A) windows11.0-KB5033919-arm64-ndp481.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (175, B) 76.1
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (175, P) windows11.0-KB5033919-arm64-ndp481.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (175, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/secu/2023/12/windows11.0-kb5033919-arm64-ndp481_341b916666070539f0689a5e0854727ab9673654.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager.start] 5033920 엑셀 작업 시작
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (178, D) https://support.microsoft.com/en-us/help/5033920
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (178, C) CVE-2023-36042 - .NET Framework Denial of Service Vulnerability              This security update addresses a security feature bypass vulnerability detailed in CVE-2023-36042.
-CVE-2024-0056  - .NET Framework Security Feature Bypass Vulnerability              This security update addresses a security feature bypass vulnerability detailed in CVE-2024-0056 .
-CVE-2024-0057 - .NET Framework Security Feature Vulnerability              This security update addresses a elevation of privilege vulnerability detailed in CVE-2024-0057.
-CVE-2024-21312 - .NET Framework Denial of Service Vulnerability              This security update addresses a denial of service vulnerability detailed in CVE-2024-21312 .
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (178, B) January 10, 2024 - KB5033920 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Windows 11, version 22H2 and Windows 11, version 23H2
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (179, D) https://support.microsoft.com/ja-jp/help/5033920
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (179, C) CVE-2023-36042 - .NET Framework のサービス拒否の脆弱性このセキュリティ更新プログラムは、CVE-2023-36042 で詳述されているセキュリティ機能バイパスの脆弱性に対処します。
-CVE-2023-0056 - .NET Framework のセキュリティ機能バイパスの脆弱性このセキュリティ更新プログラムは、CVE-2023-0056 で詳述されているセキュリティ機能バイパスの脆弱性に対処します。
-CVE-2023-0057 - .NET Framework のセキュリティ機能の脆弱性このセキュリティ更新プログラムは、CVE-2023-0057 で詳述されている特権昇格の脆弱性に対処します。
-CVE-2023-21312 - .NET Framework のサービス拒否の脆弱性このセキュリティ更新プログラムは、CVE-2023-21312 で詳述されているサービス拒否の脆弱性に対処します。
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (179, B) 2024 年 1 月 10 日 -  KB5033920 Windows 11 Version 22H2 および Windows 11 Version 23H2 用 .NET Framework 3.5 および 4.8.1 の累積的な更新プログラム
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (180, D) https://support.microsoft.com/ko-kr/help/5033920
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (180, C) CVE-2023-36042  - .NET Framework 서비스 거부 취약성이 보안 업데이트는 CVE-2023-36042에 자세히 설명된 보안 기능 우회 취약성을 해결합니다.
-CVE-2023-0056- .NET Framework 보안 기능 우회 취약성이 보안 업데이트는 CVE-2023-0056에 자세히 설명된 보안 기능 우회 취약성을 해결합니다.
-CVE-2023-0057  - .NET Framework 보안 기능 취약성이 보안 업데이트는 CVE-2023-0057에 설명된 권한 상승 취약성을 해결합니다.
-CVE-2023-21312 - .NET Framework 서비스 거부 취약성이 보안 업데이트는 CVE-2023-21312에 설명된 서비스 거부 취약성을 해결합니다.
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (180, B) 2024년 1월 10일 - KB5033920 Windows 11 버전 22H2 및 Windows 11 버전 23H2의 .NET Framework 3.5 및 4.8.1용 누적 업데이트
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (181, D) https://support.microsoft.com/zh-cn/help/5033920
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (181, C) CVE-2023-36042 - .NET Framework 拒绝服务漏洞此安全更新解决了 CVE-2023-36042 中详细介绍的安全功能绕过漏洞。
-CVE-2023-0056 - .NET Framework 安全功能绕过漏洞此安全更新解决了 CVE-2023-0056 中详细介绍的安全功能绕过漏洞。
-CVE-2023-0057 - .NET Framework 安全功能漏洞此安全更新解决了 CVE-2023-0057 中详细介绍的权限提升漏洞。
-CVE-2023-21312 - .NET Framework 拒绝服务漏洞此安全更新解决了 CVE-2023-21312 中详细介绍的拒绝服务漏洞。
-
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_nations_info] - (181, B) 2024 年 1 月 10 日 - KB5033920 适用于 Windows 11 Version 22H2 和 Windows 11 Version 23H2 的 .NET Framework 3.5 和 4.8.1 累积更新
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (178, H) MS-KB5033920
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (180, P) CVE-2023-36042,CVE-2024-0056,CVE-2024-0057,CVE-2024-21312
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (178, I) KB5033920
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (178, J) 2024/01/10
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_common_info] - (178, K) Important
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (183, J) 03494d834418d01b47687a2aa8d6b234
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (183, U) c0cbdea68c2f28c9225cee5bed61b2a676ad761bd52d284dedbdcac888088cee
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (183, L) windows11.0-KB5033920-x64-ndp481_WSUSSCAN.cab
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (183, O) x64
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (183, A) windows11.0-KB5033920-x64-ndp481.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (183, B) 60.9
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (183, P) windows11.0-KB5033920-x64-ndp481.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (183, K) https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/secu/2024/01/windows11.0-kb5033920-x64-ndp481_b171658bdaca6fe0af3550a48f691d4ceb4ee0d3.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (184, J) 8c2ab02a4a8d2640fc62f7d59e474307
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (184, U) 30a1a59bde81ce6c23596a75ea6213598dfebeb36b9da2f095ff23d31405a9fe
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (184, L) windows11.0-KB5033920-arm64-ndp481_WSUSSCAN.cab
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (184, O) arm64
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (184, A) windows11.0-KB5033920-arm64-ndp481.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (184, B) 75.9
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (184, P) windows11.0-KB5033920-arm64-ndp481.msu
-[02/13/2024 06:16:14] PM INFO: [dotnet_excel_manager._fill_patch_info] - (184, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/secu/2024/01/windows11.0-kb5033920-arm64-ndp481_db150d56b386de5d2771beaccfd609237bfa81f7.msu
-[02/13/2024 06:16:15] PM INFO: [dotnet_excel_manager.start] 엑셀 작업 완료
+[02/15/2024 09:40:47] AM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\crawler appended to path
+[02/15/2024 09:40:47] AM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\register appended to path
+[02/15/2024 09:40:47] AM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\validator appended to path
+[02/15/2024 09:40:47] AM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\utils appended to path
+[02/15/2024 09:40:47] AM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\filehandler appended to path
+[02/15/2024 09:40:49] AM INFO: [pscraper.<module>] pscraper.py Running
+[02/15/2024 09:40:49] AM INFO: [excel_manager.__init__] JSON 파일 로딩 완료
+[02/15/2024 09:40:49] AM INFO: [excel_manager.__init__] dotnet 시트 오픈
+[02/15/2024 09:40:49] AM INFO: [excel_manager.__init__] 엑셀 파일 로딩 완료
+[02/15/2024 09:40:49] AM INFO: [util_func_dotnet.read_mapper_file] mapper.txt 로딩 완료
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager.start] 5034614 엑셀 작업 시작
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (98, D) https://support.microsoft.com/en-us/help/5034614
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (98, C) There are no new security improvements in this release. This update is cumulative and contains all previously released security improvements.
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (98, B) February 13, 2024-KB5034614 Cumulative Update for .NET Framework 4.8 for Windows 10, version 1607 and Windows Server 2016
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (99, D) https://support.microsoft.com/ja-jp/help/5034614
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (99, C) このリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています。
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (99, B) 2024 年 2 月 13 日-KB5034614 Windows 10 バージョン 1607 および Windows Server 2016 の.NET Framework 4.8 の累積的な更新プログラム
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (100, D) https://support.microsoft.com/ko-kr/help/5034614
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (100, C) 이 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다.
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (100, B) 2024년 2월 13일 KB5034614 Windows 10 버전 1607 및 Windows Server 2016 .NET Framework 4.8 누적 업데이트
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (101, D) https://support.microsoft.com/zh-cn/help/5034614
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (101, C) 此版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进。
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (101, B) 2024 年 2 月 13 日-KB5034614 Windows 10 版本 1607 和 Windows Server 2016 .NET Framework 4.8 的累积更新
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (98, H) MS-KB5034614
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (100, P) 
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (98, I) KB5034614
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (98, J) 2024/02/15
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (98, K) Moderate
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (103, J) c790a8e2cddec462d48c4e446ea94b6f
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (103, U) b3c342cccab71ba9faf8bce16f2ce5d882f8afa3e31de7e3f2c379964b41f35d
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (103, L) windows10.0-KB5034614-x86-ndp48_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (103, O) x86
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (103, A) windows10.0-KB5034614-x86-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (103, B) 32.4
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (103, P) windows10.0-KB5034614-x86-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (103, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034614-x86-ndp48_a82ca3677c151db3ea670996a2f196fa30cff9f1.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (104, J) 706a73853e8b5b59e3c5e9dc3a587d8e
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (104, U) c7d9fc687e14e3d61aed86d5a15e5dc34408def2ebf42ee222ada68ac6ac648d
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (104, L) windows10.0-KB5034614-x64-ndp48_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (104, O) x64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (104, A) windows10.0-KB5034614-x64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (104, B) 54.8
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (104, P) windows10.0-KB5034614-x64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (104, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034614-x64-ndp48_57fe0d79c9a52b7e7d5295c935350c6bf980495e.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager.start] 5034619 엑셀 작업 시작
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (107, D) https://support.microsoft.com/en-us/help/5034619
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (107, C) There are no new security improvements in this release. This update is cumulative and contains all previously released security improvements.
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (107, B) February 13, 2024-KB5034619 Cumulative Update for .NET Framework 3.5 and 4.7.2 for Windows 10, version 1809 and Windows Server 2019
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (108, D) https://support.microsoft.com/ja-jp/help/5034619
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (108, C) このリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています。
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (108, B) 2024 年 2 月 13 日-KB5034619 Windows 10 Version 1809 および Windows Server 2019 の.NET Framework 3.5 および 4.7.2 用の累積的な更新プログラム
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (109, D) https://support.microsoft.com/ko-kr/help/5034619
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (109, C) 이 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다.
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (109, B) 2024년 2월 13일 KB5034619 Windows 10, 버전 1809 및 Windows Server 2019용 .NET Framework 3.5 및 4.7.2 누적 업데이트
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (110, D) https://support.microsoft.com/zh-cn/help/5034619
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (110, C) 此版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进。
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (110, B) 2024 年 2 月 13 日-KB5034619 Windows 10 版本 1809 和 Windows Server 2019 .NET Framework 3.5 和 4.7.2 累积更新
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (107, H) MS-KB5034619
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (109, P) 
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (107, I) KB5034619
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (107, J) 2024/02/15
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (107, K) Moderate
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (113, J) 39d6ed0bef5ed877ae5b2f783c88b62d
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (113, U) f10361ee2cc85a35cd4b7be2d7bbe73ba0d43e43ca2172a1b5dc35a67f3c6661
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (113, L) windows10.0-KB5034619-x64-ndp472_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (113, O) x64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (113, A) windows10.0-KB5034619-x64-ndp472.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (113, B) 78.2
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (113, P) windows10.0-KB5034619-x64-ndp472.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (113, K) https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2024/01/windows10.0-kb5034619-x64_c5f0b686b90e5f0b2e1b23c204e96e8ca8b3c81f.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (112, J) e4dbe3a209f4e599d8f818e626da737a
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (112, U) e419389b3de838d9508e1fe55a48b78fab88194917be47890186468d3fa05e6d
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (112, L) windows10.0-KB5034619-x86-ndp472_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (112, O) x86
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (112, A) windows10.0-KB5034619-x86-ndp472.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (112, B) 44.1
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (112, P) windows10.0-KB5034619-x86-ndp472.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (112, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034619-x86_a2dd0646a3ec943f50f20cf173e656a97b34945e.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager.start] 5034624 엑셀 작업 시작
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (116, D) https://support.microsoft.com/en-us/help/5034624
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (116, C) There are no new security improvements in this release. This update is cumulative and contains all previously released security improvements.
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (116, B) February 13, 2024-KB5034624 Cumulative Update for .NET Framework 3.5 and 4.8 for Windows 10, version 1809 and Windows Server 2019
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (117, D) https://support.microsoft.com/ja-jp/help/5034624
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (117, C) このリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています。
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (117, B) 2024 年 2 月 13 日-KB5034624 Windows 10 Version 1809 および Windows Server 2019 の.NET Framework 3.5 および 4.8 用の累積的な更新プログラム
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (118, D) https://support.microsoft.com/ko-kr/help/5034624
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (118, C) 이 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다.
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (118, B) 2024년 2월 13일 KB5034624 Windows 10, 버전 1809 및 Windows Server 2019용 .NET Framework 3.5 및 4.8 누적 업데이트
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (119, D) https://support.microsoft.com/zh-cn/help/5034624
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (119, C) 此版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进。
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (119, B) 2024 年 2 月 13 日-KB5034624 Windows 10 版本 1809 和 Windows Server 2019 .NET Framework 3.5 和 4.8 累积更新
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (116, H) MS-KB5034624
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (118, P) 
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (116, I) KB5034624
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (116, J) 2024/02/15
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (116, K) Moderate
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (121, J) bad0fed7ae680b8fe7705de4f4fdd692
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (121, U) ecc206b3e2cfbfe9094c68d067ec189b4bd95e7509bacf563024a0bd3dca1d98
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (121, L) windows10.0-KB5034624-x64-ndp48_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (121, O) x64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (121, A) windows10.0-KB5034624-x64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (121, B) 80.3
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (121, P) windows10.0-KB5034624-x64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (121, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034624-x64-ndp48_9aaf1ded061cdc7fd9107501a2a590835f33540d.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (122, J) 5d3d7a8707a3801e34fff3e8daeb6832
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (122, U) 183b2f752f443d9a4d48ce53dabf34b7c3b89ae52d569ca1afcb73c7dd8dd93a
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (122, L) windows10.0-KB5034624-x86-ndp48_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (122, O) x86
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (122, A) windows10.0-KB5034624-x86-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (122, B) 47.7
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (122, P) windows10.0-KB5034624-x86-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (122, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034624-x86-ndp48_78f93d6da065054258bf47f1967e1440db7e0fca.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager.start] 5034468 엑셀 작업 시작
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (125, D) https://support.microsoft.com/en-us/help/5034468
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (125, C) here are no new security improvements in this release. This update is cumulative and contains all previously released security improvements
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (125, B) February 13, 2024-KB5034468 Cumulative Update for .NET Framework 3.5 and 4.8 for Windows 10 Version 22H2
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (126, D) https://support.microsoft.com/ja-jp/help/5034468
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (126, C) のリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (126, B) 2024 年 2 月 13 日-KB5034468 Windows 10 バージョン 22H2 の.NET Framework 3.5 および 4.8 の累積的な更新プログラム
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (127, D) https://support.microsoft.com/ko-kr/help/5034468
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (127, C) 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (127, B) 2024년 2월 13일 KB5034468 Windows 10 버전 22H2의 .NET Framework 3.5 및 4.8 누적 업데이트
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (128, D) https://support.microsoft.com/zh-cn/help/5034468
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (128, C) 版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (128, B) 2024 年 2 月 13 日-KB5034468 Windows 10 版本 22H2 的 .NET Framework 3.5 和 4.8 累积更新
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (125, H) MS-KB5034468
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (127, P) 
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (125, I) KB5034468
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (125, J) 2024/02/15
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (125, K) Moderate
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (132, J) b636fe83b154b1b07ef183070ce73b96
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (132, U) 4f0a6fa4a412785106eb22427ab60e5b16387d30e8c55a954f80fab9c627e37b
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (132, L) windows10.0-KB5034468-arm64-ndp48_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (132, O) arm64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (132, A) windows10.0-KB5034468-arm64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (132, B) 45.0
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (132, P) windows10.0-KB5034468-arm64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (132, K) https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2023/12/windows10.0-kb5034468-arm64-ndp48_e3fc0b27c6542459081b2d99084f29d37e60d449.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (130, J) 2914c72d8f66c36b57896855ab7ef3ec
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (130, U) 6a841ecd1e2990e295c1e4bcc146b1169061828b9035d5116ce4d99f4c1aa6cc
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (130, L) windows10.0-KB5034468-x86-ndp48_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (130, O) x86
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (130, A) windows10.0-KB5034468-x86-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (130, B) 45.0
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (130, P) windows10.0-KB5034468-x86-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (130, K) https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2023/12/windows10.0-kb5034468-x86-ndp48_9c8481f6970416115e753021461235eb54b912cd.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (131, J) 105a79eba71e943e38f54967cc518ca4
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (131, U) 51ef37c783013de9afe850f31c93a259b9f6b0c551971ef730bf993266fe612d
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (131, L) windows10.0-KB5034468-x64-ndp48_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (131, O) x64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (131, A) windows10.0-KB5034468-x64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (131, B) 70.2
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (131, P) windows10.0-KB5034468-x64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (131, K) https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2023/12/windows10.0-kb5034468-x64-ndp48_97594b5cf615541cde5ffd62d7b9b44ea73c873f.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager.start] 5034466 엑셀 작업 시작
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (135, D) https://support.microsoft.com/en-us/help/5034466
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (135, C) here are no new security improvements in this release. This update is cumulative and contains all previously released security improvements
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (135, B) February 13, 2024-KB5034466 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Windows 10 Version 22H2
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (136, D) https://support.microsoft.com/ja-jp/help/5034466
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (136, C) のリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (136, B) 2024 年 2 月 13 日-KB5034466 Windows 10 バージョン 22H2 の.NET Framework 3.5 および 4.8.1 の累積的な更新プログラム
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (137, D) https://support.microsoft.com/ko-kr/help/5034466
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (137, C) 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (137, B) 2024년 2월 13일 KB5034466 Windows 10 버전 22H2의 .NET Framework 3.5 및 4.8.1 누적 업데이트
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (138, D) https://support.microsoft.com/zh-cn/help/5034466
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (138, C) 版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (138, B) 2024 年 2 月 13 日-KB5034466 Windows 10 版本 22H2 的 .NET Framework 3.5 和 4.8.1 累积更新
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (135, H) MS-KB5034466
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (137, P) 
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (135, I) KB5034466
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (135, J) 2024/02/15
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (135, K) Moderate
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (140, J) b0dc1c83202a2163a5f0fa0ed3b2849f
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (140, U) 3d488979bc4cbccd5ffa8da6ad999e6530a0c172438783c77748600cc63c2484
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (140, L) windows10.0-KB5034466-x64-ndp481_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (140, O) x64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (140, A) windows10.0-KB5034466-x64-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (140, B) 64.9
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (140, P) windows10.0-KB5034466-x64-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (140, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2023/12/windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (141, J) 705c4438642bd05a819772c598a28a5b
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (141, U) 3c10b913fd495ccd6fbb38e4785cc13766dda54d02423e8bd97673b3864cd565
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (141, L) windows10.0-KB5034466-x86-ndp481_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (141, O) x86
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (141, A) windows10.0-KB5034466-x86-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (141, B) 41.9
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (141, P) windows10.0-KB5034466-x86-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (141, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2023/12/windows10.0-kb5034466-x86-ndp481_50cde7ef5f8f4ec347dbf6afb5be276c04dc7fc5.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager.start] 5034613 엑셀 작업 시작
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (144, D) https://support.microsoft.com/en-us/help/5034613
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (144, C) here are no new security improvements in this release. This update is cumulative and contains all previously released security improvements
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (144, B) February 13, 2024-KB5034613 Cumulative Update for .NET Framework 3.5 and 4.8 for Windows Server 2022
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (145, D) https://support.microsoft.com/ja-jp/help/5034613
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (145, C) のリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (145, B) 2024 年 2 月 13 日-KB5034613 Windows Server 2022 の.NET Framework 3.5 および 4.8 用の累積的な更新プログラム
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (146, D) https://support.microsoft.com/ko-kr/help/5034613
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (146, C) 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (146, B) 2024년 2월 13일-KB5034613 Windows Server 2022용 .NET Framework 3.5 및 4.8 누적 업데이트
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (147, D) https://support.microsoft.com/zh-cn/help/5034613
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (147, C) 版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (147, B) 2024 年 2 月 13 日-KB5034613 Windows Server 2022 .NET Framework 3.5 和 4.8 累积更新
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (144, H) MS-KB5034613
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (146, P) 
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (144, I) KB5034613
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (144, J) 2024/02/15
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (144, K) Moderate
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (149, J) bad753a7364ff0cfb595ff1f88729f91
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (149, U) 4abb93bfd1b356074726feacca5b46226e327cf94bbb52b637d8912664c84d81
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (149, L) windows10.0-KB5034613-x64-ndp48_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (149, O) x64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (149, A) windows10.0-KB5034613-x64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (149, B) 66.1
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (149, P) windows10.0-KB5034613-x64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (149, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034613-x64-ndp48_466f9e69310db89749e1da1f4f2a5ebc2b6adb1c.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager.start] 5034611 엑셀 작업 시작
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (152, D) https://support.microsoft.com/en-us/help/5034611
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (152, C) here are no new security improvements in this release. This update is cumulative and contains all previously released security improvements
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (152, B) February 13, 2024-KB5034611 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Windows Server 2022
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (153, D) https://support.microsoft.com/ja-jp/help/5034611
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (153, C) のリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (153, B) 2024 年 2 月 13 日-KB5034611 Windows Server 2022 の.NET Framework 3.5 および 4.8.1 用の累積的な更新プログラム
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (154, D) https://support.microsoft.com/ko-kr/help/5034611
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (154, C) 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (154, B) 2024년 2월 13일 KB5034611 Windows Server 2022용 .NET Framework 3.5 및 4.8.1 누적 업데이트
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (155, D) https://support.microsoft.com/zh-cn/help/5034611
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (155, C) 版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (155, B) 2024 年 2 月 13 日-KB5034611 Windows Server 2022 .NET Framework 3.5 和 4.8.1 累积更新
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (152, H) MS-KB5034611
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (154, P) 
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (152, I) KB5034611
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (152, J) 2024/02/15
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (152, K) Moderate
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (157, J) fb4fbd45a2ebd4e2f4efa9b52dd53f69
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (157, U) 133836dc21dbd821e8828fd879b1e1faafd3b2cc1ce91e0a35c1888a16c3d123
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (157, L) windows10.0-KB5034611-x64-ndp481_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (157, O) x64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (157, A) windows10.0-KB5034611-x64-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (157, B) 61.3
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (157, P) windows10.0-KB5034611-x64-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (157, K) https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2024/01/windows10.0-kb5034611-x64-ndp481_761e979f2ae4ba4011e614fee94a13d3baf98421.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager.start] 5034625 엑셀 작업 시작
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (160, D) https://support.microsoft.com/en-us/help/5034625
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (160, C) There are no new security improvements in this release. This update is cumulative and contains all previously released security improvements.
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (160, B) February 13, 2024-KB5034625 Cumulative Update for .NET Framework 3.5 and 4.8 for Windows 11, version 21H2
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (161, D) https://support.microsoft.com/ja-jp/help/5034625
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (161, C) このリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています。
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (161, B) 2024 年 2 月 13 日-KB5034625 Windows 11 バージョン 21H2 の.NET Framework 3.5 および 4.8 の累積的な更新プログラム
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (162, D) https://support.microsoft.com/ko-kr/help/5034625
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (162, C) 이 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다.
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (162, B) 2024년 2월 13일-Windows 11 버전 21H2의 .NET Framework 3.5 및 4.8에 대한 KB5034625 누적 업데이트
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (163, D) https://support.microsoft.com/zh-cn/help/5034625
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (163, C) 此版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进。
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (163, B) 2024 年 2 月 13 日-KB5034625 Windows 11 版本 21H2 的 .NET Framework 3.5 和 4.8 累积更新
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (160, H) MS-KB5034625
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (162, P) 
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (160, I) KB5034625
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (160, J) 2024/02/15
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (160, K) Moderate
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (165, J) ec994cd0766dda56a904fa47775a074e
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (165, U) cad07299b6c3d0a95b9284741bf3c5b8905900c54d38fc0d769379aabc3a1909
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (165, L) windows10.0-KB5034625-x64-ndp48_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (165, O) x64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (165, A) windows10.0-KB5034625-x64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (165, B) 66.1
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (165, P) windows10.0-KB5034625-x64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (165, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034625-x64-ndp48_32ab81887e4182d7460f075f3adabf5a490938ba.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (166, J) 4fbdd1309fa536a9d5be091aaf06ac8d
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (166, U) a59b9d61cc7fe4a07b7991d8bb6d65b2581be48766b948c65c25c124dd69421d
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (166, L) windows10.0-KB5034625-arm64-ndp48_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (166, O) arm64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (166, A) windows10.0-KB5034625-arm64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (166, B) 66.4
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (166, P) windows10.0-KB5034625-arm64-ndp48.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (166, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034625-arm64-ndp48_a1ad95711334a459c890cef8b3958a5bcae2f1fb.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager.start] 5034612 엑셀 작업 시작
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (169, D) https://support.microsoft.com/en-us/help/5034612
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (169, C) There are no new security improvements in this release. This update is cumulative and contains all previously released security improvements.
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (169, B) February 13, 2024-KB5034612 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Windows 11, version 21H2
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (170, D) https://support.microsoft.com/ja-jp/help/5034612
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (170, C) このリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています。
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (170, B) 2024 年 2 月 13 日-KB5034612 Windows 11 バージョン 21H2 の.NET Framework 3.5 および 4.8.1 の累積的な更新プログラム
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (171, D) https://support.microsoft.com/ko-kr/help/5034612
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (171, C) 이 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다.
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (171, B) 2024년 2월 13일 KB5034612 Windows 11 버전 21H2의 .NET Framework 3.5 및 4.8.1 누적 업데이트
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (172, D) https://support.microsoft.com/zh-cn/help/5034612
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (172, C) 此版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进。
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (172, B) 2024 年 2 月 13 日-KB5034612 .NET Framework 3.5 和 4.8.1 的累积更新（适用于 Windows 11 版本 21H2）
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (169, H) MS-KB5034612
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (171, P) 
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (169, I) KB5034612
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (169, J) 2024/02/15
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (169, K) Moderate
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (174, J) 6762c41879a4f2a4853d6931d196bb87
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (174, U) 4688511f50c9557190562708de1143b4fb86840f8e7ca373280a3f04675b2069
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (174, L) windows11.0-KB5034612-x64-ndp481_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (174, O) x64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (174, A) windows11.0-KB5034612-x64-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (174, B) 61.3
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (174, P) windows11.0-KB5034612-x64-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (174, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034612-x64-ndp481_1dccf5e985e510aea58c72efc5618ded6eb813b0.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (175, J) a1df564caf86d8ae5506bdfcfbc6d6be
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (175, U) dd0b7668138327687b8032986fbbc3540d761f0356d202fb815e345b622adbc6
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (175, L) windows11.0-KB5034612-arm64-ndp481_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (175, O) arm64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (175, A) windows11.0-KB5034612-arm64-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (175, B) 76.3
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (175, P) windows11.0-KB5034612-arm64-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (175, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034612-arm64-ndp481_93b710b6263cf789103bbe02b29b13e1637f29e1.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager.start] 5034467 엑셀 작업 시작
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (178, D) https://support.microsoft.com/en-us/help/5034467
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (178, C) There are no new security improvements in this release. This update is cumulative and contains all previously released security improvements.
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (178, B) February 13, 2024-KB5034467 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Windows 11, version 22H2 and Windows 11, version 23H2
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (179, D) https://support.microsoft.com/ja-jp/help/5034467
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (179, C) このリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています。
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (179, B) 2024 年 2 月 13 日-KB5034467 Windows 11 バージョン 22H2 およびバージョン 23H2 の.NET Framework 3.5 Windows 11 および 4.8.1 の累積的な更新プログラム
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (180, D) https://support.microsoft.com/ko-kr/help/5034467
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (180, C) 이 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다.
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (180, B) 2024년 2월 13일 KB5034467 Windows 11 버전 22H2 및 Windows 11 버전 23H2의 경우 .NET Framework 3.5 및 4.8.1에 대한 누적 업데이트
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (181, D) https://support.microsoft.com/zh-cn/help/5034467
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (181, C) 此版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进。
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_nations_info] - (181, B) 2024 年 2 月 13 日-KB5034467 .NET Framework 3.5 和 4.8.1 Windows 11版本 22H2 和 Windows 11 版本 23H2 的累积更新
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (178, H) MS-KB5034467
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (180, P) 
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (178, I) KB5034467
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (178, J) 2024/02/15
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_common_info] - (178, K) Moderate
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (183, J) 8216de93a20acf401f70ec921990b219
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (183, U) 0f7a67c5c273269d4d87b2ed2822e2305d655b688f4a0fd6869d4e6ba771c868
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (183, L) windows11.0-KB5034467-x64-ndp481_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (183, O) x64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (183, A) windows11.0-KB5034467-x64-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (183, B) 61.1
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (183, P) windows11.0-KB5034467-x64-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (183, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-x64-ndp481_3f71b1bdba8a0bcb6fc94e56f36eeb8e1dd97ebb.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (184, J) f36ddce232bfd69f2f4457a7c185bed7
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (184, U) d3207b1b2f7fe34879be71c72588b819cd096deb91d94827aa2543013db824f4
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (184, L) windows11.0-KB5034467-arm64-ndp481_WSUSSCAN.cab
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (184, O) arm64
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (184, A) windows11.0-KB5034467-arm64-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (184, B) 76.1
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (184, P) windows11.0-KB5034467-arm64-ndp481.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager._fill_patch_info] - (184, K) https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu
+[02/15/2024 09:40:49] AM INFO: [dotnet_excel_manager.start] 엑셀 작업 완료

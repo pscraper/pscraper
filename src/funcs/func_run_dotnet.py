@@ -28,7 +28,7 @@ def run_dotnet(url: str, category: str) -> None:
             exit(1)
         
         # 패치파일 폴더 바탕화면으로 복사 -> 패치파일 폴더 제거
-        if copy_file_dir(category) and remove_file_dir(category):
+        if copy_file_dir(category):
             logger.info("패치파일 폴더를 성공적으로 복사 후 제거하였습니다.")
             logger.info("pscraper Successfully finished")
         
@@ -99,7 +99,7 @@ def _run_dotnet_after_scraping(category: str) -> None:
     max_file = ""
     
     for path in DATA_PATH.iterdir():
-        if not path.name.startswith("result"):
+        if not path.name.startswith("result2"):
             continue
         
         num = int(path.name[path.name.find("2"):path.name.find(".")])

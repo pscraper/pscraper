@@ -1,4 +1,10 @@
-5033920|Windows 11, version 22H2 and Windows 11, version 23H2|.NET Framework 3.5, 4.8.1|http://www.catalog.update.microsoft.com/Search.aspx?q=5033920|11 22H2, 23H2 3.5, 4.8.1
-5033919|Windows 11, version 21H2|.NET Framework 3.5, 4.8.1|http://www.catalog.update.microsoft.com/Search.aspx?q=5033919|11 21H2 3.5, 4.8.1
-5033909|Windows 10, version 22H2|.NET Framework 3.5, 4.8|http://www.catalog.update.microsoft.com/Search.aspx?q=5034275|10 21H2, 22H2 3.5, 4.8
-5033918|Windows 10, version 22H2|.NET Framework 3.5, 4.8.1|http://www.catalog.update.microsoft.com/Search.aspx?q=5033918|10 21H2, 22H2 3.5, 4.8.1
+5034467|Windows 11, version 22H2 and Windows 11, version 23H2|.NET Framework 3.5, 4.8.1|http://www.catalog.update.microsoft.com/Search.aspx?q=5034467|11 22H2, 23H2 3.5, 4.8.1
+5034625|Windows 11, version 21H2|.NET Framework 3.5, 4.8|http://www.catalog.update.microsoft.com/Search.aspx?q=5034625|11 21H2 3.5, 4.8
+5034612|Windows 11, version 21H2|.NET Framework 3.5, 4.8.1|http://www.catalog.update.microsoft.com/Search.aspx?q=5034612|11 21H2 3.5, 4.8.1
+5034613|Microsoft server operating system, version 22H2|.NET Framework 3.5, 4.8|http://www.catalog.update.microsoft.com/Search.aspx?q=5034613|2022 3.5, 4.8
+5034611|Microsoft server operating system, version 22H2|.NET Framework 3.5, 4.8.1|http://www.catalog.update.microsoft.com/Search.aspx?q=5034611|2022 3.5, 4.8.1
+5034468|Windows 10, version 22H2|.NET Framework 3.5, 4.8|http://www.catalog.update.microsoft.com/Search.aspx?q=5034468|10 21H2, 22H2 3.5, 4.8
+5034466|Windows 10, version 22H2|.NET Framework 3.5, 4.8.1|http://www.catalog.update.microsoft.com/Search.aspx?q=5034466|10 21H2, 22H2 3.5, 4.8.1
+5034619|Windows 10 1809 (October 2018 Update) and Windows Server 2019|.NET Framework 3.5, 4.7.2|http://www.catalog.update.microsoft.com/Search.aspx?q=5034619|1809 3.5, 4.7.2
+5034624|Windows 10 1809 (October 2018 Update) and Windows Server 2019|.NET Framework 3.5, 4.8|http://www.catalog.update.microsoft.com/Search.aspx?q=5034624|1809 3.5, 4.8
+5034614|Windows 10 1607 (Anniversary Update) and Windows Server 2016|.NET Framework 4.8|http://www.catalog.update.microsoft.com/Search.aspx?q=5034614|1607 4.8
