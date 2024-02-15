@@ -6,6 +6,8 @@
 ---
 
 ## Start
+
+### if you clone
 ```shell
 ## Create Virtual Env & install packages
 python -m venv venv
@@ -13,9 +15,15 @@ venv\Scripts\activate
 python -m pip install -r requirements.txt
 ```
 
+### Pypi
 ```shell
-## Run
-cd src && python pscraper.py {category} {patch_note_url}
+python -m pip install pscraper==0.1.1
+```
+
+### Options
+```shell
+pscraper --help
+pscraper {category} --write-excel
 ```
 
 ---

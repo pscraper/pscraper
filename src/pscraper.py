@@ -14,7 +14,7 @@ def run(category: str, url: str) -> None:
     ADOBE = Category.ADOBE.name.lower()
     
     if category == DOTNET:
-        if sys.argv[2] == "--process":
+        if sys.argv[2] == "--write-excel":
             _run_dotnet_after_scraping(category)
         
         else:
@@ -32,4 +32,13 @@ def run(category: str, url: str) -> None:
 
 if __name__ == "__main__":
     logger.info(f"{sys.argv[0]} Running")
-    run(sys.argv[1], sys.argv[2])
+
+    # exe 파일을 실행한 경우, 명령행 인자 없이 실행한 경우
+    if len(sys.argv) == 1:
+        category = input("Category: ")
+        patch_note = input("Patch Note URL: ")
+        run(category, patch_note)
+
+    # 명령행 인자로 실행한 경우
+    else:
+        run(sys.argv[1], sys.argv[2])
