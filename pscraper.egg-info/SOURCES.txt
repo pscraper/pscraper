@@ -1,0 +1,6 @@
+README.md
+setup.py
+pscraper.egg-info/PKG-INFO
+pscraper.egg-info/SOURCES.txt
+pscraper.egg-info/dependency_links.txt
+pscraper.egg-info/top_level.txt
