@@ -31,7 +31,7 @@ def main(category: str, url: str, write_excel: bool) -> None:
 
     else:
         raise Exception(f"Unexpected Category name: {category}")
-    
 
+        
 if __name__ == "__main__":
     main()

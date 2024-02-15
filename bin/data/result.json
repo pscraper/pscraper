@@ -1,0 +1,352 @@
+{
+    "5034466": {
+        "common": {
+            "bulletin_id": "MS-KB5034466",
+            "catalog_link": "http://www.catalog.update.microsoft.com/Search.aspx?q=5034466",
+            "common_cve": "",
+            "dotnet_version": ".NET Framework 3.5, 4.8.1",
+            "excel_key": "10 21H2, 22H2 3.5, 4.8.1",
+            "kb_number": "KB5034466",
+            "os_version": "Windows 10, version 22H2",
+            "patch_date": "2024/02/15",
+            "severity": "Moderate"
+        },
+        "nations": {
+            "en-us": {
+                "bulletin_url": "https://support.microsoft.com/en-us/help/5034466",
+                "summary": "here are no new security improvements in this release. This update is cumulative and contains all previously released security improvements",
+                "title": "February 13, 2024-KB5034466 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Windows 10 Version 22H2"
+            },
+            "ja-jp": {
+                "bulletin_url": "https://support.microsoft.com/ja-jp/help/5034466",
+                "summary": "のリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています",
+                "title": "2024 年 2 月 13 日-KB5034466 Windows 10 バージョン 22H2 の.NET Framework 3.5 および 4.8.1 の累積的な更新プログラム"
+            },
+            "ko-kr": {
+                "bulletin_url": "https://support.microsoft.com/ko-kr/help/5034466",
+                "summary": "릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다",
+                "title": "2024년 2월 13일 KB5034466 Windows 10 버전 22H2의 .NET Framework 3.5 및 4.8.1 누적 업데이트"
+            },
+            "zh-cn": {
+                "bulletin_url": "https://support.microsoft.com/zh-cn/help/5034466",
+                "summary": "版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进",
+                "title": "2024 年 2 月 13 日-KB5034466 Windows 10 版本 22H2 的 .NET Framework 3.5 和 4.8.1 累积更新"
+            }
+        }
+    },
+    "5034467": {
+        "common": {
+            "bulletin_id": "MS-KB5034467",
+            "catalog_link": "http://www.catalog.update.microsoft.com/Search.aspx?q=5034467",
+            "common_cve": "",
+            "dotnet_version": ".NET Framework 3.5, 4.8.1",
+            "excel_key": "11 22H2, 23H2 3.5, 4.8.1",
+            "kb_number": "KB5034467",
+            "os_version": "Windows 11, version 22H2 and Windows 11, version 23H2",
+            "patch_date": "2024/02/15",
+            "severity": "Moderate"
+        },
+        "nations": {
+            "en-us": {
+                "bulletin_url": "https://support.microsoft.com/en-us/help/5034467",
+                "summary": "There are no new security improvements in this release. This update is cumulative and contains all previously released security improvements.",
+                "title": "February 13, 2024-KB5034467 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Windows 11, version 22H2 and Windows 11, version 23H2"
+            },
+            "ja-jp": {
+                "bulletin_url": "https://support.microsoft.com/ja-jp/help/5034467",
+                "summary": "このリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています。",
+                "title": "2024 年 2 月 13 日-KB5034467 Windows 11 バージョン 22H2 およびバージョン 23H2 の.NET Framework 3.5 Windows 11 および 4.8.1 の累積的な更新プログラム"
+            },
+            "ko-kr": {
+                "bulletin_url": "https://support.microsoft.com/ko-kr/help/5034467",
+                "summary": "이 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다.",
+                "title": "2024년 2월 13일 KB5034467 Windows 11 버전 22H2 및 Windows 11 버전 23H2의 경우 .NET Framework 3.5 및 4.8.1에 대한 누적 업데이트"
+            },
+            "zh-cn": {
+                "bulletin_url": "https://support.microsoft.com/zh-cn/help/5034467",
+                "summary": "此版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进。",
+                "title": "2024 年 2 月 13 日-KB5034467 .NET Framework 3.5 和 4.8.1 Windows 11版本 22H2 和 Windows 11 版本 23H2 的累积更新"
+            }
+        }
+    },
+    "5034468": {
+        "common": {
+            "bulletin_id": "MS-KB5034468",
+            "catalog_link": "http://www.catalog.update.microsoft.com/Search.aspx?q=5034468",
+            "common_cve": "",
+            "dotnet_version": ".NET Framework 3.5, 4.8",
+            "excel_key": "10 21H2, 22H2 3.5, 4.8",
+            "kb_number": "KB5034468",
+            "os_version": "Windows 10, version 22H2",
+            "patch_date": "2024/02/15",
+            "severity": "Moderate"
+        },
+        "nations": {
+            "en-us": {
+                "bulletin_url": "https://support.microsoft.com/en-us/help/5034468",
+                "summary": "here are no new security improvements in this release. This update is cumulative and contains all previously released security improvements",
+                "title": "February 13, 2024-KB5034468 Cumulative Update for .NET Framework 3.5 and 4.8 for Windows 10 Version 22H2"
+            },
+            "ja-jp": {
+                "bulletin_url": "https://support.microsoft.com/ja-jp/help/5034468",
+                "summary": "のリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています",
+                "title": "2024 年 2 月 13 日-KB5034468 Windows 10 バージョン 22H2 の.NET Framework 3.5 および 4.8 の累積的な更新プログラム"
+            },
+            "ko-kr": {
+                "bulletin_url": "https://support.microsoft.com/ko-kr/help/5034468",
+                "summary": "릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다",
+                "title": "2024년 2월 13일 KB5034468 Windows 10 버전 22H2의 .NET Framework 3.5 및 4.8 누적 업데이트"
+            },
+            "zh-cn": {
+                "bulletin_url": "https://support.microsoft.com/zh-cn/help/5034468",
+                "summary": "版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进",
+                "title": "2024 年 2 月 13 日-KB5034468 Windows 10 版本 22H2 的 .NET Framework 3.5 和 4.8 累积更新"
+            }
+        }
+    },
+    "5034611": {
+        "common": {
+            "bulletin_id": "MS-KB5034611",
+            "catalog_link": "http://www.catalog.update.microsoft.com/Search.aspx?q=5034611",
+            "common_cve": "",
+            "dotnet_version": ".NET Framework 3.5, 4.8.1",
+            "excel_key": "2022 3.5, 4.8.1",
+            "kb_number": "KB5034611",
+            "os_version": "Microsoft server operating system, version 22H2",
+            "patch_date": "2024/02/15",
+            "severity": "Moderate"
+        },
+        "nations": {
+            "en-us": {
+                "bulletin_url": "https://support.microsoft.com/en-us/help/5034611",
+                "summary": "here are no new security improvements in this release. This update is cumulative and contains all previously released security improvements",
+                "title": "February 13, 2024-KB5034611 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Windows Server 2022"
+            },
+            "ja-jp": {
+                "bulletin_url": "https://support.microsoft.com/ja-jp/help/5034611",
+                "summary": "のリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています",
+                "title": "2024 年 2 月 13 日-KB5034611 Windows Server 2022 の.NET Framework 3.5 および 4.8.1 用の累積的な更新プログラム"
+            },
+            "ko-kr": {
+                "bulletin_url": "https://support.microsoft.com/ko-kr/help/5034611",
+                "summary": "릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다",
+                "title": "2024년 2월 13일 KB5034611 Windows Server 2022용 .NET Framework 3.5 및 4.8.1 누적 업데이트"
+            },
+            "zh-cn": {
+                "bulletin_url": "https://support.microsoft.com/zh-cn/help/5034611",
+                "summary": "版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进",
+                "title": "2024 年 2 月 13 日-KB5034611 Windows Server 2022 .NET Framework 3.5 和 4.8.1 累积更新"
+            }
+        }
+    },
+    "5034612": {
+        "common": {
+            "bulletin_id": "MS-KB5034612",
+            "catalog_link": "http://www.catalog.update.microsoft.com/Search.aspx?q=5034612",
+            "common_cve": "",
+            "dotnet_version": ".NET Framework 3.5, 4.8.1",
+            "excel_key": "11 21H2 3.5, 4.8.1",
+            "kb_number": "KB5034612",
+            "os_version": "Windows 11, version 21H2",
+            "patch_date": "2024/02/15",
+            "severity": "Moderate"
+        },
+        "nations": {
+            "en-us": {
+                "bulletin_url": "https://support.microsoft.com/en-us/help/5034612",
+                "summary": "There are no new security improvements in this release. This update is cumulative and contains all previously released security improvements.",
+                "title": "February 13, 2024-KB5034612 Cumulative Update for .NET Framework 3.5 and 4.8.1 for Windows 11, version 21H2"
+            },
+            "ja-jp": {
+                "bulletin_url": "https://support.microsoft.com/ja-jp/help/5034612",
+                "summary": "このリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています。",
+                "title": "2024 年 2 月 13 日-KB5034612 Windows 11 バージョン 21H2 の.NET Framework 3.5 および 4.8.1 の累積的な更新プログラム"
+            },
+            "ko-kr": {
+                "bulletin_url": "https://support.microsoft.com/ko-kr/help/5034612",
+                "summary": "이 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다.",
+                "title": "2024년 2월 13일 KB5034612 Windows 11 버전 21H2의 .NET Framework 3.5 및 4.8.1 누적 업데이트"
+            },
+            "zh-cn": {
+                "bulletin_url": "https://support.microsoft.com/zh-cn/help/5034612",
+                "summary": "此版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进。",
+                "title": "2024 年 2 月 13 日-KB5034612 .NET Framework 3.5 和 4.8.1 的累积更新（适用于 Windows 11 版本 21H2）"
+            }
+        }
+    },
+    "5034613": {
+        "common": {
+            "bulletin_id": "MS-KB5034613",
+            "catalog_link": "http://www.catalog.update.microsoft.com/Search.aspx?q=5034613",
+            "common_cve": "",
+            "dotnet_version": ".NET Framework 3.5, 4.8",
+            "excel_key": "2022 3.5, 4.8",
+            "kb_number": "KB5034613",
+            "os_version": "Microsoft server operating system, version 22H2",
+            "patch_date": "2024/02/15",
+            "severity": "Moderate"
+        },
+        "nations": {
+            "en-us": {
+                "bulletin_url": "https://support.microsoft.com/en-us/help/5034613",
+                "summary": "here are no new security improvements in this release. This update is cumulative and contains all previously released security improvements",
+                "title": "February 13, 2024-KB5034613 Cumulative Update for .NET Framework 3.5 and 4.8 for Windows Server 2022"
+            },
+            "ja-jp": {
+                "bulletin_url": "https://support.microsoft.com/ja-jp/help/5034613",
+                "summary": "のリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています",
+                "title": "2024 年 2 月 13 日-KB5034613 Windows Server 2022 の.NET Framework 3.5 および 4.8 用の累積的な更新プログラム"
+            },
+            "ko-kr": {
+                "bulletin_url": "https://support.microsoft.com/ko-kr/help/5034613",
+                "summary": "릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다",
+                "title": "2024년 2월 13일-KB5034613 Windows Server 2022용 .NET Framework 3.5 및 4.8 누적 업데이트"
+            },
+            "zh-cn": {
+                "bulletin_url": "https://support.microsoft.com/zh-cn/help/5034613",
+                "summary": "版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进",
+                "title": "2024 年 2 月 13 日-KB5034613 Windows Server 2022 .NET Framework 3.5 和 4.8 累积更新"
+            }
+        }
+    },
+    "5034614": {
+        "common": {
+            "bulletin_id": "MS-KB5034614",
+            "catalog_link": "http://www.catalog.update.microsoft.com/Search.aspx?q=5034614",
+            "common_cve": "",
+            "dotnet_version": ".NET Framework 4.8",
+            "excel_key": "1607 4.8",
+            "kb_number": "KB5034614",
+            "os_version": "Windows 10 1607 (Anniversary Update) and Windows Server 2016",
+            "patch_date": "2024/02/15",
+            "severity": "Moderate"
+        },
+        "nations": {
+            "en-us": {
+                "bulletin_url": "https://support.microsoft.com/en-us/help/5034614",
+                "summary": "There are no new security improvements in this release. This update is cumulative and contains all previously released security improvements.",
+                "title": "February 13, 2024-KB5034614 Cumulative Update for .NET Framework 4.8 for Windows 10, version 1607 and Windows Server 2016"
+            },
+            "ja-jp": {
+                "bulletin_url": "https://support.microsoft.com/ja-jp/help/5034614",
+                "summary": "このリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています。",
+                "title": "2024 年 2 月 13 日-KB5034614 Windows 10 バージョン 1607 および Windows Server 2016 の.NET Framework 4.8 の累積的な更新プログラム"
+            },
+            "ko-kr": {
+                "bulletin_url": "https://support.microsoft.com/ko-kr/help/5034614",
+                "summary": "이 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다.",
+                "title": "2024년 2월 13일 KB5034614 Windows 10 버전 1607 및 Windows Server 2016 .NET Framework 4.8 누적 업데이트"
+            },
+            "zh-cn": {
+                "bulletin_url": "https://support.microsoft.com/zh-cn/help/5034614",
+                "summary": "此版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进。",
+                "title": "2024 年 2 月 13 日-KB5034614 Windows 10 版本 1607 和 Windows Server 2016 .NET Framework 4.8 的累积更新"
+            }
+        }
+    },
+    "5034619": {
+        "common": {
+            "bulletin_id": "MS-KB5034619",
+            "catalog_link": "http://www.catalog.update.microsoft.com/Search.aspx?q=5034619",
+            "common_cve": "",
+            "dotnet_version": ".NET Framework 3.5, 4.7.2",
+            "excel_key": "1809 3.5, 4.7.2",
+            "kb_number": "KB5034619",
+            "os_version": "Windows 10 1809 (October 2018 Update) and Windows Server 2019",
+            "patch_date": "2024/02/15",
+            "severity": "Moderate"
+        },
+        "nations": {
+            "en-us": {
+                "bulletin_url": "https://support.microsoft.com/en-us/help/5034619",
+                "summary": "There are no new security improvements in this release. This update is cumulative and contains all previously released security improvements.",
+                "title": "February 13, 2024-KB5034619 Cumulative Update for .NET Framework 3.5 and 4.7.2 for Windows 10, version 1809 and Windows Server 2019"
+            },
+            "ja-jp": {
+                "bulletin_url": "https://support.microsoft.com/ja-jp/help/5034619",
+                "summary": "このリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています。",
+                "title": "2024 年 2 月 13 日-KB5034619 Windows 10 Version 1809 および Windows Server 2019 の.NET Framework 3.5 および 4.7.2 用の累積的な更新プログラム"
+            },
+            "ko-kr": {
+                "bulletin_url": "https://support.microsoft.com/ko-kr/help/5034619",
+                "summary": "이 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다.",
+                "title": "2024년 2월 13일 KB5034619 Windows 10, 버전 1809 및 Windows Server 2019용 .NET Framework 3.5 및 4.7.2 누적 업데이트"
+            },
+            "zh-cn": {
+                "bulletin_url": "https://support.microsoft.com/zh-cn/help/5034619",
+                "summary": "此版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进。",
+                "title": "2024 年 2 月 13 日-KB5034619 Windows 10 版本 1809 和 Windows Server 2019 .NET Framework 3.5 和 4.7.2 累积更新"
+            }
+        }
+    },
+    "5034624": {
+        "common": {
+            "bulletin_id": "MS-KB5034624",
+            "catalog_link": "http://www.catalog.update.microsoft.com/Search.aspx?q=5034624",
+            "common_cve": "",
+            "dotnet_version": ".NET Framework 3.5, 4.8",
+            "excel_key": "1809 3.5, 4.8",
+            "kb_number": "KB5034624",
+            "os_version": "Windows 10 1809 (October 2018 Update) and Windows Server 2019",
+            "patch_date": "2024/02/15",
+            "severity": "Moderate"
+        },
+        "nations": {
+            "en-us": {
+                "bulletin_url": "https://support.microsoft.com/en-us/help/5034624",
+                "summary": "There are no new security improvements in this release. This update is cumulative and contains all previously released security improvements.",
+                "title": "February 13, 2024-KB5034624 Cumulative Update for .NET Framework 3.5 and 4.8 for Windows 10, version 1809 and Windows Server 2019"
+            },
+            "ja-jp": {
+                "bulletin_url": "https://support.microsoft.com/ja-jp/help/5034624",
+                "summary": "このリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています。",
+                "title": "2024 年 2 月 13 日-KB5034624 Windows 10 Version 1809 および Windows Server 2019 の.NET Framework 3.5 および 4.8 用の累積的な更新プログラム"
+            },
+            "ko-kr": {
+                "bulletin_url": "https://support.microsoft.com/ko-kr/help/5034624",
+                "summary": "이 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다.",
+                "title": "2024년 2월 13일 KB5034624 Windows 10, 버전 1809 및 Windows Server 2019용 .NET Framework 3.5 및 4.8 누적 업데이트"
+            },
+            "zh-cn": {
+                "bulletin_url": "https://support.microsoft.com/zh-cn/help/5034624",
+                "summary": "此版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进。",
+                "title": "2024 年 2 月 13 日-KB5034624 Windows 10 版本 1809 和 Windows Server 2019 .NET Framework 3.5 和 4.8 累积更新"
+            }
+        }
+    },
+    "5034625": {
+        "common": {
+            "bulletin_id": "MS-KB5034625",
+            "catalog_link": "http://www.catalog.update.microsoft.com/Search.aspx?q=5034625",
+            "common_cve": "",
+            "dotnet_version": ".NET Framework 3.5, 4.8",
+            "excel_key": "11 21H2 3.5, 4.8",
+            "kb_number": "KB5034625",
+            "os_version": "Windows 11, version 21H2",
+            "patch_date": "2024/02/15",
+            "severity": "Moderate"
+        },
+        "nations": {
+            "en-us": {
+                "bulletin_url": "https://support.microsoft.com/en-us/help/5034625",
+                "summary": "There are no new security improvements in this release. This update is cumulative and contains all previously released security improvements.",
+                "title": "February 13, 2024-KB5034625 Cumulative Update for .NET Framework 3.5 and 4.8 for Windows 11, version 21H2"
+            },
+            "ja-jp": {
+                "bulletin_url": "https://support.microsoft.com/ja-jp/help/5034625",
+                "summary": "このリリースでは、新しいセキュリティの強化はありません。 この更新プログラムは累積的であり、以前にリリースされたすべてのセキュリティの強化が含まれています。",
+                "title": "2024 年 2 月 13 日-KB5034625 Windows 11 バージョン 21H2 の.NET Framework 3.5 および 4.8 の累積的な更新プログラム"
+            },
+            "ko-kr": {
+                "bulletin_url": "https://support.microsoft.com/ko-kr/help/5034625",
+                "summary": "이 릴리스에는 새로운 보안 개선 사항이 없습니다. 이 업데이트는 누적되며 이전에 릴리스된 모든 보안 개선 사항을 포함합니다.",
+                "title": "2024년 2월 13일-Windows 11 버전 21H2의 .NET Framework 3.5 및 4.8에 대한 KB5034625 누적 업데이트"
+            },
+            "zh-cn": {
+                "bulletin_url": "https://support.microsoft.com/zh-cn/help/5034625",
+                "summary": "此版本中没有新的安全改进。 此更新是累积更新，包含以前发布的所有安全改进。",
+                "title": "2024 年 2 月 13 日-KB5034625 Windows 11 版本 21H2 的 .NET Framework 3.5 和 4.8 累积更新"
+            }
+        }
+    }
+}

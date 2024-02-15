@@ -6,7 +6,7 @@ from register.dotnet_excel_manager import DotnetExcelManager
 from filehandler.dotnet_file_handler import DotnetFileHandler
 from utils.util_func_dotnet import update_common_info, update_nation_info, update_file_info, read_mapper_file
 from utils.util_func_json import save_json_result
-from utils.util_func_common import copy_file_dir, remove_file_dir
+from utils.util_func_common import copy_file_dir, upload_result_file
 from const import RESULT_FILE_PATH, DATA_PATH, logger
 
 
@@ -30,9 +30,12 @@ def run_dotnet(url: str, category: str) -> None:
         # 패치파일 폴더 바탕화면으로 복사 -> 패치파일 폴더 제거
         if copy_file_dir(category):
             logger.info("패치파일 폴더를 성공적으로 복사 후 제거하였습니다.")
-            logger.info("pscraper Successfully finished")
-        
-                
+            result = upload_result_file(RESULT_FILE_PATH)
+            
+            if result.status_code == 200:
+                logger.info("결과 파일을 Report 서버에 업로드하였습니다.")
+                logger.info("pscraper Successfully finished")
+
 
 def _run_dotnet(url: str, category: str) -> None:
     validator = DotnetValidatorManager()

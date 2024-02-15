@@ -1,5 +1,37 @@
-[02/15/2024 09:34:08] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\crawler appended to path
-[02/15/2024 09:34:08] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\register appended to path
-[02/15/2024 09:34:08] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\validator appended to path
-[02/15/2024 09:34:08] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\utils appended to path
-[02/15/2024 09:34:08] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\filehandler appended to path
+[02/15/2024 09:51:32] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\crawler appended to path
+[02/15/2024 09:51:32] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\register appended to path
+[02/15/2024 09:51:32] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\validator appended to path
+[02/15/2024 09:51:32] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\utils appended to path
+[02/15/2024 09:51:32] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\filehandler appended to path
+[02/15/2024 09:51:33] PM INFO: [validator_manager.__init__] 필수 파일 목록 검사
+[02/15/2024 09:51:33] PM INFO: [validator_manager.__init__] meta.yaml OK
+[02/15/2024 09:51:33] PM INFO: [validator_manager.__init__] patch.xlsx OK
+[02/15/2024 09:51:33] PM INFO: [validator_manager.__init__] chromedriver.exe OK
+[02/15/2024 09:51:33] PM INFO: [validator_manager.__init__] 필요한 파일 목록이 모두 확인되었습니다.
+[02/15/2024 09:51:33] PM WARNING: [crawling_manager.__init__] Remove Dir Tree: C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\bin\patchfiles\dotnet
+[02/15/2024 09:51:33] PM INFO: [crawling_manager.__init__] Make Dir: C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\bin\patchfiles\dotnet
+[02/15/2024 09:51:33] PM INFO: [crawling_manager.__init__] Chrome Option --disable-popup-blocking Added.
+[02/15/2024 09:51:33] PM INFO: [crawling_manager.__init__] Chrome Option --disable-extensions Added.
+[02/15/2024 09:51:33] PM INFO: [crawling_manager.__init__] Chrome Option --disable-gpu Added.
+[02/15/2024 09:51:33] PM INFO: [crawling_manager.__init__] Chrome Option --no-sandbox Added.
+[02/15/2024 09:51:33] PM INFO: [crawling_manager.__init__] Chrome Option user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Added.
+[02/15/2024 09:51:51] PM INFO: [crawling_manager.__init__] Successfully Initialized
+[02/15/2024 09:51:51] PM INFO: [crawling_manager.__init__] Python Version: 3.11.5 (tags/v3.11.5:cce6ba9, Aug 24 2023, 14:38:34) [MSC v.1936 64 bit (AMD64)]
+[02/15/2024 09:51:51] PM INFO: [crawling_manager.__init__] Category: dotnet
+[02/15/2024 09:51:51] PM INFO: [crawling_manager.__init__] Base URL: https://devblogs.microsoft.com/dotnet/dotnet-framework-february-2024-security-and-quality-rollup-updates/
+[02/15/2024 09:51:51] PM INFO: [crawling_manager.__init__] HTML parsing OK
+[02/15/2024 09:52:25] PM WARNING: [dotnet_crawling_manager._init_patch_data] 기존 mapper.txt 파일 삭제
+[02/15/2024 09:52:25] PM INFO: [dotnet_crawling_manager._init_patch_data] mapper.txt 파일 초기화 완료
+[02/15/2024 09:52:36] PM INFO: [util_func_dotnet.read_mapper_file] mapper.txt 로딩 완료
+[02/15/2024 09:52:36] PM INFO: [func_run_dotnet._run_dotnet] result.json에 공통 정보 업데이트를 완료했습니다.
+[02/15/2024 09:55:17] PM INFO: [func_run_dotnet._run_dotnet] result.json에 각 국가별 정보 업데이트를 완료했습니다.
+[02/15/2024 09:55:54] PM INFO: [dotnet_crawling_manager._search_patch_file] ------------ [Downloading] ---------------
+[02/15/2024 09:55:54] PM INFO: [dotnet_crawling_manager._search_patch_file] windows11.0-kb5034467-x64-ndp481_3f71b1bdba8a0bcb6fc94e56f36eeb8e1dd97ebb.msu
+[02/15/2024 09:55:54] PM INFO: [dotnet_crawling_manager._search_patch_file] https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-x64-ndp481_3f71b1bdba8a0bcb6fc94e56f36eeb8e1dd97ebb.msu
+[02/15/2024 09:56:38] PM INFO: [dotnet_crawling_manager._search_patch_file] ------------ [Downloading] ---------------
+[02/15/2024 09:56:38] PM INFO: [dotnet_crawling_manager._search_patch_file] windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu
+[02/15/2024 09:56:38] PM INFO: [dotnet_crawling_manager._search_patch_file] https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu
+[02/15/2024 09:56:46] PM INFO: [dotnet_crawling_manager._search_patch_file] 중복된 파일 제외: windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu
+[02/15/2024 09:56:53] PM INFO: [dotnet_crawling_manager._search_patch_file] 중복된 파일 제외: windows11.0-kb5034467-x64-ndp481_3f71b1bdba8a0bcb6fc94e56f36eeb8e1dd97ebb.msu
+[02/15/2024 09:56:58] PM WARNING: [util_func_common.copy_file_dir] 권한 관련 에러가 발생하여 파일을 복사하지 못하였습니다.
+[02/15/2024 09:56:58] PM WARNING: [util_func_common.copy_file_dir] [Errno 13] Permission denied: 'C:\\Users\\seungsu\\Desktop\\projects\\pscraper-project\\pscraper\\bin\\patchfiles\\dotnet'

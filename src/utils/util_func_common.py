@@ -1,10 +1,27 @@
 import shutil
 import os
+import requests
+from requests_toolbelt import MultipartEncoder
 from datetime import datetime
 from pathlib import Path
 from const import PATCH_FILE_PATH, UNREQUIRED_UNICODES, DOTNET_FILE_PATH, RESULT_FILE_PATH, logger
 from classes import Category
 
+
+# 원격 서버로 결과 파일 전송
+def upload_result_file(path: Path) -> requests.Response:
+    if not path.exists():
+        raise Exception("Can't Find Result file")
+    
+    body = MultipartEncoder(fields = {
+        'file': open(path, "rb")
+    })
+    
+    return requests.post(
+        url = "http://127.0.0.1:8000/file",
+        data = body,
+        headers = {"Content-Type": body.content_type}
+    )
 
 
 # 초단위까지 날짜 반환
