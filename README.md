@@ -23,7 +23,7 @@ python -m pip install pscraper
 ### Options
 ```shell
 pscraper --help
-pscraper {category} --write-excel
+pscraper --category {category} --write-excel true
 pscraper --category {category} --url {patch_note_url}
 ```
 
