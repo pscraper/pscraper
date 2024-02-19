@@ -1,5 +1,0 @@
-[02/15/2024 08:57:12] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\crawler appended to path
-[02/15/2024 08:57:12] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\register appended to path
-[02/15/2024 08:57:12] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\validator appended to path
-[02/15/2024 08:57:12] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\utils appended to path
-[02/15/2024 08:57:12] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\filehandler appended to path

@@ -3,6 +3,7 @@ import time
 import sys
 import yaml
 import shutil
+from pathlib import Path
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver import ActionChains
@@ -24,6 +25,10 @@ from const import (
 
 
 class CrawlingManager:
+    CRDOWNLOAD = "crdownload"
+    TMP = "tmp"
+    
+    
     def __init__(self, category: str, url: str):
         """
         Top object of crawler. 
@@ -50,16 +55,18 @@ class CrawlingManager:
 
         # bin\patchfiles\{type} 폴더 생성
         # 기존에 존재하면 삭제
-        if os.path.exists(DOTNET_FILE_PATH):
-            logger.warning(f"Remove Dir Tree: {DOTNET_FILE_PATH}")
-            shutil.rmtree(DOTNET_FILE_PATH)
+        category_path = PATCH_FILE_PATH / category
         
-        DOTNET_FILE_PATH.mkdir()
-        logger.info(f"Make Dir: {DOTNET_FILE_PATH}")
+        if os.path.exists(category_path):
+            logger.warning(f"Remove Dir Tree: {category_path}")
+            shutil.rmtree(category_path)
+        
+        category_path.mkdir()
+        logger.info(f"Make Dir: {category_path}")
 
         # 다운로드 경로 설정
         options = webdriver.ChromeOptions()
-        options.add_experimental_option("prefs", {"download.default_directory": str(DOTNET_FILE_PATH)})
+        options.add_experimental_option("prefs", {"download.default_directory": str(category_path)})
         
         for option in self.meta['driver_options']:
             logger.info(f"Chrome Option {option} Added.")
@@ -87,12 +94,13 @@ class CrawlingManager:
 
 
     # patchfiles\dotnet 폴더에 중복된 파일이 있는지 검사
-    def _is_already_exists(self, name) -> bool:
-        for file in DOTNET_FILE_PATH.iterdir():
+    def _is_already_exists(self, path: Path, name: str) -> bool:
+        for file in path.iterdir():
             if file.name.startswith(name):
                 return True
         
         return False
+
 
     # patchfiles\dotnet 폴더에 다운로드 중인 파일이 있는지 검사
     def _wait_(self, ends: str):

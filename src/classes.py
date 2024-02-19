@@ -1,10 +1,40 @@
 from enum import Enum
+from typing import Any
 
 
 class Category(Enum):
     DOTNET = "Dotnet"
     JAVA = "Java"
     ADOBE = "Adobe"
+
+
+class AdobeCommon:
+    SECURITY_UPDATE_TITLE_FORMAT = "Security update available for Adobe {}({})"
+    OPTINAL_UPDATE_TITLE_FORMAT = "Update available for Adobe {}({})({})"
+    READER = "Reader"
+    ACROBAT = "Acrobat"
+    
+    KEY_MAPPER: dict[str, str] = {
+        "Adobe Acrobat Reader DC": "Reader",
+        "Adobe Acrobat DC": "Acrobat",
+        "Adobe Acrobat 2020": "Acrobat"
+    }
+
+
+class AdobeContinuous:
+    # File Name과 Key를 매핑 
+    FK_MAPPER: dict[str, str] = {
+        "AcrobatDCUpd": "Adobe Acrobat DC",
+        "AcroRdrDCUpd": "Adobe Acrobat Reader DC",
+        "AcrobatDCx64Upd": "Adobe Acrobat DC",
+        "AcroRdrDCx64Upd": "Adobe Acrobat Reader DC"
+    }
+
+
+class AdobeClassic:
+    FK_MAPPER: dict[str, str] = {
+        "Acrobat2020Upd": "Adobe Acrobat DC 2020"
+    }
 
 
 class DotnetLocs:
@@ -87,4 +117,5 @@ class DotnetLocs:
         "1809 3.5, 4.8": ["x64", "x86"],
         "1607 4.8": ["x86", "x64"]
     }
+    
     

@@ -17,13 +17,25 @@ SLEEP_MEDIUM = 2
 SLEEP_SHORT = 1
 
 
-# DOM STRINGS
+# DOTNET DOM STRINGS
 CVE_STR = r"CVE-\d+-\d+"
 CVE_ID = r"^cve"
 KB_STR = r"^KB\\d{7}"
 PF_DOWNLOAD = "//*[@id=\"downloadFiles\"]"
 TS_HEADER = "page-header"      # Title_and_Summary Header ID
 TS_SUMMARY = "bkmk_summary"    # Title_and_Summary Summary ID
+
+
+# ADOBE DOM STRINGS
+ADB_PATCH_NOTE_URL = "https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html"
+ADB_SECURITY_BULLETIN = "//*[@id=\"security-bulletin\"]"
+ADB_OPTIONAL_TITLE = "//*[@id=\"planned-update-feb-13-2024\"]/p"
+ADB_CLASSIC_UL = "//*[@id=\"classic-track-installers\"]/ul"
+ADB_CLASSIC_INSTALL_A = "//*[@id=\"id1\"]/tbody/tr[1]/td[3]/p/a"
+
+ADB_CONTINUOUS_UL = "//*[@id=\"continuous-track-installers\"]/ul"
+ADB_CONTINUOUS_INSTALL_A_X32 = "//*[@id=\"id1\"]/tbody"
+ADB_CONTINUOUS_INSTALL_A_X64 = "//*[@id=\"id2\"]/tbody"
 
 
 # Folder Path
@@ -35,6 +47,7 @@ LOG_PATH = BIN_PATH / "logs"
 PATCH_FILE_PATH = BIN_PATH / "patchfiles"
 DOTNET_FILE_PATH = PATCH_FILE_PATH / "dotnet"
 DOTNET_CAB_PATH = DOTNET_FILE_PATH / "cabs"
+ADOBE_FILE_PATH = PATCH_FILE_PATH / "adobe"
 
 
 # Src Path
@@ -74,7 +87,6 @@ DOTNET_KB_FORMAT = "KB{}"
 DOTNET_BULLETIN_FORMAT = "MS-KB{}"
 DOTNET_BULLETIN_URL_FORMAT = "https://support.microsoft.com/{}/help/{}"
 DOTNET_NATIONS_LIST = ['en-us', 'ja-jp', 'ko-kr', 'zh-cn']
-
 
 
 # Log, Result 파일 관리

@@ -27,7 +27,7 @@ def main(category: str, url: str, write_excel: bool) -> None:
         run_java(url, JAVA)
 
     elif category == ADOBE:
-        run_adobe(url, ADOBE)
+        run_adobe(ADOBE)
 
     else:
         raise Exception(f"Unexpected Category name: {category}")

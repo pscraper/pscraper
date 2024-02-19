@@ -17,6 +17,7 @@ from const import (
     TS_SUMMARY,
     PF_DOWNLOAD,
     MAPPER_FILE_PATH,
+    DOTNET_FILE_PATH,
     DOTNET_BULLETIN_URL_FORMAT,
     DOTNET_NATIONS_LIST,
     ENC_TYPE,
@@ -30,7 +31,7 @@ from const import (
 class DotnetCrawlingManager(CrawlingManager):
     def __init__(self, url: str, category: str):
         super().__init__(category = category, url = url) 
-        self.keys = self.meta['excel_key']
+        self.keys = self.meta['dotnet_excel_key']
         
 
     def _get_cve_string(self) -> str:
@@ -84,7 +85,7 @@ class DotnetCrawlingManager(CrawlingManager):
                 atag: WebElement = div.find_element(by = By.TAG_NAME, value = "a")
                 vendor_url = atag.get_attribute('href')
                 
-                if self._is_already_exists(atag.text.split("_")[0]):
+                if self._is_already_exists(DOTNET_FILE_PATH, atag.text.split("_")[0]):
                     logger.info(f"중복된 파일 제외: {atag.text}")
                     continue
                 
@@ -141,14 +142,14 @@ class DotnetCrawlingManager(CrawlingManager):
                 time.sleep(SLEEP_MEDIUM)
  
                 # 다운로드 완료 대기 
-                self._wait_("crdownload")
+                self._wait_(self.CRDOWNLOAD)
 
             except Exception as e:
                 logger.critical(e)
                 continue
             
             finally:
-                self._wait_("crdownload")
+                self._wait_(self.CRDOWNLOAD)
 
         
         return file_dict
