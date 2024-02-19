@@ -32,13 +32,12 @@ class AdobeCrawlingManager(CrawlingManager):
     
     
     def get_patch_link(self, ul_path: str) -> str:
-        self._driver_wait(by = By.XPATH, name = ul_path)
-        ul = self.driver.find_element(by = By.XPATH, value = ul_path)
+        args = {"by": By.XPATH, "value": ul_path, "element": self.driver}
+        ul = self._driver_wait_and_find(**args)
         
         for idx, li in enumerate(ul.find_elements(by = By.TAG_NAME, value = "li"), start = 1):
             if idx == 1:
                 link = li.find_element(by = By.TAG_NAME, value = "a").get_attribute("href")
-                
             logger.info(f"{idx}. {li.text}")
 
         return link
@@ -46,7 +45,6 @@ class AdobeCrawlingManager(CrawlingManager):
     
     def get_summary(self) -> str:
         sec = self.find_security_bulletin()
-        
         if sec != None:
             return sec.text
         
@@ -66,8 +64,8 @@ class AdobeCrawlingManager(CrawlingManager):
 
     def find_security_bulletin(self) -> WebElement | None:
         try:
-            self._driver_wait(by = By.XPATH, name = ADB_SECURITY_BULLETIN)
-            return self.driver.find_element(by = By.XPATH, value = ADB_SECURITY_BULLETIN)
+            args = {"by": By.XPATH, "value": ADB_SECURITY_BULLETIN, "element": self.driver}
+            return self._driver_wait_and_find(**args)
         
         except Exception as e:
             logger.info(e)
@@ -76,8 +74,8 @@ class AdobeCrawlingManager(CrawlingManager):
     
     def find_optional_title(self) -> WebElement | None:
         try:
-            self._driver_wait(by = By.XPATH, name = ADB_OPTIONAL_TITLE)
-            return self.driver.find_element(by = By.XPATH, value = ADB_OPTIONAL_TITLE)
+            args = {"by": By.XPATH, "value": ADB_OPTIONAL_TITLE, "element": self.driver}
+            return self._driver_wait_and_find(**args)
         
         except Exception as e:
             logger.info(e)

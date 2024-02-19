@@ -1,0 +1,149 @@
+[02/19/2024 10:12:38] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\crawler appended to path
+[02/19/2024 10:12:38] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\register appended to path
+[02/19/2024 10:12:38] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\validator appended to path
+[02/19/2024 10:12:38] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\utils appended to path
+[02/19/2024 10:12:38] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\filehandler appended to path
+[02/19/2024 10:12:40] PM WARNING: [crawling_manager.__init__] Remove Dir Tree: C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\bin\patchfiles\adobe
+[02/19/2024 10:12:40] PM INFO: [crawling_manager.__init__] Make Dir: C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\bin\patchfiles\adobe
+[02/19/2024 10:12:40] PM INFO: [crawling_manager.__init__] Chrome Option --disable-popup-blocking Added.
+[02/19/2024 10:12:40] PM INFO: [crawling_manager.__init__] Chrome Option --disable-extensions Added.
+[02/19/2024 10:12:40] PM INFO: [crawling_manager.__init__] Chrome Option --disable-gpu Added.
+[02/19/2024 10:12:40] PM INFO: [crawling_manager.__init__] Chrome Option --no-sandbox Added.
+[02/19/2024 10:12:40] PM INFO: [crawling_manager.__init__] Chrome Option user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Added.
+[02/19/2024 10:13:15] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\crawler appended to path
+[02/19/2024 10:13:15] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\register appended to path
+[02/19/2024 10:13:15] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\validator appended to path
+[02/19/2024 10:13:15] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\utils appended to path
+[02/19/2024 10:13:15] PM INFO: [__init__.<module>] C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\src\filehandler appended to path
+[02/19/2024 10:13:17] PM WARNING: [crawling_manager.__init__] Remove Dir Tree: C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\bin\patchfiles\adobe
+[02/19/2024 10:13:17] PM INFO: [crawling_manager.__init__] Make Dir: C:\Users\seungsu\Desktop\projects\pscraper-project\pscraper\bin\patchfiles\adobe
+[02/19/2024 10:13:17] PM INFO: [crawling_manager.__init__] Chrome Option --disable-popup-blocking Added.
+[02/19/2024 10:13:17] PM INFO: [crawling_manager.__init__] Chrome Option --disable-extensions Added.
+[02/19/2024 10:13:17] PM INFO: [crawling_manager.__init__] Chrome Option --disable-gpu Added.
+[02/19/2024 10:13:17] PM INFO: [crawling_manager.__init__] Chrome Option --no-sandbox Added.
+[02/19/2024 10:13:17] PM INFO: [crawling_manager.__init__] Chrome Option user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Added.
+[02/19/2024 10:13:30] PM INFO: [crawling_manager.__init__] Successfully Initialized
+[02/19/2024 10:13:30] PM INFO: [crawling_manager.__init__] Python Version: 3.11.5 (tags/v3.11.5:cce6ba9, Aug 24 2023, 14:38:34) [MSC v.1936 64 bit (AMD64)]
+[02/19/2024 10:13:30] PM INFO: [crawling_manager.__init__] Category: adobe
+[02/19/2024 10:13:30] PM INFO: [crawling_manager.__init__] Base URL: https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html
+[02/19/2024 10:13:30] PM INFO: [crawling_manager.__init__] HTML parsing OK
+[02/19/2024 10:13:30] PM INFO: [adobe_crawling_manager.__init__] Adobe Acrobat DC 초기화 완료
+[02/19/2024 10:13:30] PM INFO: [adobe_crawling_manager.__init__] Adobe Acrobat Reader DC 초기화 완료
+[02/19/2024 10:13:30] PM INFO: [adobe_crawling_manager.__init__] Adobe Acrobat DC 2020 초기화 완료
+[02/19/2024 10:13:30] PM INFO: [adobe_continuous_crawling_manager.run] [Adobe Continuous Track] 전체 패치 목록 리스트
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 1. 23.008.20533 Planned update, Feb 13, 2024
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 2. 23.008.20470 Optional update, Jan 16, 2024
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 3. 23.008.20458 Optional update, Jan 04, 2024
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 4. 23.008.2042x Planned update, Dec 12, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 5. 23.006.20380 Planned update, Nov 14, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 6. 23.006.20360 Optional update, Oct 17, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 7. 23.006.20320 Planned update, Sep 12, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 8. 23.003.20284 Optional update, Aug 22, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 9. 23.003.20269 Planned update, Aug 08, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 10. 23.003.20244 Optional update, July 11, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 11. 23.003.20215 Optional update, Jun 21, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 12. 23.003.20201 Planned update, Jun 6, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 13. 23.001.2017x Optional update, May 09, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 14. 23.001.20143 Planned update, Apr 11, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 15. 23.001.20093 Optional update, Mar 22, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 16. 23.001.2006x Planned update, Mar 7, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 17. 22.003.20322 Optional update, Feb 16, 2023 (Windows Only)
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 18. 22.003.20314 Optional update, Jan 24, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 19. 22.003.20310 Planned update, Jan 10, 2023
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 20. 22.003.20282 (Win), 22.003.20281 (Mac) Optional update, Nov 17, 2022
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 21. 22.003.20263 Optional update, Oct 22, 2022 (Windows Only)
+[02/19/2024 10:13:31] PM INFO: [adobe_crawling_manager.get_patch_link] 22. 22.003.20258 Planned update, Oct 11, 2022
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 23. 22.002.20212 Planned update, Sep 09, 2022
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 24. 22.002.20191 Planned update, Aug 09, 2022
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 25. 22.001.20169 Planned update, Jul 12, 2022
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 26. 22.001.20142 Planned update, Jun 14, 2022
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 27. 22.001.20117 (Win), 22.001.20112 (Mac) Planned update, Apr 12, 2022
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 28. 22.001.20085 Planned update, Mar 07, 2022
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 29. 21.011.20039 Planned update, Jan 11, 2022
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 30. 21.007.20099 Planned update, Oct 12, 2021
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 31. 21.007.20095 (Win), 21.007.20096 (Mac) Optional update, Sept 29, 2021
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 32. 21.007.20091 Planned update, Sept 14, 2021
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 33. 21.005.20060 Optional update, July 28, 2021 (Windows Only)
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 34. 21.005.20058 Planned update, July 13, 2021
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 35. 21.005.20054 Optional update, June 23, 2021
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 36. 21.005.20048 Planned update, June 08, 2021
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 37. 21.001.20155 Planned update, May 11, 2021
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 38. 21.001.201xx Optional update, Apr 16, 2021
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 39. 21.001.20145 Optional update, Mar 10, 2021
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 40. 21.001.20142 Optional update, Feb 25, 2021
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 41. 21.001.20140 Optional update, Feb 22, 2021
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 42. 21.001.20138 Optional update, Feb 15, 2021
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 43. 21.001.20135 Planned update, Feb 09, 2021
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 44. 20.013.20074 Out of cycle update, December 09, 2020
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 45. 20.013.20066 Optional update, Nov 23, 2020 (Windows Only)
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 46. 20.013.20064 Planned update, Nov 03, 2020
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 47. 20.012.20048 Optional update, Sep 24, 2020
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 48. 20.012.20043 Optional update, Aug 19, 2020
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 49. 20.012.20041 Planned update, Aug 11, 2020
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 50. 20.009.20074 Optional update, July 06, 2020
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 51. 20.009.20067 Optional update, June 02, 2020
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 52. 20.009.20065 Optional update, May 21, 2020
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 53. 20.009.20063 Planned update, May 12, 2020
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 54. 20.006.20042 Planned update, March 17, 2020
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 55. 20.006.20034 Planned update, February 11, 2020
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 56. 19.021.20061 Optional update, December 19, 2019
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 57. 19.021.20058 Planned update, December 10, 2019
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 58. 19.021.20056 Optional update, November 13, 2019
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 59. 19.021.20049 Optional update, October 24, 2019
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 60. 19.021.20048 Out of cycle update, October 17, 2019
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 61. 19.021.20047 Planned update, October 15, 2019
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 62. 19.012.20040 Optional update, August 22, 2019
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 63. 19.012.20036 Planned update, August 13, 2019
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 64. 19.012.20035 Optional update, June 13, 2019 (Windows Only)
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 65. 19.012.20034 Planned update, May 14, 2019
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 66. 19.010.20100 Optional update, April 16, 2019 (Windows Only)
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 67. 19.010.20099 Planned update, April 09, 2019
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 68. 19.010.20098 Out of cycle update, February 21, 2019
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 69. 19.010.20091 Planned update, February 12, 2019
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 70. 19.010.20069 Out of cycle update, January 03, 2019
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 71. 19.010.20064 Planned update, December 11, 2018
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 72. 19.008.20081 Planned update, November 13, 2018 (Windows Only)
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 73. 19.008.20080 Optional update, October 22, 2018
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 74. 19.008.20074 Optional update, October 08, 2018
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 75. 19.008.20071 Planned update, October 02, 2018
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 76. 18.011.20063 Out of cycle update, September 19, 2018
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 77. 18.011.20058 Planned update, August 14, 2018
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 78. 18.011.20055 Planned update, July 10, 2018
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 79. 18.011.20040 Planned update, May 14, 2018
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 80. 18.011.20038 Optional update, February 23, 2018
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 81. 18.011.2003x Planned update, February 13, 2018
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 82. 18.009.20050 Optional update, November 29, 2017
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 83. 18.009.20044 Planned update, November 14, 2017
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 84. 17.012.20098 Out of cycle update, August 29, 2017
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 85. 17.012.20095 Optional update, August 11, 2017
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 86. 17.012.20093 Planned update, August 8, 2017
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 87. 17.009.20058 Out of cycle update, July 12, 2017
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 88. 17.009.20044 Planned update, April 11, 2017
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 89. 15.023.20070 Optional update, February 21, 2017 (Windows only)
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 90. 15.023.20056 Optional update, January 19, 2017
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 91. 15.023.20053 Planned update, January 10, 2017
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 92. 15.020.20042 Optional update, November 03, 2016
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 93. 15.020.20039 Planned update, October 11, 2016
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 94. 15.017.20053 Optional update, August 02, 2016
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 95. 15.017.20050 Planned update, July 12, 2016
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 96. 15.016.20045 Optional update, June 02, 2016
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 97. 15.016.20041 Optional update, May 19, 2016
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 98. 15.016.20039 Planned update, May 10, 2016
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 99. 15.010.20060 Out of cycle update, March 8, 2016
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 100. 15.010.20059 Optional update, February 16, 2016
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 101. 15.010.20056 Planned update, January 12, 2016
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 102. 15.009.20079 Optional update, November 25, 2015 (Windows only)
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 103. 15.009.20077 Optional update, October 29, 2015
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 104. 15.009.20071 Optional update, October 14, 2015 (Windows only)
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 105. 15.009.20069 Planned update, October 13, 2015
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 106. 15.008.20082 Planned update, July 14, 2015
+[02/19/2024 10:13:32] PM INFO: [adobe_crawling_manager.get_patch_link] 107. DC Continuous Track (base release)
+[02/19/2024 10:13:32] PM INFO: [adobe_continuous_crawling_manager.run] 전체 패치파일을 다운로드합니다..
+[02/19/2024 10:13:44] PM INFO: [adobe_continuous_crawling_manager.download_patch_files] Windows installers (32-bit) 다운로드 작업 중..
+[02/19/2024 10:13:44] PM INFO: [adobe_continuous_crawling_manager.download_patch_files] - AcrobatDCUpd2300820533.msp
+[02/19/2024 10:13:48] PM INFO: [adobe_continuous_crawling_manager.download_patch_files] - AcroRdrDCUpd2300820533.msp
+[02/19/2024 10:13:51] PM INFO: [adobe_continuous_crawling_manager.download_patch_files] - AcroRdrDCUpd2300820533_MUI.msp
+[02/19/2024 10:13:54] PM INFO: [adobe_continuous_crawling_manager.download_patch_files] Windows installers (64-bit) 다운로드 작업 중..
+[02/19/2024 10:13:55] PM INFO: [adobe_continuous_crawling_manager.download_patch_files] - AcrobatDCx64Upd2300820533.msp
+[02/19/2024 10:13:58] PM INFO: [adobe_continuous_crawling_manager.download_patch_files] - AcroRdrDCx64Upd2300820533.msp
+[02/19/2024 10:14:01] PM INFO: [adobe_continuous_crawling_manager.download_patch_files] - AcroRdrDCx64Upd2300820533_MUI.msp

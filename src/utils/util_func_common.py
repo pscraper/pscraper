@@ -4,8 +4,15 @@ import requests
 from requests_toolbelt import MultipartEncoder
 from datetime import datetime
 from pathlib import Path
-from const import PATCH_FILE_PATH, UNREQUIRED_UNICODES, DOTNET_FILE_PATH, RESULT_FILE_PATH, logger
 from classes import Category
+from const import (
+    PATCH_FILE_PATH, 
+    UNREQUIRED_UNICODES, 
+    DOTNET_FILE_PATH, 
+    RESULT_FILE_PATH, 
+    DEFAULT_REMOVE_HOUR,
+    logger
+)
 
 
 # 원격 서버로 결과 파일 전송
@@ -85,3 +92,26 @@ def remove_file_dir(folder: str) -> bool:
     except Exception as e:
         logger.warning(e)
         return False
+    
+
+def remove_before_one_hour_files(path: Path, now: str):
+    for file in path.iterdir():
+        if not (file.name.startswith("log2") or file.name.startswith("result2") or file.name.startswith("patch2")):
+            continue
+            
+        time_str = file.name[file.name.find('2'):file.name.find('.')]
+        if int(now) - int(time_str) >= DEFAULT_REMOVE_HOUR:
+            os.remove(path / file)
+            logger.info(f"Remove Old File: {file}")
+            
+
+def add_time_str_to_exists_file_name(path: Path, now: str):
+    for file in path.iterdir():
+        name = file.name
+        if not (name == "result.json" or name == "log.txt"):
+            continue
+
+        name_splt = name.split('.')
+        new_name = name_splt[0] + now + '.' + name_splt[1]
+        os.rename(path / file, path / new_name)
+        logger.info(f"{file} -> {new_name}")

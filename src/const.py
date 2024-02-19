@@ -1,13 +1,9 @@
 import logging
 import sys
-import os
 from pathlib import Path
-from datetime import datetime
 
 
 APP_NAME = "pscraper"
-
-# Type
 ENC_TYPE = "utf8"
 
 
@@ -32,10 +28,7 @@ ADB_SECURITY_BULLETIN = "//*[@id=\"security-bulletin\"]"
 ADB_OPTIONAL_TITLE = "//*[@id=\"planned-update-feb-13-2024\"]/p"
 ADB_CLASSIC_UL = "//*[@id=\"classic-track-installers\"]/ul"
 ADB_CLASSIC_INSTALL_A = "//*[@id=\"id1\"]/tbody/tr[1]/td[3]/p/a"
-
 ADB_CONTINUOUS_UL = "//*[@id=\"continuous-track-installers\"]/ul"
-ADB_CONTINUOUS_INSTALL_A_X32 = "//*[@id=\"id1\"]/tbody"
-ADB_CONTINUOUS_INSTALL_A_X64 = "//*[@id=\"id2\"]/tbody"
 
 
 # Folder Path
@@ -91,41 +84,10 @@ DOTNET_NATIONS_LIST = ['en-us', 'ja-jp', 'ko-kr', 'zh-cn']
 
 # Log, Result 파일 관리
 DEFAULT_REMOVE_HOUR = 5000   # 30분
-logger = logging
 
-def remove_before_one_hour_files(path: Path, now: str):
-    for file in path.iterdir():
-        if not (file.name.startswith("log2") or file.name.startswith("result2") or file.name.startswith("patch2")):
-            continue
-            
-        time_str = file.name[file.name.find('2'):file.name.find('.')]
-        
-        if int(now) - int(time_str) >= DEFAULT_REMOVE_HOUR:
-            os.remove(path / file)
-            logger.info(f"Remove Old File: {file}")
-            
-
-def add_time_str_to_exists_file_name(path: Path, now: str):
-    for file in path.iterdir():
-        name = file.name
-        
-        if not (name == "result.json" or name == "log.txt"):
-            continue
-        
-        name_splt = name.split('.')
-        new_name = name_splt[0] + now + '.' + name_splt[1]
-        os.rename(path / file, path / new_name)
-        
 
 # logging   
-now = datetime.now().strftime("%Y%m%d%H%M%S")
-paths = [LOG_PATH, DATA_PATH]
-    
-for path in paths:
-    add_time_str_to_exists_file_name(path, now)
-    remove_before_one_hour_files(path, now)
-    
-    
+logger = logging
 stdout_handler = logger.StreamHandler(stream = sys.stdout)                # 콘솔 출력을 위한 핸들러
 file_handler = logger.FileHandler(LOG_FILE_PATH, encoding = ENC_TYPE)     # 파일 출력을 위한 핸들러
 logger.basicConfig(

@@ -56,8 +56,8 @@ class DotnetCrawlingManager(CrawlingManager):
 
         # 다운로드 버튼 클릭
         for tr in trs:
-            self._driver_wait(By.TAG_NAME, "td")
-            tds: list[WebElement] = tr.find_elements(by = By.TAG_NAME, value = "td")[1:]
+            args = {"by": By.TAG_NAME, "value": "td", "element": tr}
+            tds = self._driver_wait_and_finds(**args)
             patch_title = tds[0].text
 
             if "Embedded" in patch_title or "Itanium" in patch_title:
@@ -74,15 +74,13 @@ class DotnetCrawlingManager(CrawlingManager):
             driver.switch_to.window(handle)
 
             # 열린 다운로드 창에서 파일 다운로드 받기
-            self._driver_wait(By.XPATH, PF_DOWNLOAD)
-            time.sleep(SLEEP_LONG)
-            box: WebElement = driver.find_element(by = By.XPATH, value = PF_DOWNLOAD)
+            args = {"by": By.XPATH, "value": PF_DOWNLOAD, "element": driver}
+            box = self._driver_wait_and_find(**args)
             divs: list[WebElement] = box.find_elements(by = By.TAG_NAME, value = "div")[1:]
 
             for div in divs:
-                self._driver_wait(By.TAG_NAME, "a")
-                time.sleep(SLEEP_MEDIUM)
-                atag: WebElement = div.find_element(by = By.TAG_NAME, value = "a")
+                args = {"by": By.TAG_NAME, "value": "a", "element": div}
+                atag = self._driver_wait_and_find(**args)
                 vendor_url = atag.get_attribute('href')
                 
                 if self._is_already_exists(DOTNET_FILE_PATH, atag.text.split("_")[0]):
@@ -126,10 +124,10 @@ class DotnetCrawlingManager(CrawlingManager):
             file_dict[qnumber] = list()
 
             try:
-                driver.get(catalog_link)
-                self._driver_wait(By.CLASS_NAME, "resultsBorder")
                 main_window = driver.current_window_handle
-                table: WebElement = driver.find_element(by = By.CLASS_NAME, value = "resultsBorder")
+                driver.get(catalog_link)
+                args = {"by": By.CLASS_NAME, "value": "resultsBorder", "element": driver}
+                table = self._driver_wait_and_find(**args)
                 trs: list[WebElement] = table.find_elements(by = By.TAG_NAME, value = "tr")[1:]
 
                 # 다운로드 작업 시작 세팅
@@ -142,14 +140,14 @@ class DotnetCrawlingManager(CrawlingManager):
                 time.sleep(SLEEP_MEDIUM)
  
                 # 다운로드 완료 대기 
-                self._wait_(self.CRDOWNLOAD)
+                self._wait_(DOTNET_FILE_PATH, self.CRDOWNLOAD)
 
             except Exception as e:
                 logger.critical(e)
                 continue
             
             finally:
-                self._wait_(self.CRDOWNLOAD)
+                self._wait_(DOTNET_FILE_PATH, self.CRDOWNLOAD)
 
         
         return file_dict

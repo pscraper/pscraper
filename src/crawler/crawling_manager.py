@@ -7,6 +7,7 @@ from pathlib import Path
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver import ActionChains
+from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -17,7 +18,6 @@ from const import (
     PATCH_FILE_PATH,
     DATA_PATH,
     CHROME_DRIVER_PATH,
-    DOTNET_FILE_PATH,
     ENC_TYPE,
     SLEEP_SHORT,
     logger
@@ -27,7 +27,20 @@ from const import (
 class CrawlingManager:
     CRDOWNLOAD = "crdownload"
     TMP = "tmp"
-    
+    DRIVER_PREFS = {
+        "directory_upgrade": True,
+        "safebrowsing": {
+            "enabled": True,
+            "malware": {"enabled": True}
+        },
+        "alternate_error_pages": True,
+        "browser": {
+            "safebrowsing": {
+                "enabled": True,
+                "malware":{"enabled": True}
+            }
+        }
+    }
     
     def __init__(self, category: str, url: str):
         """
@@ -65,9 +78,9 @@ class CrawlingManager:
         logger.info(f"Make Dir: {category_path}")
 
         # 다운로드 경로 설정
+        self.DRIVER_PREFS.update({"download.default_directory": str(category_path)})
         options = webdriver.ChromeOptions()
-        options.add_experimental_option("prefs", {"download.default_directory": str(category_path)})
-        
+        options.add_experimental_option("prefs", self.DRIVER_PREFS)
         for option in self.meta['driver_options']:
             logger.info(f"Chrome Option {option} Added.")
             options.add_argument(option)
@@ -103,10 +116,10 @@ class CrawlingManager:
 
 
     # patchfiles\dotnet 폴더에 다운로드 중인 파일이 있는지 검사
-    def _wait_(self, ends: str):
+    def _wait_(self, path: Path, ends: str):
         while True: 
             dl = False
-            for file in DOTNET_FILE_PATH.iterdir():
+            for file in path.iterdir():
                 if file.name.endswith(ends):
                     dl = True
                     break
@@ -128,11 +141,21 @@ class CrawlingManager:
         chains.send_keys(Keys.HOME).perform()
 
 
-    def _driver_wait(self, by: By, name: str):
+    def _driver_wait_and_find(self, element: WebElement, by: By, value: str) -> WebElement:
+        self._driver_wait(by, value)
+        return element.find_element(by, value)
+
+
+    def _driver_wait_and_finds(self, element: WebElement, by: By, value: str) -> list[WebElement]:
+        self._driver_wait(by, value)
+        return element.find_elements(by, value)
+
+
+    def _driver_wait(self, by: By, value: str):
         try:
             WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((by, name)),
-                f"[ERR] Can't Find {by}, {name}"            
+                EC.presence_of_element_located((by, value)),
+                f"[ERR] Can't Find {by}, {value}"            
             )
 
             time.sleep(SLEEP_SHORT)
