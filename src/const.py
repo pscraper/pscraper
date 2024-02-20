@@ -55,10 +55,10 @@ class DirPath:
     SETTINGS_PATH = BIN_PATH / "settings"
     EXE_PATH = BIN_PATH / "exe"
     DATA_PATH = BIN_PATH / "data"
-    PATCH_FILE_PATH = BIN_PATH / "patchfiles"
-    DOTNET_FILE_PATH = PATCH_FILE_PATH / "dotnet"
-    DOTNET_CAB_PATH = DOTNET_FILE_PATH / "cabs"
-    ADOBE_FILE_PATH = PATCH_FILE_PATH / "adobe"
+    PATCH_DIR_PATH = BIN_PATH / "patchfiles"
+    DOTNET_DIR_PATH = PATCH_DIR_PATH / "dotnet"
+    CAB_DIR_PATH = DOTNET_DIR_PATH / "cabs"
+    ADOBE_DIR_PATH = PATCH_DIR_PATH / "adobe"
 
 
 # File Path
