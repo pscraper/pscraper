@@ -12,11 +12,12 @@ from const import RESULT_FILE_PATH, DATA_PATH, DOTNET_FILE_PATH
 from logger import Logger
 
 
+logger = Logger.get_logger()
+
 
 def run_dotnet(category: str, url: str, phase: int) -> None:
     err = False
     run_name = category.upper()
-    logger = Logger.get_logger()
     
     try:
         if phase == 1:
@@ -140,7 +141,7 @@ def _run_dotnet_phase3() -> None:
     res.raise_for_status()
     if res.status_code == 200:
         logger.info("- 결과 파일을 업로드 완료")
-    
+
     
 def _run_dotnet_phase4(category: str) -> None:
     dst = Path.cwd() / category

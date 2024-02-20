@@ -1,6 +1,6 @@
 from selenium.webdriver.common.by import By
 from crawler.adobe_crawling_manager import AdobeCrawlingManager
-from const import logger, ADB_PATCH_NOTE_URL, ADB_CLASSIC_UL, ADB_CLASSIC_INSTALL_A
+from const import ADB_PATCH_NOTE_URL, ADB_CLASSIC_UL, ADB_CLASSIC_INSTALL_A
 
 
 class AdobeClassicCrawlingManager(AdobeCrawlingManager):
@@ -9,7 +9,7 @@ class AdobeClassicCrawlingManager(AdobeCrawlingManager):
     
     def run(self):
         # 전체 패치 목록 리스트 조회
-        logger.info(f"[Adobe Classic Track] 전체 패치 목록 리스트")
+        self.logger.info(f"[Adobe Classic Track] 전체 패치 목록 리스트")
         link = self.get_patch_link(ADB_CLASSIC_UL)
         
         # 패치 제목 수집
@@ -24,7 +24,7 @@ class AdobeClassicCrawlingManager(AdobeCrawlingManager):
         
         # 패치파일 수집
         file_name = self.download_patch_files(link)[0]
-        logger.info(f"[Download] {file_name}")
+        self.logger.info(f"[Download] {file_name}")
         
     
     def download_patch_files(self, link) -> list[str]:

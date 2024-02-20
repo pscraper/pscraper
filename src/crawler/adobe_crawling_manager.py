@@ -4,7 +4,7 @@ from typing import Any
 from abc import abstractmethod
 from crawler.crawling_manager import CrawlingManager
 from classes import AdobeCommon
-from const import ADB_OPTIONAL_TITLE, ADB_SECURITY_BULLETIN, logger
+from const import ADB_OPTIONAL_TITLE, ADB_SECURITY_BULLETIN
 
 
 # Continuous 버전과 Classic 버전 수집 과정에서 공통 기능을 두기 위한 부모 클래스
@@ -17,7 +17,7 @@ class AdobeCrawlingManager(CrawlingManager):
         keys = self.meta["adobe_excel_key"]
         
         for key in keys:
-            logger.info(f"{key} 초기화 완료")
+            self.logger.info(f"{key} 초기화 완료")
             self.result[key] = dict()
         
         
@@ -38,7 +38,7 @@ class AdobeCrawlingManager(CrawlingManager):
         for idx, li in enumerate(ul.find_elements(by = By.TAG_NAME, value = "li"), start = 1):
             if idx == 1:
                 link = li.find_element(by = By.TAG_NAME, value = "a").get_attribute("href")
-            logger.info(f"{idx}. {li.text}")
+            self.logger.info(f"{idx}. {li.text}")
 
         return link
     
@@ -68,7 +68,7 @@ class AdobeCrawlingManager(CrawlingManager):
             return self._driver_wait_and_find(**args)
         
         except Exception as e:
-            logger.info(e)
+            self.logger.info(e)
             return None
     
     
@@ -78,7 +78,7 @@ class AdobeCrawlingManager(CrawlingManager):
             return self._driver_wait_and_find(**args)
         
         except Exception as e:
-            logger.info(e)
+            self.logger.info(e)
             return None
         
         

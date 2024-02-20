@@ -4,7 +4,6 @@ from const import (
     ENC_TYPE,
     DOTNET_KB_FORMAT as KB_FORMAT,
     DOTNET_BULLETIN_FORMAT as BULLETIN_FORMAT,
-    logger
 )
 
 
@@ -21,7 +20,6 @@ def extract_qnumber_from_KB_file_name(file_name: str) -> str:
 
 def extract_idx_from_file_name(file_name: str, find_str: str) -> int:
     idx = file_name.find(find_str)
-    
     if idx == -1:
         raise Exception(f"파일명에서 {find_str} 추출 불가")
     
@@ -31,9 +29,6 @@ def extract_idx_from_file_name(file_name: str, find_str: str) -> int:
 def read_mapper_file() -> list[list[str]]:
     with open(MAPPER_FILE_PATH, "r", encoding = ENC_TYPE) as fp:
         lines = list(map(lambda x: x.strip(), fp.readlines()))
-        logger.info(f"{MAPPER_FILE_PATH.name} 로딩 완료")
-    
-        # lines 분리 (QNumber | OS Version | .NET Version | Catalog Link | Excel Key)
         for idx, line in enumerate(lines):
             lines[idx] = list(map(lambda x: x.strip(), line.split("|")))    
 
@@ -43,7 +38,6 @@ def read_mapper_file() -> list[list[str]]:
 def read_mapper_file_and_transform_dict() -> dict[str, Any]:
     result = dict()
     mappers = read_mapper_file()
-
     for mapper in mappers:
         result[mapper[0]] = {
             "os_version": mapper[1],
@@ -58,7 +52,6 @@ def read_mapper_file_and_transform_dict() -> dict[str, Any]:
 def read_mapper_file_and_transform_qnumber_set() -> set[str]:
     qnumbers = set()
     mappers = read_mapper_file()
-
     for mapper in mappers:
         qnumbers.add(mapper[0])
     
@@ -68,7 +61,6 @@ def read_mapper_file_and_transform_qnumber_set() -> set[str]:
 def read_mapper_file_and_excel_key_qnumber_dict() -> dict[str, str]:
     key_qnumber_dict = dict()
     mappers = read_mapper_file()
-    
     for mapper in mappers:
         key_qnumber_dict[mapper[-1]] = mapper[0]
 

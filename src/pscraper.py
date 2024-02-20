@@ -1,9 +1,10 @@
 import click
+from typing import Any
 from classes import Category
 from funcs.func_run_adobe import run_adobe
 from funcs.func_run_dotnet import run_dotnet
 from funcs.func_run_java import run_java
-from const import APP_NAME
+from const import AppMeta
 
 
 
@@ -12,15 +13,15 @@ from const import APP_NAME
 # --phase 3 -> 서버 전송
 # --phase 4 -> 파일 복사
 # full command -> pscraper --category {category} --url {url} --phase 1
-@click.command(name = APP_NAME)
+@click.command(name = AppMeta.APP_NAME)
 @click.option("--category", type = click.Choice(["dotnet", "adobe", "java"]))
 @click.option("--url", type = click.STRING)
 @click.option("--phase", type = click.INT, default = 1)
-def main(**kwargs) -> None:    
+def main(**kwargs: dict[str, Any]) -> None:    
     category = kwargs["category"]
-    DOTNET = Category.DOTNET.name.lower()
-    JAVA = Category.JAVA.name.lower()
-    ADOBE = Category.ADOBE.name.lower()
+    DOTNET = Category.DOTNET.lower()
+    JAVA = Category.JAVA.lower()
+    ADOBE = Category.ADOBE.lower()
     
     if category == DOTNET:
         run_dotnet(**kwargs)

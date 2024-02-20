@@ -1,5 +1,5 @@
 import json
-from const import ENC_TYPE, logger
+from const import ENC_TYPE
 
 
 def save_json_result(path: str, obj: dict):
@@ -17,6 +17,5 @@ def save_json_result(path: str, obj: dict):
 def read_json_result(path: str):
     with open(path, "r", encoding = ENC_TYPE) as fp:
         result = json.load(fp)
-        logger.info(f"{path.name} 로딩 완료")
         
     return result

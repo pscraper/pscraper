@@ -13,6 +13,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+from logger import Logger
 from const import (
     META_FILE_PATH,
     PATCH_FILE_PATH,
@@ -20,7 +21,6 @@ from const import (
     CHROME_DRIVER_PATH,
     ENC_TYPE,
     SLEEP_SHORT,
-    logger
 )
 
 
@@ -42,6 +42,7 @@ class CrawlingManager:
         }
     }
     
+    
     def __init__(self, category: str, url: str):
         """
         Top object of crawler. 
@@ -52,18 +53,20 @@ class CrawlingManager:
             category(str) : Enum value of Adobe / Java / .Net (defined classes.py)
             url(str) : Base URL for crawling
         """
+        self.logger = Logger.get_logger()
+
         # 파일 읽어서 meta 객체 초기화
         with open(META_FILE_PATH, "r", encoding = ENC_TYPE) as fp:
             self.meta = yaml.load(fp, Loader = yaml.FullLoader)
 
         # bin\patchfiles 폴더 생성
         if not PATCH_FILE_PATH.exists():
-            logger.info(f"Make Dir: {PATCH_FILE_PATH}")
+            self.logger.info(f"Make Dir: {PATCH_FILE_PATH}")
             os.mkdir(PATCH_FILE_PATH)
 
         # bin\data 폴더 생성
         if not DATA_PATH.exists():
-            logger.info(f"Make Dir: {DATA_PATH}")
+            self.logger.info(f"Make Dir: {DATA_PATH}")
             os.mkdir(DATA_PATH)
 
         # bin\patchfiles\{type} 폴더 생성
@@ -71,18 +74,18 @@ class CrawlingManager:
         category_path = PATCH_FILE_PATH / category
         
         if os.path.exists(category_path):
-            logger.warning(f"Remove Dir Tree: {category_path}")
+            self.logger.warning(f"Remove Dir Tree: {category_path}")
             shutil.rmtree(category_path)
         
         category_path.mkdir()
-        logger.info(f"Make Dir: {category_path}")
+        self.logger.info(f"Make Dir: {category_path}")
 
         # 다운로드 경로 설정
         self.DRIVER_PREFS.update({"download.default_directory": str(category_path)})
         options = webdriver.ChromeOptions()
         options.add_experimental_option("prefs", self.DRIVER_PREFS)
         for option in self.meta['driver_options']:
-            logger.info(f"Chrome Option {option} Added.")
+            self.logger.info(f"Chrome Option {option} Added.")
             options.add_argument(option)
 
         # selenium 버전 높은 경우 -> executable_path Deprecated -> Service 객체 사용
@@ -90,7 +93,7 @@ class CrawlingManager:
             self.driver = webdriver.Chrome(options = options, service = Service(executable_path = str(CHROME_DRIVER_PATH)))
 
         except Exception as _:
-            logger.info(f"구버전 ChromeDriver 객체로 동작합니다.")
+            self.logger.info(f"구버전 ChromeDriver 객체로 동작합니다.")
             self.driver = webdriver.Chrome(executable_path = str(CHROME_DRIVER_PATH), options = options)
         
         # Get 요청 후 HTML 파싱
@@ -99,11 +102,11 @@ class CrawlingManager:
         self.soup = BeautifulSoup(self.driver.page_source, "html.parser")
         
         # Logging
-        logger.info(f"Successfully Initialized")
-        logger.info(f"Python Version: {sys.version}")
-        logger.info(f"Category: {category}")
-        logger.info(f"Base URL: {url}")
-        logger.info(f"HTML parsing OK")
+        self.logger.info(f"Successfully Initialized")
+        self.logger.info(f"Python Version: {sys.version}")
+        self.logger.info(f"Category: {category}")
+        self.logger.info(f"Base URL: {url}")
+        self.logger.info(f"HTML parsing OK")
 
 
     # patchfiles\dotnet 폴더에 중복된 파일이 있는지 검사
@@ -161,7 +164,7 @@ class CrawlingManager:
             time.sleep(SLEEP_SHORT)
 
         except Exception as e:
-            logger.warn(e)
+            self.logger.warn(e)
 
 
     def _del_driver(self):

@@ -21,10 +21,8 @@ from const import (
     DOTNET_BULLETIN_URL_FORMAT,
     DOTNET_NATIONS_LIST,
     ENC_TYPE,
-    SLEEP_LONG,
     SLEEP_MEDIUM,
     SLEEP_SHORT,
-    logger
 )
 
 
@@ -61,7 +59,7 @@ class DotnetCrawlingManager(CrawlingManager):
             patch_title = tds[0].text
 
             if "Embedded" in patch_title or "Itanium" in patch_title:
-                logger.info("Embedded 또는 Itanium 패치 제외")
+                self.logger.info("Embedded 또는 Itanium 패치 제외")
                 continue
             
             tds[-1].click()
@@ -84,20 +82,20 @@ class DotnetCrawlingManager(CrawlingManager):
                 vendor_url = atag.get_attribute('href')
                 
                 if self._is_already_exists(DOTNET_FILE_PATH, atag.text.split("_")[0]):
-                    logger.info(f"중복된 파일 제외: {atag.text}")
+                    self.logger.info(f"중복된 파일 제외: {atag.text}")
                     continue
                 
                 ext_qnumber = extract_qnumber_from_kb_file_name(atag.text)
                 
                 if qnumber != ext_qnumber:
-                    logger.info(f"일치하지 않는 파일 제외: {qnumber} != {ext_qnumber}")
+                    self.logger.info(f"일치하지 않는 파일 제외: {qnumber} != {ext_qnumber}")
                     continue
                 
                 atag.click()
                 file_name = atag.text
-                logger.info("------------ [Downloading] ---------------")
-                logger.info(file_name)
-                logger.info(vendor_url)
+                self.logger.info("------------ [Downloading] ---------------")
+                self.logger.info(file_name)
+                self.logger.info(vendor_url)
 
                 file = {   
                     "file_name": file_name,
@@ -143,7 +141,7 @@ class DotnetCrawlingManager(CrawlingManager):
                 self._wait_(DOTNET_FILE_PATH, self.CRDOWNLOAD)
 
             except Exception as e:
-                logger.critical(e)
+                self.logger.critical(e)
                 continue
             
             finally:
@@ -211,12 +209,12 @@ class DotnetCrawlingManager(CrawlingManager):
         
         # 기존 파일 삭제 후 mapper.txt 파일 기록
         if MAPPER_FILE_PATH.exists():
-            logger.warn(f"기존 {MAPPER_FILE_PATH.name} 파일 삭제")
+            self.logger.warn(f"기존 {MAPPER_FILE_PATH.name} 파일 삭제")
             os.remove(MAPPER_FILE_PATH)
         
         with open(MAPPER_FILE_PATH, "w", encoding = ENC_TYPE) as fp:
             fp.writelines(self.keys)
-            logger.info(f"{MAPPER_FILE_PATH.name} 파일 초기화 완료")
+            self.logger.info(f"{MAPPER_FILE_PATH.name} 파일 초기화 완료")
                 
 
     def _get_patch_date(self) -> str:
@@ -264,7 +262,7 @@ class DotnetCrawlingManager(CrawlingManager):
                         summary = replace_specific_unicode(ps.text[1:-1].strip())
 
                 except Exception as e:
-                    logger.critical(e)
+                    self.logger.critical(e)
                     raise e
                     
                 

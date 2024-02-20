@@ -1,6 +1,9 @@
 from crawler.adobe_classic_crawling_manager import AdobeClassicCrawlingManager
 from crawler.adobe_continuous_crawling_manager import AdobeContinuousCrawlingManager
-from const import logger
+from logger import Logger
+
+
+logger = Logger.get_logger()
 
 
 def run_adobe(url: str, category: str) -> None:

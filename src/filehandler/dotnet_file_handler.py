@@ -1,15 +1,17 @@
 import os
 import hashlib
-from const import DOTNET_FILE_PATH, DOTNET_CAB_PATH, ERR_ARCH_FORMAT, logger
+from logger import Logger
+from const import DOTNET_FILE_PATH, DOTNET_CAB_PATH, ERR_ARCH_FORMAT
 from pathlib import Path
 
 
 
 class DotnetFileHandler:
     def __init__(self):
+        self.logger = Logger.get_logger()
         # cabs 폴더가 없으면 생성
         if not DOTNET_CAB_PATH.exists():
-            logger.info(f"{DOTNET_CAB_PATH} 생성")
+            self.logger.info(f"{DOTNET_CAB_PATH} 생성")
             DOTNET_CAB_PATH.mkdir()
 
 
@@ -18,7 +20,7 @@ class DotnetFileHandler:
             if not file.name.endswith(".msu"):
                 continue
 
-            logger.info(f"{file.name} 작업 시작")
+            self.logger.info(f"{file.name} 작업 시작")
             
             # 파일명에서 qnumber 추출
             qnumber = self._extract_qnumber(file.name)
@@ -34,16 +36,16 @@ class DotnetFileHandler:
             new_name = self._msu_file_name_change(new_name)
             
             if new_name == 'ERR':
-                logger.warn("중복 파일을 발견하여 해당 파일에 대한 압축 과정을 생략합니다.")
+                self.logger.warn("중복 파일을 발견하여 해당 파일에 대한 압축 과정을 생략합니다.")
                 continue
             
-            logger.info(f"- {file.name} -> {new_name}")
+            self.logger.info(f"- {file.name} -> {new_name}")
  
             # 파일의 MD5, SHA256, SIZE 추출
             md5, sha256, size = self._extract_file_hash(new_name)
-            logger.info(f"- size: {size}")
-            logger.info(f"- MD5: {md5}")
-            logger.info(f"- SHA256: {sha256}")
+            self.logger.info(f"- size: {size}")
+            self.logger.info(f"- MD5: {md5}")
+            self.logger.info(f"- SHA256: {sha256}")
 
             # 파일 압축해제
             cab_file_name = self._unzip_msu_file(new_name)
@@ -81,7 +83,7 @@ class DotnetFileHandler:
                     "WSUS 파일": cab_file_name
                 })
                 
-                logger.info(f"[{qnumber}] {new_name} 파일 정보 업데이트 완료")
+                self.logger.info(f"[{qnumber}] {new_name} 파일 정보 업데이트 완료")
                 break
 
 
@@ -92,7 +94,7 @@ class DotnetFileHandler:
             raise Exception("파일명에서 QNumber를 추출할 수 없습니다.")
         
         qnumber = file_name[(idx + 2):(idx + 9)]
-        logger.info(f"- {qnumber} 추출")
+        self.logger.info(f"- {qnumber} 추출")
         
         return qnumber
 
@@ -105,8 +107,8 @@ class DotnetFileHandler:
             os.rename(DOTNET_FILE_PATH / file_name, DOTNET_FILE_PATH / new_name)
             
         except FileExistsError as e:
-            logger.warn("이미 존재하는 파일입니다.")
-            logger.warn(e)
+            self.logger.warn("이미 존재하는 파일입니다.")
+            self.logger.warn(e)
             return "ERR"
             
         return new_name
@@ -126,8 +128,8 @@ class DotnetFileHandler:
             Path.rename(DOTNET_CAB_PATH / "WSUSSCAN.cab", DOTNET_CAB_PATH / cab_file_name)
         
         except Exception as e:    
-            logger.warning("msu 파일 압축 해제 과정에서 에러 발생")
-            logger.warning(e)
+            self.logger.warning("msu 파일 압축 해제 과정에서 에러 발생")
+            self.logger.warning(e)
             raise e
         
         return cab_file_name
@@ -138,7 +140,7 @@ class DotnetFileHandler:
         for file in DOTNET_CAB_PATH.iterdir():
             if not file.name.endswith("WSUSSCAN.cab"):
                 os.remove(file)
-                logger.info(f"Remove {file.name}")
+                self.logger.info(f"Remove {file.name}")
     
 
     # 파일의 MD5, SHA256, SIZE 추출
@@ -165,7 +167,7 @@ class DotnetFileHandler:
             if version in dotnet_version:
                 new_name = splt[0] + "-ndp" + "".join(version.split(".")) + "_" + splt[-1]
                 os.rename(DOTNET_FILE_PATH / file_name, DOTNET_FILE_PATH / new_name)
-                logger.info(f"No NDP: {file_name} -> {new_name}")
+                self.logger.info(f"No NDP: {file_name} -> {new_name}")
                 return new_name 
 
         raise Exception("파일명 변경 과정 중 에러 발생")

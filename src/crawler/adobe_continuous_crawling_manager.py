@@ -1,5 +1,4 @@
 import time
-from typing import Any
 from selenium.webdriver.common.by import By
 from crawler.adobe_crawling_manager import AdobeCrawlingManager
 from classes import AdobeCommon, AdobeContinuous
@@ -11,7 +10,6 @@ from const import (
     ADB_CONTINUOUS_UL, 
     SLEEP_LONG,
     RESULT_FILE_PATH,
-    logger
 )
 
 
@@ -21,10 +19,10 @@ class AdobeContinuousCrawlingManager(AdobeCrawlingManager):
     
     
     def run(self):
-        logger.info(f"[Adobe Continuous Track] 전체 패치 목록 리스트")
+        self.logger.info(f"[Adobe Continuous Track] 전체 패치 목록 리스트")
         link = self.get_patch_link(ADB_CONTINUOUS_UL)
         
-        logger.info(f"전체 패치파일을 다운로드합니다..")
+        self.logger.info(f"전체 패치파일을 다운로드합니다..")
         file_names = self.download_patch_files(link)
         self.update_file_names(file_names)
         
@@ -65,7 +63,7 @@ class AdobeContinuousCrawlingManager(AdobeCrawlingManager):
             if not title.startswith("Windows"):
                 continue
 
-            logger.info(f"{title} 다운로드 작업 중..")
+            self.logger.info(f"{title} 다운로드 작업 중..")
             trs = table.find_element(by = By.TAG_NAME, value = "tbody").find_elements(by = By.TAG_NAME, value = "tr")
             
             for tr in trs:
@@ -78,7 +76,7 @@ class AdobeContinuousCrawlingManager(AdobeCrawlingManager):
                         
                     file_names.append(a.text)
                     a.click()
-                    logger.info(f"- {a.text}")
+                    self.logger.info(f"- {a.text}")
                     time.sleep(SLEEP_LONG)
                     
                 except Exception as _:

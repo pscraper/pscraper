@@ -1,19 +1,16 @@
-from enum import Enum
-from typing import Any
-
-
-class Category(Enum):
+class Category:
     DOTNET = "Dotnet"
     JAVA = "Java"
     ADOBE = "Adobe"
 
 
+# Adobe 관련 모델
 class AdobeCommon:
+    PATCH_NOTE_URL = "https://www.adobe.com/devnet-docs/acrobatetk/tools/ReleaseNotesDC/index.html"
     SECURITY_UPDATE_TITLE_FORMAT = "Security update available for Adobe {}({})"
     OPTINAL_UPDATE_TITLE_FORMAT = "Update available for Adobe {}({})({})"
     READER = "Reader"
     ACROBAT = "Acrobat"
-    
     KEY_MAPPER: dict[str, str] = {
         "Adobe Acrobat Reader DC": "Reader",
         "Adobe Acrobat DC": "Acrobat",
@@ -21,7 +18,7 @@ class AdobeCommon:
     }
 
 
-class AdobeContinuous:
+class AdobeContinuous(AdobeCommon):
     # File Name과 Key를 매핑 
     FK_MAPPER: dict[str, str] = {
         "AcrobatDCUpd": "Adobe Acrobat DC",
@@ -31,15 +28,23 @@ class AdobeContinuous:
     }
 
 
-class AdobeClassic:
+class AdobeClassic(AdobeCommon):
     FK_MAPPER: dict[str, str] = {
         "Acrobat2020Upd": "Adobe Acrobat DC 2020"
     }
 
 
-class DotnetLocs:
-    # 엑셀 파일 내 상대위치
-    NATION_REL_LOCS: dict[str, dict[str, tuple[int, int]]] = {
+# .NET 관련 모델
+class DotnetCommon:
+    DOTNET_KB_FORMAT = "KB{}"
+    DOTNET_BULLETIN_FORMAT = "MS-KB{}"
+    DOTNET_BULLETIN_URL_FORMAT = "https://support.microsoft.com/{}/help/{}"
+    DOTNET_NATIONS_LIST = ['en-us', 'ja-jp', 'ko-kr', 'zh-cn']
+
+    
+# .NET 엑셀 관련 모델
+class DotnetExcel:    
+    NATIONS: dict[str, dict[str, tuple[int, int]]] = {
         "en-us": {
             "title": (1, 1),
             "summary": (1, 2),
@@ -66,7 +71,7 @@ class DotnetLocs:
     }
 
     # BulletinID, KBNumber, PatchDate, 중요도, CVE 상대 위치
-    COMMON_REL_LOCS: dict[str, tuple[int, int]] = {
+    COMMONS: dict[str, tuple[int, int]] = {
         "BulletinID": (1, 7),
         "KBNumber": (1, 8),
         "PatchDate": (1, 9),
@@ -76,7 +81,7 @@ class DotnetLocs:
 
     # 파일명, 파일크기, MD5, VendorURL, Wsus 파일, SubJect, SHA256 상대 위치
     # 파일이 여러개인 경우 열은 고정, 행 + 1
-    FILE_REL_LOCS: dict[str, tuple[int, int]] = {
+    FILES: dict[str, tuple[int, int]] = {
         "파일명": (6, 0),
         "파일크기": (6, 1),
         "MD5": (6, 9),
@@ -105,7 +110,7 @@ class DotnetLocs:
     }
 
     # Architecture 정보
-    ARCH_DICT: dict[str, list[str]] = {
+    ARCH: dict[str, list[str]] = {
         "11 22H2, 23H2 3.5, 4.8.1": ["x64", "arm64"],
         "11 21H2 3.5, 4.8": ["x64", "arm64"],
         "11 21H2 3.5, 4.8.1": ["x64", "arm64"],
@@ -118,4 +123,4 @@ class DotnetLocs:
         "1607 4.8": ["x86", "x64"]
     }
     
-    
+
