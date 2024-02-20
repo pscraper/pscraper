@@ -1,8 +1,9 @@
 import sys
-from const import SYS_APPENDED_PATHS, logger
+from const import SYS_APPENDED_PATHS
+from logger import Logger
 
 
 for path in SYS_APPENDED_PATHS:
     abs_path = r"{}".format(path.absolute())
-    logger.info(f"{abs_path} appended to path")
+    Logger.get_logger().info(f"{abs_path} appended to path")
     sys.path.append(abs_path)

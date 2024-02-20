@@ -1,5 +1,3 @@
-import logging
-import sys
 from pathlib import Path
 
 
@@ -36,7 +34,6 @@ BIN_PATH = Path.cwd().parent / "bin"
 SETTINGS_PATH = BIN_PATH / "settings"
 EXE_PATH = BIN_PATH / "exe"
 DATA_PATH = BIN_PATH / "data"
-LOG_PATH = BIN_PATH / "logs"
 PATCH_FILE_PATH = BIN_PATH / "patchfiles"
 DOTNET_FILE_PATH = PATCH_FILE_PATH / "dotnet"
 DOTNET_CAB_PATH = DOTNET_FILE_PATH / "cabs"
@@ -55,7 +52,6 @@ FILE_HANDLER_PATH = SRC_PATH / "filehandler"
 
 
 # File Path
-LOG_FILE_PATH = LOG_PATH / "log.txt"                    # 프로그램 실행 중 로깅을 위한 파일
 META_FILE_PATH = SETTINGS_PATH / "meta.yaml"            # 프로그램에서 사용되는 메타 정보를 한 곳에서 관리하기 위한 파일
 EXCEL_FILE_PATH = EXE_PATH / "patch.xlsx"               # 원본 엑셀 파일 (복사해서 사용)
 CHROME_DRIVER_PATH = EXE_PATH / "chromedriver.exe"      # 크롤링을 위한 크롬드라이버 파일
@@ -80,19 +76,3 @@ DOTNET_KB_FORMAT = "KB{}"
 DOTNET_BULLETIN_FORMAT = "MS-KB{}"
 DOTNET_BULLETIN_URL_FORMAT = "https://support.microsoft.com/{}/help/{}"
 DOTNET_NATIONS_LIST = ['en-us', 'ja-jp', 'ko-kr', 'zh-cn']
-
-
-# Log, Result 파일 관리
-DEFAULT_REMOVE_HOUR = 5000   # 30분
-
-
-# logging   
-logger = logging
-stdout_handler = logger.StreamHandler(stream = sys.stdout)                # 콘솔 출력을 위한 핸들러
-file_handler = logger.FileHandler(LOG_FILE_PATH, encoding = ENC_TYPE)     # 파일 출력을 위한 핸들러
-logger.basicConfig(
-    level = logging.INFO,
-    format = '%(asctime)s %(levelname)s: [%(module)s.%(funcName)s] %(message)s',
-    datefmt = '[%m/%d/%Y %I:%M:%S] %p',
-    handlers = [stdout_handler, file_handler]
-)

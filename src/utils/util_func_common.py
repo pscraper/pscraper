@@ -6,11 +6,9 @@ from datetime import datetime
 from pathlib import Path
 from classes import Category
 from const import (
-    PATCH_FILE_PATH, 
     UNREQUIRED_UNICODES, 
     DOTNET_FILE_PATH, 
     RESULT_FILE_PATH, 
-    DEFAULT_REMOVE_HOUR,
     logger
 )
 
@@ -61,57 +59,12 @@ def replace_specific_unicode(raw: str) -> str:
     return raw
 
 
-# pathfiles 폴더를 통째로 복사
-def copy_file_dir(folder: str) -> bool:
-    dst = Path.home() / "Desktop"
-
+def copy_file_dir(original_path: Path, copy_path: Path) -> None:
     try:
-        if os.path.exists(dst / folder):
-            shutil.rmtree(dst / folder)
-
-        shutil.copy(DOTNET_FILE_PATH, dst)
-        shutil.copy(RESULT_FILE_PATH, dst / "result.json") 
-        return True
+        shutil.copy(original_path, copy_path)
+        shutil.copy(RESULT_FILE_PATH, copy_path / "result.json") 
         
     except Exception as e:
-        logger.warn("권한 관련 에러가 발생하여 파일을 복사하지 못하였습니다.")
-        logger.warn(e)
-        return False
-        
-        
-def remove_file_dir(folder: str) -> bool:
-    try:
-        if os.path.exists(PATCH_FILE_PATH / folder):
-            res = input(f"{str(PATCH_FILE_PATH / folder)} 폴더를 삭제할까요?")
-            if res != 'y': 
-                return
-            
-            shutil.rmtree(PATCH_FILE_PATH / folder)
-            return True
-            
-    except Exception as e:
-        logger.warning(e)
-        return False
-    
-
-def remove_before_one_hour_files(path: Path, now: str):
-    for file in path.iterdir():
-        if not (file.name.startswith("log2") or file.name.startswith("result2") or file.name.startswith("patch2")):
-            continue
-            
-        time_str = file.name[file.name.find('2'):file.name.find('.')]
-        if int(now) - int(time_str) >= DEFAULT_REMOVE_HOUR:
-            os.remove(path / file)
-            logger.info(f"Remove Old File: {file}")
-            
-
-def add_time_str_to_exists_file_name(path: Path, now: str):
-    for file in path.iterdir():
-        name = file.name
-        if not (name == "result.json" or name == "log.txt"):
-            continue
-
-        name_splt = name.split('.')
-        new_name = name_splt[0] + now + '.' + name_splt[1]
-        os.rename(path / file, path / new_name)
-        logger.info(f"{file} -> {new_name}")
+        logger.critical("권한 관련 에러가 발생하여 파일을 복사하지 못하였습니다.")
+        logger.critical(e)
+        raise e
