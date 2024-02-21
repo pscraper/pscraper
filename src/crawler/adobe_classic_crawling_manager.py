@@ -1,6 +1,5 @@
 from selenium.webdriver.common.by import By
 from crawler.adobe_crawling_manager import AdobeCrawlingManager
-from const import ADB_PATCH_NOTE_URL, ADB_CLASSIC_UL, ADB_CLASSIC_INSTALL_A
 
 
 class AdobeClassicCrawlingManager(AdobeCrawlingManager):

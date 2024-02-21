@@ -3,8 +3,6 @@ from selenium.webdriver.remote.webelement import WebElement
 from typing import Any
 from abc import abstractmethod
 from crawler.crawling_manager import CrawlingManager
-from classes import AdobeCommon
-from const import ADB_OPTIONAL_TITLE, ADB_SECURITY_BULLETIN
 
 
 # Continuous 버전과 Classic 버전 수집 과정에서 공통 기능을 두기 위한 부모 클래스

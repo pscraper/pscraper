@@ -1,5 +1,5 @@
 import json
-from const import AppMeta
+from classes.const import AppMeta
 
 
 def save_json_result(path: str, obj: dict):

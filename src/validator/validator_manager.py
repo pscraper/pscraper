@@ -1,5 +1,5 @@
-from logger import Logger
-from const import AppMeta, ErrorFormat
+from logger import LogManager
+from classes.const import AppMeta, ErrFormat
 
 
 class ValidatorManager:
@@ -10,12 +10,12 @@ class ValidatorManager:
         Top object of validator.
         This __init__ function executes validating process for all files required  
         """
-        self.logger = Logger.get_logger()
+        self.logger = LogManager.get_logger()
         self.logger.info(f"필수 파일 목록 검사")
         
         for path in AppMeta.get_required_file_path():
             if not path.exists():
-                err = ErrorFormat.ERR_STR_FORMAT.format(str(path))
+                err = ErrFormat.cant_find_obj(str(path))
                 self.logger.critical(f"{err}")
                 raise Exception(err)
             self.logger.info(f"{path.name} OK")

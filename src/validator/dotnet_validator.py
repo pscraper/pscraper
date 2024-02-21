@@ -1,7 +1,7 @@
 import os
 from validator.validator_manager import ValidatorManager
-from const import FilePath, DirPath
-from classes import DotnetExcel
+from classes.const import DirPath
+from classes.dotnet import DotnetMapper
 
 
 class DotnetValidatorManager(ValidatorManager):
@@ -13,10 +13,9 @@ class DotnetValidatorManager(ValidatorManager):
         qnumbers = result_dict.keys()
         validate_set = set()
         
-        for file in DirPath.DOTNET_DIR_PATH.iterdir():
-            if not file.name.endswith(".msu"):
-                continue
-            validate_set.add(file.name)
+        for file in DirPath.DOTNET.iterdir():
+            if file.name.endswith(".msu"):
+                validate_set.add(file.name)
         
         for file_name in validate_set:
             idx = file_name.find("kb")
@@ -27,14 +26,15 @@ class DotnetValidatorManager(ValidatorManager):
         
     def _check_msu_and_cab_file_exists(self):
         # cab 파일과 msu 파일이 모두 있는지 검사
-        for file in os.listdir(DirPath.DOTNET_DIR_PATH):
+        for file in os.listdir(DirPath.DOTNET):
             if not file.endswith(".msu"):
                 continue
-
+            
+            flag = False
             splt = file.split("-")
             tmp = "-".join([splt[1], splt[2], splt[3]]).replace(".msu", "")
-            flag = False
-            for cab in os.listdir(DirPath.CAB_DIR_PATH):
+                
+            for cab in os.listdir(DirPath.CAB):
                 if tmp in cab:
                     self.logger.info(f"{tmp} -> {cab} 확인")
                     flag = True
@@ -78,9 +78,9 @@ class DotnetValidatorManager(ValidatorManager):
                 last_os_version = file[0]
                 last_excel_key = file[-1]
                 
-            inter_set = arch_set & set(DotnetExcel.ARCH[last_excel_key])
+            inter_set = arch_set & set(DotnetMapper.ARCH[last_excel_key])
             for inter in inter_set:
-                if inter not in DotnetExcel.ARCH[last_excel_key]:
+                if inter not in DotnetMapper.ARCH[last_excel_key]:
                     raise Exception(f"{last_os_version}에 대한 {inter} 아키텍쳐 파일이 존재하지 않습니다.")
             
                 self.logger.info(f"- {last_os_version} {last_excel_key} {inter} 확인")

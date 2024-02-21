@@ -13,20 +13,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from logger import Logger
-from const import (
-    META_FILE_PATH,
-    PATCH_FILE_PATH,
-    DATA_PATH,
-    CHROME_DRIVER_PATH,
-    ENC_TYPE,
-    SLEEP_SHORT,
-)
+from logger import LogManager
+from classes.const import Sleep, DirPath, FilePath, AppMeta
 
 
 class CrawlingManager:
-    CRDOWNLOAD = "crdownload"
-    TMP = "tmp"
     DRIVER_PREFS = {
         "directory_upgrade": True,
         "safebrowsing": {
@@ -53,25 +44,25 @@ class CrawlingManager:
             category(str) : Enum value of Adobe / Java / .Net (defined classes.py)
             url(str) : Base URL for crawling
         """
-        self.logger = Logger.get_logger()
+        self.logger = LogManager.get_logger()
 
         # 파일 읽어서 meta 객체 초기화
-        with open(META_FILE_PATH, "r", encoding = ENC_TYPE) as fp:
+        with open(FilePath.META, "r", encoding = AppMeta.ENC_TYPE) as fp:
             self.meta = yaml.load(fp, Loader = yaml.FullLoader)
 
         # bin\patchfiles 폴더 생성
-        if not PATCH_FILE_PATH.exists():
-            self.logger.info(f"Make Dir: {PATCH_FILE_PATH}")
-            os.mkdir(PATCH_FILE_PATH)
+        if not DirPath.PATCH.exists():
+            self.logger.info(f"Make Dir: {DirPath.PATCH}")
+            os.mkdir(DirPath.PATCH)
 
         # bin\data 폴더 생성
-        if not DATA_PATH.exists():
-            self.logger.info(f"Make Dir: {DATA_PATH}")
-            os.mkdir(DATA_PATH)
+        if not DirPath.DATA.exists():
+            self.logger.info(f"Make Dir: {DirPath.DATA}")
+            os.mkdir(DirPath.DATA)
 
         # bin\patchfiles\{type} 폴더 생성
         # 기존에 존재하면 삭제
-        category_path = PATCH_FILE_PATH / category
+        category_path = DirPath.PATCH / category
         
         if os.path.exists(category_path):
             self.logger.warning(f"Remove Dir Tree: {category_path}")
@@ -90,11 +81,11 @@ class CrawlingManager:
 
         # selenium 버전 높은 경우 -> executable_path Deprecated -> Service 객체 사용
         try:
-            self.driver = webdriver.Chrome(options = options, service = Service(executable_path = str(CHROME_DRIVER_PATH)))
+            self.driver = webdriver.Chrome(options = options, service = Service(executable_path = str(FilePath.CHROME_DRIVER)))
 
         except Exception as _:
             self.logger.info(f"구버전 ChromeDriver 객체로 동작합니다.")
-            self.driver = webdriver.Chrome(executable_path = str(CHROME_DRIVER_PATH), options = options)
+            self.driver = webdriver.Chrome(executable_path = str(FilePath.CHROME_DRIVER), options = options)
         
         # Get 요청 후 HTML 파싱
         self.driver.get(url)
@@ -127,8 +118,7 @@ class CrawlingManager:
                     dl = True
                     break
 
-            time.sleep(SLEEP_SHORT)
-
+            time.sleep(Sleep.SHORT)
             if not dl:
                 break
             
@@ -136,10 +126,9 @@ class CrawlingManager:
     # 동적 페이지의 경우 로딩을 위해 전체 페이지 탐색 
     def _load_all_page(self):
         chains = ActionChains(self.driver)
-
         for _ in range(10):
             chains.send_keys(Keys.PAGE_DOWN).perform()
-            time.sleep(SLEEP_SHORT)
+            time.sleep(Sleep.SHORT)
 
         chains.send_keys(Keys.HOME).perform()
 
@@ -157,11 +146,9 @@ class CrawlingManager:
     def _driver_wait(self, by: By, value: str):
         try:
             WebDriverWait(self.driver, 10).until(
-                EC.presence_of_element_located((by, value)),
-                f"[ERR] Can't Find {by}, {value}"            
+                EC.presence_of_element_located((by, value)), f"[ERR] Can't Find {by}, {value}"
             )
-
-            time.sleep(SLEEP_SHORT)
+            time.sleep(Sleep.SHORT)
 
         except Exception as e:
             self.logger.warn(e)

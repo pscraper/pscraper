@@ -2,10 +2,9 @@ from register.excel_manager import ExcelManager
 
 
 class AdobeExcelManager(ExcelManager):
-    _sheet_name = "3rdparty"
 
-    def __init__(self):
-        super().__init__(self._sheet_name)
+    def __init__(self, category: str):
+        super().__init__(category)
 
 
 if __name__ == "__main__":

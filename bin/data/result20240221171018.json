@@ -11,6 +11,32 @@
             "patch_date": "2024/02/15",
             "severity": "Moderate"
         },
+        "files": [
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu",
+                "subject": "windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2023/12/windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu"
+            },
+            {
+                "architecture": "x86",
+                "file_name": "windows10.0-kb5034466-x86-ndp481_50cde7ef5f8f4ec347dbf6afb5be276c04dc7fc5.msu",
+                "subject": "windows10.0-kb5034466-x86-ndp481_50cde7ef5f8f4ec347dbf6afb5be276c04dc7fc5.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2023/12/windows10.0-kb5034466-x86-ndp481_50cde7ef5f8f4ec347dbf6afb5be276c04dc7fc5.msu"
+            },
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu",
+                "subject": "windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2023/12/windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu"
+            },
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu",
+                "subject": "windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2023/12/windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu"
+            }
+        ],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5034466",
@@ -46,6 +72,32 @@
             "patch_date": "2024/02/15",
             "severity": "Moderate"
         },
+        "files": [
+            {
+                "architecture": "x64",
+                "file_name": "windows11.0-kb5034467-x64-ndp481_3f71b1bdba8a0bcb6fc94e56f36eeb8e1dd97ebb.msu",
+                "subject": "windows11.0-kb5034467-x64-ndp481_3f71b1bdba8a0bcb6fc94e56f36eeb8e1dd97ebb.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-x64-ndp481_3f71b1bdba8a0bcb6fc94e56f36eeb8e1dd97ebb.msu"
+            },
+            {
+                "architecture": "arm64",
+                "file_name": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
+                "subject": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu"
+            },
+            {
+                "architecture": "arm64",
+                "file_name": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
+                "subject": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu"
+            },
+            {
+                "architecture": "arm64",
+                "file_name": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
+                "subject": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu"
+            }
+        ],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5034467",
@@ -81,6 +133,38 @@
             "patch_date": "2024/02/15",
             "severity": "Moderate"
         },
+        "files": [
+            {
+                "architecture": "arm64",
+                "file_name": "windows10.0-kb5034468-arm64-ndp48_e3fc0b27c6542459081b2d99084f29d37e60d449.msu",
+                "subject": "windows10.0-kb5034468-arm64-ndp48_e3fc0b27c6542459081b2d99084f29d37e60d449.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2023/12/windows10.0-kb5034468-arm64-ndp48_e3fc0b27c6542459081b2d99084f29d37e60d449.msu"
+            },
+            {
+                "architecture": "x86",
+                "file_name": "windows10.0-kb5034468-x86-ndp48_9c8481f6970416115e753021461235eb54b912cd.msu",
+                "subject": "windows10.0-kb5034468-x86-ndp48_9c8481f6970416115e753021461235eb54b912cd.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2023/12/windows10.0-kb5034468-x86-ndp48_9c8481f6970416115e753021461235eb54b912cd.msu"
+            },
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034468-x64-ndp48_97594b5cf615541cde5ffd62d7b9b44ea73c873f.msu",
+                "subject": "windows10.0-kb5034468-x64-ndp48_97594b5cf615541cde5ffd62d7b9b44ea73c873f.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2023/12/windows10.0-kb5034468-x64-ndp48_97594b5cf615541cde5ffd62d7b9b44ea73c873f.msu"
+            },
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034468-x64-ndp48_97594b5cf615541cde5ffd62d7b9b44ea73c873f.msu",
+                "subject": "windows10.0-kb5034468-x64-ndp48_97594b5cf615541cde5ffd62d7b9b44ea73c873f.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2023/12/windows10.0-kb5034468-x64-ndp48_97594b5cf615541cde5ffd62d7b9b44ea73c873f.msu"
+            },
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034468-x64-ndp48_97594b5cf615541cde5ffd62d7b9b44ea73c873f.msu",
+                "subject": "windows10.0-kb5034468-x64-ndp48_97594b5cf615541cde5ffd62d7b9b44ea73c873f.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2023/12/windows10.0-kb5034468-x64-ndp48_97594b5cf615541cde5ffd62d7b9b44ea73c873f.msu"
+            }
+        ],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5034468",
@@ -116,6 +200,20 @@
             "patch_date": "2024/02/15",
             "severity": "Moderate"
         },
+        "files": [
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034611-x64-ndp481_761e979f2ae4ba4011e614fee94a13d3baf98421.msu",
+                "subject": "windows10.0-kb5034611-x64-ndp481_761e979f2ae4ba4011e614fee94a13d3baf98421.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2024/01/windows10.0-kb5034611-x64-ndp481_761e979f2ae4ba4011e614fee94a13d3baf98421.msu"
+            },
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034611-x64-ndp481_761e979f2ae4ba4011e614fee94a13d3baf98421.msu",
+                "subject": "windows10.0-kb5034611-x64-ndp481_761e979f2ae4ba4011e614fee94a13d3baf98421.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2024/01/windows10.0-kb5034611-x64-ndp481_761e979f2ae4ba4011e614fee94a13d3baf98421.msu"
+            }
+        ],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5034611",
@@ -151,6 +249,17 @@
             "patch_date": "2024/02/15",
             "severity": "Moderate"
         },
+        "files": [
+            {
+                "MD5": "6762c41879a4f2a4853d6931d196bb87",
+                "SHA256": "4688511f50c9557190562708de1143b4fb86840f8e7ca373280a3f04675b2069",
+                "WSUS 파일": "windows11.0-KB5034612-x64-ndp481_WSUSSCAN.cab",
+                "architecture": "x64",
+                "file_name": "windows11.0-KB5034612-x64-ndp481.msu",
+                "file_size": "61.3",
+                "subject": "windows11.0-KB5034612-x64-ndp481.msu"
+            }
+        ],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5034612",
@@ -186,6 +295,20 @@
             "patch_date": "2024/02/15",
             "severity": "Moderate"
         },
+        "files": [
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034613-x64-ndp48_466f9e69310db89749e1da1f4f2a5ebc2b6adb1c.msu",
+                "subject": "windows10.0-kb5034613-x64-ndp48_466f9e69310db89749e1da1f4f2a5ebc2b6adb1c.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034613-x64-ndp48_466f9e69310db89749e1da1f4f2a5ebc2b6adb1c.msu"
+            },
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034613-x64-ndp48_466f9e69310db89749e1da1f4f2a5ebc2b6adb1c.msu",
+                "subject": "windows10.0-kb5034613-x64-ndp48_466f9e69310db89749e1da1f4f2a5ebc2b6adb1c.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034613-x64-ndp48_466f9e69310db89749e1da1f4f2a5ebc2b6adb1c.msu"
+            }
+        ],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5034613",
@@ -221,6 +344,7 @@
             "patch_date": "2024/02/15",
             "severity": "Moderate"
         },
+        "files": [],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5034614",
@@ -256,6 +380,32 @@
             "patch_date": "2024/02/15",
             "severity": "Moderate"
         },
+        "files": [
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034619-x64_c5f0b686b90e5f0b2e1b23c204e96e8ca8b3c81f.msu",
+                "subject": "windows10.0-kb5034619-x64_c5f0b686b90e5f0b2e1b23c204e96e8ca8b3c81f.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2024/01/windows10.0-kb5034619-x64_c5f0b686b90e5f0b2e1b23c204e96e8ca8b3c81f.msu"
+            },
+            {
+                "architecture": "arm64",
+                "file_name": "windows10.0-kb5034619-arm64_8b661afa90877212e9109222d981e45929947800.msu",
+                "subject": "windows10.0-kb5034619-arm64_8b661afa90877212e9109222d981e45929947800.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034619-arm64_8b661afa90877212e9109222d981e45929947800.msu"
+            },
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034619-x64_c5f0b686b90e5f0b2e1b23c204e96e8ca8b3c81f.msu",
+                "subject": "windows10.0-kb5034619-x64_c5f0b686b90e5f0b2e1b23c204e96e8ca8b3c81f.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2024/01/windows10.0-kb5034619-x64_c5f0b686b90e5f0b2e1b23c204e96e8ca8b3c81f.msu"
+            },
+            {
+                "architecture": "x86",
+                "file_name": "windows10.0-kb5034619-x86_a2dd0646a3ec943f50f20cf173e656a97b34945e.msu",
+                "subject": "windows10.0-kb5034619-x86_a2dd0646a3ec943f50f20cf173e656a97b34945e.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034619-x86_a2dd0646a3ec943f50f20cf173e656a97b34945e.msu"
+            }
+        ],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5034619",
@@ -291,6 +441,7 @@
             "patch_date": "2024/02/15",
             "severity": "Moderate"
         },
+        "files": [],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5034624",
@@ -326,6 +477,20 @@
             "patch_date": "2024/02/15",
             "severity": "Moderate"
         },
+        "files": [
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034625-x64-ndp48_32ab81887e4182d7460f075f3adabf5a490938ba.msu",
+                "subject": "windows10.0-kb5034625-x64-ndp48_32ab81887e4182d7460f075f3adabf5a490938ba.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034625-x64-ndp48_32ab81887e4182d7460f075f3adabf5a490938ba.msu"
+            },
+            {
+                "architecture": "arm64",
+                "file_name": "windows10.0-kb5034625-arm64-ndp48_a1ad95711334a459c890cef8b3958a5bcae2f1fb.msu",
+                "subject": "windows10.0-kb5034625-arm64-ndp48_a1ad95711334a459c890cef8b3958a5bcae2f1fb.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034625-arm64-ndp48_a1ad95711334a459c890cef8b3958a5bcae2f1fb.msu"
+            }
+        ],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5034625",

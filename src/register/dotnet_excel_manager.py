@@ -1,7 +1,6 @@
 from typing import Any
 from register.excel_manager import ExcelManager
-from classes import DotnetLocs
-from const import logger
+from classes.dotnet import DotnetExcel, DotnetMapper
 from utils.util_func_dotnet import read_mapper_file_and_excel_key_qnumber_dict
 
 
@@ -27,7 +26,7 @@ class DotnetExcelManager(ExcelManager):
                 continue
             
             qnumber = str(key_qnumber_dict[cell_value])
-            logger.info(f"{qnumber} 엑셀 작업 시작")
+            self.logger.info(f"{qnumber} 엑셀 작업 시작")
             
             # Title, Summary, BulletinUrl 기록
             nations = result_dict[qnumber]['nations']
@@ -44,14 +43,14 @@ class DotnetExcelManager(ExcelManager):
             # 다음 행으로
             row += 1
         
-        logger.info("엑셀 작업 완료")
+        self.logger.info("엑셀 작업 완료")
         return self.save_workbook()
             
             
     def _fill_nations_info(self, row: int, nations: dict[str, Any]) -> None:
         for nation in nations:
             infos = nations[nation]
-            rel_loc = DotnetLocs.NATION_REL_LOCS[nation]
+            rel_loc = DotnetExcel.NATIONS[nation]
             
             # 엑셀 파일 (r, c) 위치에 info 각각을 기록
             for info in infos:
@@ -59,27 +58,27 @@ class DotnetExcelManager(ExcelManager):
                 loc = rel_loc[info] 
                 r, c = self._calc_relative_locations(row, loc)
                 self.set_cell_value(r, c, val)
-                logger.info(f"- ({r}, {c}) {val}")
+                self.logger.info(f"- ({r}, {c}) {val}")
                 
         
     
     def _fill_common_info(self, row: int, commons: dict[str, str]) -> None:
         for common in commons:
-            if common not in DotnetLocs.KEY_MAPPER:
+            if common not in DotnetMapper.KEY:
                 continue
             
-            loc = DotnetLocs.COMMON_REL_LOCS[DotnetLocs.KEY_MAPPER[common]]
+            loc = DotnetExcel.COMMONS[DotnetMapper.KEY[common]]
             r, c = self._calc_relative_locations(row, loc)
             val = commons[common]
             self.set_cell_value(r, c, val)      
-            logger.info(f"- ({r}, {c}) {val}")
+            self.logger.info(f"- ({r}, {c}) {val}")
             
     
     def _fill_patch_info(self, row: int, cell_value: str, files: list[dict[str, str]]) -> None:
         for file in files:
             # 엑셀 파일에 해당 아키텍쳐가 있는지 검사
             arch = file['architecture']
-            arch_cells = DotnetLocs.ARCH_DICT[cell_value]
+            arch_cells = DotnetMapper.ARCH[cell_value]
             
             if not arch in arch_cells:
                 continue
@@ -87,14 +86,14 @@ class DotnetExcelManager(ExcelManager):
             index = arch_cells.index(arch)
             
             for key, val in file.items():
-                if key not in DotnetLocs.KEY_MAPPER:
+                if key not in DotnetMapper.KEY:
                     continue
                 
-                loc_key = DotnetLocs.KEY_MAPPER[key]
-                loc = DotnetLocs.FILE_REL_LOCS[loc_key]
+                loc_key = DotnetMapper.KEY[key]
+                loc = DotnetExcel.FILES[loc_key]
                 r, c = self._calc_relative_locations(row, loc)
                 self.set_cell_value(r + index, c, val)
-                logger.info(f"- ({r + index}, {c}) {val}")
+                self.logger.info(f"- ({r + index}, {c}) {val}")
         
         
     def _calc_relative_locations(self, row: int, loc: tuple[int, int]) -> tuple[int, int]:

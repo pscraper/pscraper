@@ -1,10 +1,9 @@
 import click
 from typing import Any
-from classes import Category
+from classes.const import Category, AppMeta
 from funcs.func_run_adobe import run_adobe
 from funcs.func_run_dotnet import run_dotnet
 from funcs.func_run_java import run_java
-from const import AppMeta
 
 
 

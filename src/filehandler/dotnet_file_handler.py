@@ -1,22 +1,23 @@
 import os
 import hashlib
-from logger import Logger
-from const import DOTNET_FILE_PATH, DOTNET_CAB_PATH, ERR_ARCH_FORMAT
+from typing import Any
+from logger import LogManager
+from classes.const import DirPath, ErrFormat
 from pathlib import Path
 
 
 
 class DotnetFileHandler:
     def __init__(self):
-        self.logger = Logger.get_logger()
+        self.logger = LogManager.get_logger()
         # cabs 폴더가 없으면 생성
-        if not DOTNET_CAB_PATH.exists():
-            self.logger.info(f"{DOTNET_CAB_PATH} 생성")
-            DOTNET_CAB_PATH.mkdir()
+        if not DirPath.CAB.exists():
+            self.logger.info(f"{DirPath.CAB} 생성")
+            DirPath.CAB.mkdir()
 
 
-    def start(self, result_dict):
-        for file in DOTNET_FILE_PATH.iterdir():
+    def start(self, result_dict) -> dict[str, Any]:
+        for file in DirPath.DOTNET.iterdir():
             if not file.name.endswith(".msu"):
                 continue
 
@@ -51,40 +52,40 @@ class DotnetFileHandler:
             cab_file_name = self._unzip_msu_file(new_name)
 
             # 결과 파일 업데이트
-            self._result_dict_update(result_dict, qnumber, architecture, new_name, cab_file_name, md5, sha256, size)
+            result_dict = self._result_dict_update(result_dict, qnumber, architecture, new_name, cab_file_name, md5, sha256, size)
 
         # 불필요한 파일 삭제
         self._remove_unnecessary_files()
+        return result_dict
 
     
     # 파일명에서 아키텍쳐 추출
-    def _extract_architecture(self, file_name: str) -> str:
+    def _extract_architecture(self, filename: str) -> str:
         architectures = ['x64', 'x86', 'arm64']
-        
         for architecture in architectures:
-            if architecture in file_name:
+            if architecture in filename:
                 return architecture
             
-        raise Exception(ERR_ARCH_FORMAT.format(file_name))
+        raise Exception(ErrFormat.cant_find_obj(filename))
         
 
     # 결과 파일 업데이트
     def _result_dict_update(self, result_dict, qnumber, architecture, new_name, cab_file_name, md5, sha256, size):
         files = result_dict[qnumber]['files']
+        obj = {"file_name": new_name, "subject": new_name, "MD5": md5, "SHA256": sha256, "file_size": size, "WSUS 파일": cab_file_name}
+        
+        if not files:
+            obj.update({"architecture": architecture})
+            files.append(obj)
+            return result_dict
         
         for file in files:
             if file['architecture'] == architecture:
-                file.update({
-                    "file_name": new_name,
-                    "subject": new_name,
-                    "MD5": md5,
-                    "SHA256": sha256,
-                    "file_size": size,
-                    "WSUS 파일": cab_file_name
-                })
-                
+                file.update(obj)
                 self.logger.info(f"[{qnumber}] {new_name} 파일 정보 업데이트 완료")
                 break
+        
+        return result_dict
 
 
     # 파일명으로부터 qnumber를 추출
@@ -104,12 +105,12 @@ class DotnetFileHandler:
         new_name = (file_name[:file_name.find('_')] + ".msu").replace("kb", "KB")
         
         try:
-            os.rename(DOTNET_FILE_PATH / file_name, DOTNET_FILE_PATH / new_name)
+            os.rename(DirPath.DOTNET / file_name, DirPath.DOTNET / new_name)
             
         except FileExistsError as e:
             self.logger.warn("이미 존재하는 파일입니다.")
             self.logger.warn(e)
-            return "ERR"
+            raise e
             
         return new_name
     
@@ -121,11 +122,11 @@ class DotnetFileHandler:
             return
 
         cab_file_name = file_name.split(".msu")[0] + "_WSUSSCAN.cab" 
-        cmd = f"expand -f:* {str(DOTNET_FILE_PATH / file_name)} {str(DOTNET_CAB_PATH)}"
+        cmd = f"expand -f:* {str(DirPath.DOTNET / file_name)} {str(DirPath.CAB)}"
         
         try:
             os.system(cmd)
-            Path.rename(DOTNET_CAB_PATH / "WSUSSCAN.cab", DOTNET_CAB_PATH / cab_file_name)
+            Path.rename(DirPath.CAB / "WSUSSCAN.cab", DirPath.CAB / cab_file_name)
         
         except Exception as e:    
             self.logger.warning("msu 파일 압축 해제 과정에서 에러 발생")
@@ -137,7 +138,7 @@ class DotnetFileHandler:
     
     # 압축 해제 후 불필요한 파일 삭제
     def _remove_unnecessary_files(self):
-        for file in DOTNET_CAB_PATH.iterdir():
+        for file in DirPath.CAB.iterdir():
             if not file.name.endswith("WSUSSCAN.cab"):
                 os.remove(file)
                 self.logger.info(f"Remove {file.name}")
@@ -145,12 +146,12 @@ class DotnetFileHandler:
 
     # 파일의 MD5, SHA256, SIZE 추출
     def _extract_file_hash(self, file_name: str) -> tuple[str, str, str]:
-        with open(DOTNET_FILE_PATH / file_name, "rb") as fp:
+        with open(DirPath.DOTNET / file_name, "rb") as fp:
             binary = fp.read()
         
         md5 = hashlib.md5(binary).hexdigest()
         sha256 = hashlib.sha256(binary).hexdigest()
-        size = f"{float(os.path.getsize(DOTNET_FILE_PATH / file_name)) / (2 ** 20):.1f}"
+        size = f"{float(os.path.getsize(DirPath.DOTNET / file_name)) / (2 ** 20):.1f}"
 
         return md5, sha256, size
     
@@ -166,7 +167,7 @@ class DotnetFileHandler:
         for version in versions:
             if version in dotnet_version:
                 new_name = splt[0] + "-ndp" + "".join(version.split(".")) + "_" + splt[-1]
-                os.rename(DOTNET_FILE_PATH / file_name, DOTNET_FILE_PATH / new_name)
+                os.rename(DirPath.DOTNET / file_name, DirPath.DOTNET / new_name)
                 self.logger.info(f"No NDP: {file_name} -> {new_name}")
                 return new_name 
 

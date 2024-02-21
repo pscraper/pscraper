@@ -1,0 +1,17 @@
+[02/21/2024 05:10:18] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\crawler appended to path
+[02/21/2024 05:10:18] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\register appended to path
+[02/21/2024 05:10:18] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\validator appended to path
+[02/21/2024 05:10:18] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\utils appended to path
+[02/21/2024 05:10:18] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\filehandler appended to path
+[02/21/2024 05:10:19] PM INFO: [func_run_dotnet.run_dotnet] [Phase 3] DOTNET 리포트 서버에 결과를 보고합니다.
+[02/21/2024 05:10:19] PM INFO: [util_func_common.find_latest_file_name] F:\seungsu\projects\pscraper\bin\data 폴더에서 result.json 탐색 시작
+[02/21/2024 05:10:19] PM INFO: [util_func_common.find_latest_file_name] F:\seungsu\projects\pscraper\bin\data 폴더에서 patch.xlsx 탐색 시작
+[02/21/2024 05:10:19] PM INFO: [util_func_common.find_latest_file_name] F:\seungsu\projects\pscraper\bin\data 폴더에서 mapper.txt 탐색 시작
+[02/21/2024 05:10:19] PM INFO: [util_func_common.find_latest_file_name] F:\seungsu\projects\pscraper\bin\logs 폴더에서 log.txt 탐색 시작
+[02/21/2024 05:10:23] PM INFO: [func_run_dotnet._run_dotnet_phase3] F:\seungsu\projects\pscraper\bin\data\result20240221171018.json 업로드 완료
+[02/21/2024 05:10:25] PM INFO: [func_run_dotnet._run_dotnet_phase3] 중복된 파일 업로드 제외: patch.xlsx
+[02/21/2024 05:10:27] PM INFO: [func_run_dotnet._run_dotnet_phase3] 중복된 파일 업로드 제외: mapper.txt
+[02/21/2024 05:10:29] PM INFO: [func_run_dotnet._run_dotnet_phase3] 중복된 파일 업로드 제외: log.txt
+[02/21/2024 05:10:29] PM INFO: [func_run_dotnet.run_dotnet] [Phase 4] DOTNET 패치 파일을 바탕화면으로 복사합니다.
+[02/21/2024 05:10:29] PM CRITICAL: [func_run_dotnet.run_dotnet] 예상치 못한 예외 발생
+[02/21/2024 05:10:29] PM CRITICAL: [func_run_dotnet.run_dotnet] [Errno 13] Permission denied: 'F:\\seungsu\\projects\\pscraper\\bin\\patchfiles\\dotnet'

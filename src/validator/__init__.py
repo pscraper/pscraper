@@ -1,19 +1,19 @@
-from const import FilePath, AppMeta
-from classes import DotnetExcel
-from logger import Logger
+from classes.const import FilePath, AppMeta
+from classes.dotnet import DotnetMapper
+from logger import LogManager
 
 
-logger = Logger.get_logger()
+logger = LogManager.get_logger()
 
 
-if not FilePath.MAPPER_FILE_PATH.exists():
-    keys = DotnetExcel.ARCH.keys()
+if not FilePath.MAPPER.exists():
+    keys = DotnetMapper.ARCH.keys()
     literal = ""
     for key in keys:
         literal += key
         literal += '\n'
 
-    with open(FilePath.MAPPER_FILE_PATH, "w", encoding = AppMeta.ENC_TYPE) as fp:
+    with open(FilePath.MAPPER, "w", encoding = AppMeta.ENC_TYPE) as fp:
         fp.write(literal)
 
-    logger.info(f"{FilePath.MAPPER_FILE_PATH.name} 파일 생성")
+    logger.info(f"{FilePath.MAPPER.name} 파일 생성")

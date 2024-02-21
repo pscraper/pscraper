@@ -1,18 +1,21 @@
 import subprocess
 import shutil
+import os
+import hashlib
 from pathlib import Path
 from validator.dotnet_validator import DotnetValidatorManager
 from crawler.dotnet_crawling_manager import DotnetCrawlingManager
 from register.dotnet_excel_manager import DotnetExcelManager
 from filehandler.dotnet_file_handler import DotnetFileHandler
 from utils.util_func_dotnet import update_common_info, update_nation_info, update_file_info, read_mapper_file
-from utils.util_func_json import save_json_result
-from utils.util_func_common import copy_file_dir, upload_result_file
-from const import RESULT_FILE_PATH, DATA_PATH, DOTNET_FILE_PATH
-from logger import Logger
+from utils.util_func_json import read_json_result, save_json_result
+from utils.util_func_common import copy_file_dir, is_exists_on_server, upload_file, find_latest_file_name
+from classes.const import FilePath, DirPath
+from logger import LogManager
 
 
-logger = Logger.get_logger()
+
+logger = LogManager.get_logger()
 
 
 def run_dotnet(category: str, url: str, phase: int) -> None:
@@ -30,7 +33,7 @@ def run_dotnet(category: str, url: str, phase: int) -> None:
         
         if phase <= 3:
             logger.info(f"[Phase 3] {run_name} 리포트 서버에 결과를 보고합니다.")
-            _run_dotnet_phase3()
+            _run_dotnet_phase3(category)
         
         if phase <= 4:
             logger.info(f"[Phase 4] {run_name} 패치 파일을 바탕화면으로 복사합니다.")
@@ -45,7 +48,6 @@ def run_dotnet(category: str, url: str, phase: int) -> None:
     finally:
         if err: exit(1)
         logger.info("pscraper Successfully finished")
-        exit(0)
 
 
 def _run_dotnet_phase1(url: str, category: str) -> None:
@@ -65,8 +67,8 @@ def _run_dotnet_phase1(url: str, category: str) -> None:
     # PatchDate, CVE, KBNumber, BulletinID, Catalog Link, OS VERSION, .NET VERSION, EXCEL KEY
     mapper = read_mapper_file()
     result = update_common_info(mapper, patch_date, common_cve, severity)
-    save_json_result(RESULT_FILE_PATH, result)
-    logger.info(f"{RESULT_FILE_PATH.name}에 공통 정보 업데이트를 완료했습니다.")
+    save_json_result(FilePath.RESULT, result)
+    logger.info(f"{FilePath.RESULT.name}에 공통 정보 업데이트를 완료했습니다.")
     
     # 각 qnumber에 대해 한/영/중/일 title, summary, bulletinUrl 정보 가져오기
     qnumbers = result.keys()
@@ -74,14 +76,14 @@ def _run_dotnet_phase1(url: str, category: str) -> None:
     
     # ts_dict를 result.json에 반영
     result = update_nation_info(ts_dict, result)
-    save_json_result(RESULT_FILE_PATH, result)
-    logger.info(f"{RESULT_FILE_PATH.name}에 각 국가별 정보 업데이트를 완료했습니다.")
+    save_json_result(FilePath.RESULT, result)
+    logger.info(f"{FilePath.RESULT.name}에 각 국가별 정보 업데이트를 완료했습니다.")
     
     # 각 qnumber에 대한 patch 파일과 기타 정보 가져오기
     file_dict = crawler._download_patch_file(result, qnumbers)
     result = update_file_info(file_dict, result)
-    save_json_result(RESULT_FILE_PATH, result)
-    logger.info(f"{RESULT_FILE_PATH.name}에 패치파일 정보 업데이트를 완료했습니다.")
+    save_json_result(FilePath.RESULT, result)
+    logger.info(f"{FilePath.RESULT.name}에 패치파일 정보 업데이트를 완료했습니다.")
     
     # 수집 대상 qnumber에 대한 모든 msu 패치 파일이 존재하는지 검증
     validator._check_all_qnumber_file_exists(result)
@@ -92,8 +94,8 @@ def _run_dotnet_phase1(url: str, category: str) -> None:
     # 파일 핸들링 작업 시작
     # 이 시점 이후로 엑셀 등록 전 필요한 모든 정보들이 수집되고, msu 파일명 변경 및 압축 해제, cab 파일명 변경 작업이 이루어진다.
     dfh = DotnetFileHandler()
-    dfh.start(result)
-    save_json_result(RESULT_FILE_PATH, result)
+    result = dfh.start(result)
+    save_json_result(FilePath.RESULT, result)
     
     # msu 파일과 cab 파일의 짝이 맞는지 검사
     # qnumber에 해당하는 아키텍쳐별 패치파일들이 모두 존재하는지 검증해야 한다.
@@ -102,28 +104,21 @@ def _run_dotnet_phase1(url: str, category: str) -> None:
 
 # 엑셀 등록 과정부터 시작하기
 # 이미 모든 패치 파일 및 정보가 수집된 이후
-# python pscraper.py dotnet --process-excel
+# --phase 2
 def _run_dotnet_phase2(category: str) -> None:
-    # 이 단계부터 시작 했다면 result.json 파일 이름이 바뀌었을 것이므로 다시 원상복귀
-    max_num = -1
-    max_file = ""
+    # result 파일이 없는 경우 가장 최신 파일을 복사
+    if not FilePath.RESULT.exists():
+        filename = find_latest_file_name(DirPath.DATA)
+        shutil.copy(DirPath.DATA / filename, FilePath.RESULT)   
+        logger.info(f"[COPY] {filename} -> {FilePath.RESULT.name}") 
     
-    for path in DATA_PATH.iterdir():
-        if not path.name.startswith("result2"):
-            continue
-        
-        num = int(path.name[path.name.find("2"):path.name.find(".")])
-        
-        if num > max_num:
-            max_num = num
-            max_file = path.name
-            
-    if not RESULT_FILE_PATH.exists() and max_file:
-        shutil.copy(DATA_PATH / max_file, RESULT_FILE_PATH)   
-        logger.info(f"[COPY] {max_file} -> {RESULT_FILE_PATH.name}") 
-    
-    if not RESULT_FILE_PATH:
-        raise Exception(f"{RESULT_FILE_PATH.name}이 없습니다.")
+    # cab 폴더가 없거나 빈 경우 
+    if not DirPath.CAB.exists() or not os.listdir(DirPath.CAB):
+        filehandler = DotnetFileHandler()
+        validator = DotnetValidatorManager()
+        result = filehandler.start(read_json_result(FilePath.RESULT))
+        validator._check_msu_and_cab_file_exists()
+        save_json_result(FilePath.RESULT, result)
     
     # 엑셀 등록 작업 시작
     dem = DotnetExcelManager(category)
@@ -131,19 +126,42 @@ def _run_dotnet_phase2(category: str) -> None:
     
     # 엑셀 파일 오픈
     subprocess.run(
-        ["start", "/d", str(DATA_PATH.absolute()), excel_file_name],
+        ["start", "/WAIT", "/d", str(DirPath.DATA.absolute()), excel_file_name],
         shell = True
     )
     
 
-def _run_dotnet_phase3() -> None:
-    res = upload_result_file(RESULT_FILE_PATH)
-    res.raise_for_status()
-    if res.status_code == 200:
-        logger.info("- 결과 파일을 업로드 완료")
+def _run_dotnet_phase3(category: str) -> None:
+    result_file = find_latest_file_name(DirPath.DATA, "result.json")
+    excel_file = find_latest_file_name(DirPath.DATA, "patch.xlsx", default = DirPath.EXE / "patch.xlsx")
+    mapper_file = find_latest_file_name(DirPath.DATA, "mapper.txt")
+    log_file = find_latest_file_name(DirPath.LOG, "log.txt")
+    
+    for path in [result_file, excel_file, mapper_file, log_file]:
+        try:
+            with open(path, "rb") as fp:
+                binary = fp.read()
+                logger.info(f"{path.name} 해시 추출 중")
+                md5 = hashlib.md5(binary).hexdigest()
+                sha256 = hashlib.sha256(binary).hexdigest()
+                logger.info(f"- {md5}")
+                logger.info(f"- {sha256}")
+            
+            if is_exists_on_server(path.name, category, md5, sha256):
+                logger.info(f"중복된 파일 업로드 제외: {path.name}")
+                continue
+                
+            res = upload_file(path, category)
+            res.raise_for_status()
+        
+            if res.status_code == 200:
+                logger.info(f"{path} 업로드 완료")
+                
+        except Exception as e:
+            logger.critical(e)
 
     
 def _run_dotnet_phase4(category: str) -> None:
     dst = Path.cwd() / category
-    copy_file_dir(original_path = DOTNET_FILE_PATH, copy_path = dst)
+    copy_file_dir(original_path = DirPath.DOTNET, copy_path = dst)
     

@@ -1,11 +1,6 @@
 from typing import Any
-from const import (
-    MAPPER_FILE_PATH,
-    ENC_TYPE,
-    DOTNET_KB_FORMAT as KB_FORMAT,
-    DOTNET_BULLETIN_FORMAT as BULLETIN_FORMAT,
-)
-
+from classes.const import AppMeta, FilePath
+from classes.dotnet import DotnetFormat
 
 
 def extract_qnumber_from_kb_file_name(file_name: str) -> str:
@@ -27,7 +22,7 @@ def extract_idx_from_file_name(file_name: str, find_str: str) -> int:
 
 
 def read_mapper_file() -> list[list[str]]:
-    with open(MAPPER_FILE_PATH, "r", encoding = ENC_TYPE) as fp:
+    with open(FilePath.MAPPER, "r", encoding = AppMeta.ENC_TYPE) as fp:
         lines = list(map(lambda x: x.strip(), fp.readlines()))
         for idx, line in enumerate(lines):
             lines[idx] = list(map(lambda x: x.strip(), line.split("|")))    
@@ -70,7 +65,6 @@ def read_mapper_file_and_excel_key_qnumber_dict() -> dict[str, str]:
 def update_common_info(lines: list[list[str]], patch_date: str, common_cve: str, severity: str) -> None:
     # result.json 공통 정보 쓰기
     result = dict()
-    
     for line in lines:
         qnumber = line[0]
         os_version = line[1]
@@ -86,8 +80,8 @@ def update_common_info(lines: list[list[str]], patch_date: str, common_cve: str,
             "dotnet_version": dotnet_version,
             "catalog_link": catalog_link,
             "excel_key": excel_key,
-            "kb_number": KB_FORMAT.format(qnumber),
-            "bulletin_id": BULLETIN_FORMAT.format(qnumber),
+            "kb_number": DotnetFormat.get_kb_number(qnumber),
+            "bulletin_id": DotnetFormat.get_bulletin_id(qnumber),
             "severity": severity
         }
         

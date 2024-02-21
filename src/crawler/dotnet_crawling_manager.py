@@ -9,21 +9,8 @@ from bs4 import ResultSet
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 from crawler.crawling_manager import CrawlingManager
-from const import (
-    CVE_STR,
-    CVE_ID,
-    SLEEP_SHORT,
-    TS_HEADER,
-    TS_SUMMARY,
-    PF_DOWNLOAD,
-    MAPPER_FILE_PATH,
-    DOTNET_FILE_PATH,
-    DOTNET_BULLETIN_URL_FORMAT,
-    DOTNET_NATIONS_LIST,
-    ENC_TYPE,
-    SLEEP_MEDIUM,
-    SLEEP_SHORT,
-)
+from classes.const import AppMeta, Sleep, FilePath, DirPath, FileStatus
+from classes.dotnet import DotnetCommon, DotnetDOM, DotnetFormat
 
 
 class DotnetCrawlingManager(CrawlingManager):
@@ -34,13 +21,12 @@ class DotnetCrawlingManager(CrawlingManager):
 
     def _get_cve_string(self) -> str:
         div = self.soup.find("div", "entry-content")
-        cve_list = list(map(lambda x: re.match(CVE_STR, x.text).group(), div.find_all(id = re.compile(CVE_ID))))
+        cve_list = list(map(lambda x: re.match(DotnetDOM.CVE_STR, x.text).group(), div.find_all(id = re.compile(DotnetDOM.CVE_ID))))
         return ",".join(cve_list)
 
 
     def _get_architecture(self, file_name: str) -> str:
         architectures = ["x86", "x64", "arm64"]
-
         for architecture in architectures:
             if architecture in file_name:
                 return architecture
@@ -54,8 +40,7 @@ class DotnetCrawlingManager(CrawlingManager):
 
         # 다운로드 버튼 클릭
         for tr in trs:
-            args = {"by": By.TAG_NAME, "value": "td", "element": tr}
-            tds = self._driver_wait_and_finds(**args)
+            tds = self._driver_wait_and_finds(by = By.TAG_NAME, value = "td", element = tr)
             patch_title = tds[0].text
 
             if "Embedded" in patch_title or "Itanium" in patch_title:
@@ -63,7 +48,8 @@ class DotnetCrawlingManager(CrawlingManager):
                 continue
             
             tds[-1].click()
-            time.sleep(SLEEP_MEDIUM)
+            time.sleep(Sleep.LONG)
+            self._wait_(DirPath.DOTNET, FileStatus.DOWNLOADING)
 
         for handle in driver.window_handles:
             if handle == main_window:
@@ -72,21 +58,17 @@ class DotnetCrawlingManager(CrawlingManager):
             driver.switch_to.window(handle)
 
             # 열린 다운로드 창에서 파일 다운로드 받기
-            args = {"by": By.XPATH, "value": PF_DOWNLOAD, "element": driver}
-            box = self._driver_wait_and_find(**args)
+            box = self._driver_wait_and_find(by = By.XPATH, value = DotnetDOM.PF_DOWNLOAD, element = driver)
             divs: list[WebElement] = box.find_elements(by = By.TAG_NAME, value = "div")[1:]
 
             for div in divs:
-                args = {"by": By.TAG_NAME, "value": "a", "element": div}
-                atag = self._driver_wait_and_find(**args)
+                atag = self._driver_wait_and_find(by = By.TAG_NAME, value = "a", element = div)
                 vendor_url = atag.get_attribute('href')
-                
-                if self._is_already_exists(DOTNET_FILE_PATH, atag.text.split("_")[0]):
+                if self._is_already_exists(DirPath.DOTNET, atag.text.split("_")[0]):
                     self.logger.info(f"중복된 파일 제외: {atag.text}")
                     continue
                 
                 ext_qnumber = extract_qnumber_from_kb_file_name(atag.text)
-                
                 if qnumber != ext_qnumber:
                     self.logger.info(f"일치하지 않는 파일 제외: {qnumber} != {ext_qnumber}")
                     continue
@@ -95,16 +77,14 @@ class DotnetCrawlingManager(CrawlingManager):
                 file_name = atag.text
                 self.logger.info("------------ [Downloading] ---------------")
                 self.logger.info(file_name)
-                self.logger.info(vendor_url)
-
-                file = {   
+                self.logger.info(vendor_url)            
+                
+                files.append({
                     "file_name": file_name,
                     "vendor_url": vendor_url,
                     "architecture": self._get_architecture(file_name),
                     "subject": file_name
-                }                
-                
-                files.append(file)
+                })
                 
             driver.close()
 
@@ -118,34 +98,31 @@ class DotnetCrawlingManager(CrawlingManager):
         for qnumber in qnumbers:
             common_dict = result[qnumber]['common']
             catalog_link = common_dict['catalog_link']
-
             file_dict[qnumber] = list()
 
             try:
                 main_window = driver.current_window_handle
                 driver.get(catalog_link)
-                args = {"by": By.CLASS_NAME, "value": "resultsBorder", "element": driver}
-                table = self._driver_wait_and_find(**args)
+                table = self._driver_wait_and_find(by = By.CLASS_NAME, value = "resultsBorder", element = driver)
                 trs: list[WebElement] = table.find_elements(by = By.TAG_NAME, value = "tr")[1:]
 
                 # 다운로드 작업 시작 세팅
                 driver.switch_to.window(main_window)
-                time.sleep(SLEEP_MEDIUM)
+                time.sleep(Sleep.MEDIUM)
                 files = self._search_patch_file(qnumber, trs, main_window)
                 driver.switch_to.window(main_window)
-
                 file_dict[qnumber] = files
-                time.sleep(SLEEP_MEDIUM)
+                time.sleep(Sleep.MEDIUM)
  
                 # 다운로드 완료 대기 
-                self._wait_(DOTNET_FILE_PATH, self.CRDOWNLOAD)
+                self._wait_(DirPath.DOTNET, FileStatus.DOWNLOADING)
 
             except Exception as e:
                 self.logger.critical(e)
                 continue
             
             finally:
-                self._wait_(DOTNET_FILE_PATH, self.CRDOWNLOAD)
+                self._wait_(DirPath.DOTNET, FileStatus.DOWNLOADING)
 
         
         return file_dict
@@ -208,13 +185,13 @@ class DotnetCrawlingManager(CrawlingManager):
                 key_idx += 1
         
         # 기존 파일 삭제 후 mapper.txt 파일 기록
-        if MAPPER_FILE_PATH.exists():
-            self.logger.warn(f"기존 {MAPPER_FILE_PATH.name} 파일 삭제")
-            os.remove(MAPPER_FILE_PATH)
+        if FilePath.MAPPER.exists():
+            self.logger.warn(f"기존 {FilePath.MAPPER.name} 파일 삭제")
+            os.remove(FilePath.MAPPER)
         
-        with open(MAPPER_FILE_PATH, "w", encoding = ENC_TYPE) as fp:
+        with open(FilePath.MAPPER, "w", encoding = AppMeta.ENC_TYPE) as fp:
             fp.writelines(self.keys)
-            self.logger.info(f"{MAPPER_FILE_PATH.name} 파일 초기화 완료")
+            self.logger.info(f"{FilePath.MAPPER.name} 파일 초기화 완료")
                 
 
     def _get_patch_date(self) -> str:
@@ -234,19 +211,18 @@ class DotnetCrawlingManager(CrawlingManager):
         for qnumber in qnumbers:
             ts_dict[qnumber] = dict()
             
-            for nation in DOTNET_NATIONS_LIST:
+            for nation in DotnetCommon.NATION_LIST:
                 ts_dict[qnumber][nation] = dict()
-                bulletin_url = DOTNET_BULLETIN_URL_FORMAT.format(nation, qnumber)
+                bulletin_url = DotnetFormat.get_bulletin_url(nation, qnumber)
 
                 try:
                     driver.get(bulletin_url)
-                    self._driver_wait(By.ID, TS_HEADER)
-                    self._driver_wait(By.ID, TS_SUMMARY)
-                    time.sleep(SLEEP_SHORT)
-
+                    self._driver_wait(By.ID, DotnetDOM.TS_HEADER)
+                    self._driver_wait(By.ID, DotnetDOM.TS_SUMMARY)
+                    time.sleep(Sleep.SHORT)
                     soup = BeautifulSoup(driver.page_source, "html.parser")
-                    title: str = replace_specific_unicode(soup.find(name = "h1", attrs = {"id": TS_HEADER}).text.strip())
-                    section = soup.find(name = "section", attrs = {"id": TS_SUMMARY})  
+                    title: str = replace_specific_unicode(soup.find(name = "h1", attrs = {"id": DotnetDOM.TS_HEADER}).text.strip())
+                    section = soup.find(name = "section", attrs = {"id": DotnetDOM.TS_SUMMARY})  
                     ps: ResultSet[BeautifulSoup] = section.find_all(name = "p")
             
                     summary = ""
@@ -264,12 +240,10 @@ class DotnetCrawlingManager(CrawlingManager):
                 except Exception as e:
                     self.logger.critical(e)
                     raise e
-                    
                 
                 ts_dict[qnumber][nation]['bulletin_url'] = bulletin_url
                 ts_dict[qnumber][nation]['title'] = replace_to_kst(patch_date, title, category)
                 ts_dict[qnumber][nation]['summary'] = summary
-                
         
         return ts_dict
     

@@ -1,16 +1,7 @@
 import time
 from selenium.webdriver.common.by import By
 from crawler.adobe_crawling_manager import AdobeCrawlingManager
-from classes import AdobeCommon, AdobeContinuous
 from utils.util_func_json import save_json_result
-from const import (
-    ADB_SECURITY_BULLETIN,
-    ADOBE_FILE_PATH,
-    ADB_PATCH_NOTE_URL, 
-    ADB_CONTINUOUS_UL, 
-    SLEEP_LONG,
-    RESULT_FILE_PATH,
-)
 
 
 class AdobeContinuousCrawlingManager(AdobeCrawlingManager):
