@@ -108,7 +108,7 @@ def _run_dotnet_phase1(url: str, category: str) -> None:
 def _run_dotnet_phase2(category: str) -> None:
     # result 파일이 없는 경우 가장 최신 파일을 복사
     if not FilePath.RESULT.exists():
-        filename = find_latest_file_name(DirPath.DATA)
+        filename = find_latest_file_name(DirPath.DATA, "result.json")
         shutil.copy(DirPath.DATA / filename, FilePath.RESULT)   
         logger.info(f"[COPY] {filename} -> {FilePath.RESULT.name}") 
     
