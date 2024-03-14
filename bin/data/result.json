@@ -9,19 +9,27 @@
             "kb_number": "KB5034466",
             "os_version": "Windows 10, version 22H2",
             "patch_date": "2024/02/15",
-            "severity": "Moderate"
+            "severity": "Important"
         },
         "files": [
             {
+                "MD5": "b0dc1c83202a2163a5f0fa0ed3b2849f",
+                "SHA256": "3d488979bc4cbccd5ffa8da6ad999e6530a0c172438783c77748600cc63c2484",
+                "WSUS 파일": "windows10.0-KB5034466-x64-ndp481.ms_WSUSSCAN.cab",
                 "architecture": "x64",
-                "file_name": "windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu",
-                "subject": "windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu",
+                "file_name": "windows10.0-KB5034466-x64-ndp481.ms.msu",
+                "file_size": "64.9",
+                "subject": "windows10.0-KB5034466-x64-ndp481.ms.msu",
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2023/12/windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu"
             },
             {
+                "MD5": "705c4438642bd05a819772c598a28a5b",
+                "SHA256": "3c10b913fd495ccd6fbb38e4785cc13766dda54d02423e8bd97673b3864cd565",
+                "WSUS 파일": "windows10.0-KB5034466-x86-ndp481_WSUSSCAN.cab",
                 "architecture": "x86",
-                "file_name": "windows10.0-kb5034466-x86-ndp481_50cde7ef5f8f4ec347dbf6afb5be276c04dc7fc5.msu",
-                "subject": "windows10.0-kb5034466-x86-ndp481_50cde7ef5f8f4ec347dbf6afb5be276c04dc7fc5.msu",
+                "file_name": "windows10.0-KB5034466-x86-ndp481.msu",
+                "file_size": "41.9",
+                "subject": "windows10.0-KB5034466-x86-ndp481.msu",
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2023/12/windows10.0-kb5034466-x86-ndp481_50cde7ef5f8f4ec347dbf6afb5be276c04dc7fc5.msu"
             },
             {
@@ -35,6 +43,12 @@
                 "file_name": "windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu",
                 "subject": "windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu",
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2023/12/windows10.0-kb5034466-x64-ndp481_c9dbd8e13506113523427fef15ecaf08d908db06.msu"
+            },
+            {
+                "architecture": "x86",
+                "file_name": "windows10.0-kb5034466-x86-ndp481_50cde7ef5f8f4ec347dbf6afb5be276c04dc7fc5.msu",
+                "subject": "windows10.0-kb5034466-x86-ndp481_50cde7ef5f8f4ec347dbf6afb5be276c04dc7fc5.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2023/12/windows10.0-kb5034466-x86-ndp481_50cde7ef5f8f4ec347dbf6afb5be276c04dc7fc5.msu"
             }
         ],
         "nations": {
@@ -70,32 +84,34 @@
             "kb_number": "KB5034467",
             "os_version": "Windows 11, version 22H2 and Windows 11, version 23H2",
             "patch_date": "2024/02/15",
-            "severity": "Moderate"
+            "severity": "Important"
         },
         "files": [
             {
+                "MD5": "f36ddce232bfd69f2f4457a7c185bed7",
+                "SHA256": "d3207b1b2f7fe34879be71c72588b819cd096deb91d94827aa2543013db824f4",
+                "WSUS 파일": "windows11.0-KB5034467-arm64-ndp481_WSUSSCAN.cab",
+                "architecture": "arm64",
+                "file_name": "windows11.0-KB5034467-arm64-ndp481.msu",
+                "file_size": "76.1",
+                "subject": "windows11.0-KB5034467-arm64-ndp481.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu"
+            },
+            {
+                "architecture": "arm64",
+                "file_name": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
+                "subject": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu"
+            },
+            {
+                "MD5": "8216de93a20acf401f70ec921990b219",
+                "SHA256": "0f7a67c5c273269d4d87b2ed2822e2305d655b688f4a0fd6869d4e6ba771c868",
+                "WSUS 파일": "windows11.0-KB5034467-x64-ndp481_WSUSSCAN.cab",
                 "architecture": "x64",
-                "file_name": "windows11.0-kb5034467-x64-ndp481_3f71b1bdba8a0bcb6fc94e56f36eeb8e1dd97ebb.msu",
-                "subject": "windows11.0-kb5034467-x64-ndp481_3f71b1bdba8a0bcb6fc94e56f36eeb8e1dd97ebb.msu",
+                "file_name": "windows11.0-KB5034467-x64-ndp481.msu",
+                "file_size": "61.1",
+                "subject": "windows11.0-KB5034467-x64-ndp481.msu",
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-x64-ndp481_3f71b1bdba8a0bcb6fc94e56f36eeb8e1dd97ebb.msu"
-            },
-            {
-                "architecture": "arm64",
-                "file_name": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
-                "subject": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
-                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu"
-            },
-            {
-                "architecture": "arm64",
-                "file_name": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
-                "subject": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
-                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu"
-            },
-            {
-                "architecture": "arm64",
-                "file_name": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
-                "subject": "windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu",
-                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034467-arm64-ndp481_9c031178b0c9a6b35e1360bde3d258ac72aaf9fb.msu"
             }
         ],
         "nations": {
@@ -131,25 +147,37 @@
             "kb_number": "KB5034468",
             "os_version": "Windows 10, version 22H2",
             "patch_date": "2024/02/15",
-            "severity": "Moderate"
+            "severity": "Important"
         },
         "files": [
             {
-                "architecture": "arm64",
-                "file_name": "windows10.0-kb5034468-arm64-ndp48_e3fc0b27c6542459081b2d99084f29d37e60d449.msu",
-                "subject": "windows10.0-kb5034468-arm64-ndp48_e3fc0b27c6542459081b2d99084f29d37e60d449.msu",
-                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2023/12/windows10.0-kb5034468-arm64-ndp48_e3fc0b27c6542459081b2d99084f29d37e60d449.msu"
-            },
-            {
+                "MD5": "2914c72d8f66c36b57896855ab7ef3ec",
+                "SHA256": "6a841ecd1e2990e295c1e4bcc146b1169061828b9035d5116ce4d99f4c1aa6cc",
+                "WSUS 파일": "windows10.0-KB5034468-x86-ndp48_WSUSSCAN.cab",
                 "architecture": "x86",
-                "file_name": "windows10.0-kb5034468-x86-ndp48_9c8481f6970416115e753021461235eb54b912cd.msu",
-                "subject": "windows10.0-kb5034468-x86-ndp48_9c8481f6970416115e753021461235eb54b912cd.msu",
+                "file_name": "windows10.0-KB5034468-x86-ndp48.msu",
+                "file_size": "45.0",
+                "subject": "windows10.0-KB5034468-x86-ndp48.msu",
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2023/12/windows10.0-kb5034468-x86-ndp48_9c8481f6970416115e753021461235eb54b912cd.msu"
             },
             {
+                "MD5": "b636fe83b154b1b07ef183070ce73b96",
+                "SHA256": "4f0a6fa4a412785106eb22427ab60e5b16387d30e8c55a954f80fab9c627e37b",
+                "WSUS 파일": "windows10.0-KB5034468-arm64-ndp48_WSUSSCAN.cab",
+                "architecture": "arm64",
+                "file_name": "windows10.0-KB5034468-arm64-ndp48.msu",
+                "file_size": "45.0",
+                "subject": "windows10.0-KB5034468-arm64-ndp48.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2023/12/windows10.0-kb5034468-arm64-ndp48_e3fc0b27c6542459081b2d99084f29d37e60d449.msu"
+            },
+            {
+                "MD5": "105a79eba71e943e38f54967cc518ca4",
+                "SHA256": "51ef37c783013de9afe850f31c93a259b9f6b0c551971ef730bf993266fe612d",
+                "WSUS 파일": "windows10.0-KB5034468-x64-ndp48_WSUSSCAN.cab",
                 "architecture": "x64",
-                "file_name": "windows10.0-kb5034468-x64-ndp48_97594b5cf615541cde5ffd62d7b9b44ea73c873f.msu",
-                "subject": "windows10.0-kb5034468-x64-ndp48_97594b5cf615541cde5ffd62d7b9b44ea73c873f.msu",
+                "file_name": "windows10.0-KB5034468-x64-ndp48.msu",
+                "file_size": "70.2",
+                "subject": "windows10.0-KB5034468-x64-ndp48.msu",
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2023/12/windows10.0-kb5034468-x64-ndp48_97594b5cf615541cde5ffd62d7b9b44ea73c873f.msu"
             },
             {
@@ -198,13 +226,17 @@
             "kb_number": "KB5034611",
             "os_version": "Microsoft server operating system, version 22H2",
             "patch_date": "2024/02/15",
-            "severity": "Moderate"
+            "severity": "Important"
         },
         "files": [
             {
+                "MD5": "fb4fbd45a2ebd4e2f4efa9b52dd53f69",
+                "SHA256": "133836dc21dbd821e8828fd879b1e1faafd3b2cc1ce91e0a35c1888a16c3d123",
+                "WSUS 파일": "windows10.0-KB5034611-x64-ndp481_WSUSSCAN.cab",
                 "architecture": "x64",
-                "file_name": "windows10.0-kb5034611-x64-ndp481_761e979f2ae4ba4011e614fee94a13d3baf98421.msu",
-                "subject": "windows10.0-kb5034611-x64-ndp481_761e979f2ae4ba4011e614fee94a13d3baf98421.msu",
+                "file_name": "windows10.0-KB5034611-x64-ndp481.msu",
+                "file_size": "61.3",
+                "subject": "windows10.0-KB5034611-x64-ndp481.msu",
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2024/01/windows10.0-kb5034611-x64-ndp481_761e979f2ae4ba4011e614fee94a13d3baf98421.msu"
             },
             {
@@ -247,7 +279,7 @@
             "kb_number": "KB5034612",
             "os_version": "Windows 11, version 21H2",
             "patch_date": "2024/02/15",
-            "severity": "Moderate"
+            "severity": "Important"
         },
         "files": [
             {
@@ -257,7 +289,18 @@
                 "architecture": "x64",
                 "file_name": "windows11.0-KB5034612-x64-ndp481.msu",
                 "file_size": "61.3",
-                "subject": "windows11.0-KB5034612-x64-ndp481.msu"
+                "subject": "windows11.0-KB5034612-x64-ndp481.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034612-x64-ndp481_1dccf5e985e510aea58c72efc5618ded6eb813b0.msu"
+            },
+            {
+                "MD5": "a1df564caf86d8ae5506bdfcfbc6d6be",
+                "SHA256": "dd0b7668138327687b8032986fbbc3540d761f0356d202fb815e345b622adbc6",
+                "WSUS 파일": "windows11.0-KB5034612-arm64-ndp481_WSUSSCAN.cab",
+                "architecture": "arm64",
+                "file_name": "windows11.0-KB5034612-arm64-ndp481.msu",
+                "file_size": "76.3",
+                "subject": "windows11.0-KB5034612-arm64-ndp481.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows11.0-kb5034612-arm64-ndp481_93b710b6263cf789103bbe02b29b13e1637f29e1.msu"
             }
         ],
         "nations": {
@@ -293,13 +336,17 @@
             "kb_number": "KB5034613",
             "os_version": "Microsoft server operating system, version 22H2",
             "patch_date": "2024/02/15",
-            "severity": "Moderate"
+            "severity": "Important"
         },
         "files": [
             {
+                "MD5": "bad753a7364ff0cfb595ff1f88729f91",
+                "SHA256": "4abb93bfd1b356074726feacca5b46226e327cf94bbb52b637d8912664c84d81",
+                "WSUS 파일": "windows10.0-KB5034613-x64-ndp48_WSUSSCAN.cab",
                 "architecture": "x64",
-                "file_name": "windows10.0-kb5034613-x64-ndp48_466f9e69310db89749e1da1f4f2a5ebc2b6adb1c.msu",
-                "subject": "windows10.0-kb5034613-x64-ndp48_466f9e69310db89749e1da1f4f2a5ebc2b6adb1c.msu",
+                "file_name": "windows10.0-KB5034613-x64-ndp48.msu",
+                "file_size": "66.1",
+                "subject": "windows10.0-KB5034613-x64-ndp48.msu",
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034613-x64-ndp48_466f9e69310db89749e1da1f4f2a5ebc2b6adb1c.msu"
             },
             {
@@ -342,9 +389,36 @@
             "kb_number": "KB5034614",
             "os_version": "Windows 10 1607 (Anniversary Update) and Windows Server 2016",
             "patch_date": "2024/02/15",
-            "severity": "Moderate"
+            "severity": "Important"
         },
-        "files": [],
+        "files": [
+            {
+                "MD5": "c790a8e2cddec462d48c4e446ea94b6f",
+                "SHA256": "b3c342cccab71ba9faf8bce16f2ce5d882f8afa3e31de7e3f2c379964b41f35d",
+                "WSUS 파일": "windows10.0-KB5034614-x86-ndp48_WSUSSCAN.cab",
+                "architecture": "x86",
+                "file_name": "windows10.0-KB5034614-x86-ndp48.msu",
+                "file_size": "32.4",
+                "subject": "windows10.0-KB5034614-x86-ndp48.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034614-x86-ndp48_a82ca3677c151db3ea670996a2f196fa30cff9f1.msu"
+            },
+            {
+                "MD5": "706a73853e8b5b59e3c5e9dc3a587d8e",
+                "SHA256": "c7d9fc687e14e3d61aed86d5a15e5dc34408def2ebf42ee222ada68ac6ac648d",
+                "WSUS 파일": "windows10.0-KB5034614-x64-ndp48_WSUSSCAN.cab",
+                "architecture": "x64",
+                "file_name": "windows10.0-KB5034614-x64-ndp48.msu",
+                "file_size": "54.8",
+                "subject": "windows10.0-KB5034614-x64-ndp48.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034614-x64-ndp48_57fe0d79c9a52b7e7d5295c935350c6bf980495e.msu"
+            },
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034614-x64-ndp48_57fe0d79c9a52b7e7d5295c935350c6bf980495e.msu",
+                "subject": "windows10.0-kb5034614-x64-ndp48_57fe0d79c9a52b7e7d5295c935350c6bf980495e.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034614-x64-ndp48_57fe0d79c9a52b7e7d5295c935350c6bf980495e.msu"
+            }
+        ],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5034614",
@@ -378,19 +452,27 @@
             "kb_number": "KB5034619",
             "os_version": "Windows 10 1809 (October 2018 Update) and Windows Server 2019",
             "patch_date": "2024/02/15",
-            "severity": "Moderate"
+            "severity": "Important"
         },
         "files": [
             {
+                "MD5": "39d6ed0bef5ed877ae5b2f783c88b62d",
+                "SHA256": "f10361ee2cc85a35cd4b7be2d7bbe73ba0d43e43ca2172a1b5dc35a67f3c6661",
+                "WSUS 파일": "windows10.0-KB5034619-x64-ndp472_WSUSSCAN.cab",
                 "architecture": "x64",
-                "file_name": "windows10.0-kb5034619-x64_c5f0b686b90e5f0b2e1b23c204e96e8ca8b3c81f.msu",
-                "subject": "windows10.0-kb5034619-x64_c5f0b686b90e5f0b2e1b23c204e96e8ca8b3c81f.msu",
+                "file_name": "windows10.0-KB5034619-x64-ndp472.msu",
+                "file_size": "78.2",
+                "subject": "windows10.0-KB5034619-x64-ndp472.msu",
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2024/01/windows10.0-kb5034619-x64_c5f0b686b90e5f0b2e1b23c204e96e8ca8b3c81f.msu"
             },
             {
+                "MD5": "9d0fb6e53442eb9d3f2c47fb30dc112a",
+                "SHA256": "87389065aef5818b4e0ea31b3a2016e7c33427e0abcfbac306add044dc125fbb",
+                "WSUS 파일": "windows10.0-KB5034619-arm64-ndp472_WSUSSCAN.cab",
                 "architecture": "arm64",
-                "file_name": "windows10.0-kb5034619-arm64_8b661afa90877212e9109222d981e45929947800.msu",
-                "subject": "windows10.0-kb5034619-arm64_8b661afa90877212e9109222d981e45929947800.msu",
+                "file_name": "windows10.0-KB5034619-arm64-ndp472.msu",
+                "file_size": "44.1",
+                "subject": "windows10.0-KB5034619-arm64-ndp472.msu",
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034619-arm64_8b661afa90877212e9109222d981e45929947800.msu"
             },
             {
@@ -400,9 +482,13 @@
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/d/msdownload/update/software/updt/2024/01/windows10.0-kb5034619-x64_c5f0b686b90e5f0b2e1b23c204e96e8ca8b3c81f.msu"
             },
             {
+                "MD5": "e4dbe3a209f4e599d8f818e626da737a",
+                "SHA256": "e419389b3de838d9508e1fe55a48b78fab88194917be47890186468d3fa05e6d",
+                "WSUS 파일": "windows10.0-KB5034619-x86-ndp472_WSUSSCAN.cab",
                 "architecture": "x86",
-                "file_name": "windows10.0-kb5034619-x86_a2dd0646a3ec943f50f20cf173e656a97b34945e.msu",
-                "subject": "windows10.0-kb5034619-x86_a2dd0646a3ec943f50f20cf173e656a97b34945e.msu",
+                "file_name": "windows10.0-KB5034619-x86-ndp472.msu",
+                "file_size": "44.1",
+                "subject": "windows10.0-KB5034619-x86-ndp472.msu",
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034619-x86_a2dd0646a3ec943f50f20cf173e656a97b34945e.msu"
             }
         ],
@@ -439,9 +525,36 @@
             "kb_number": "KB5034624",
             "os_version": "Windows 10 1809 (October 2018 Update) and Windows Server 2019",
             "patch_date": "2024/02/15",
-            "severity": "Moderate"
+            "severity": "Important"
         },
-        "files": [],
+        "files": [
+            {
+                "MD5": "bad0fed7ae680b8fe7705de4f4fdd692",
+                "SHA256": "ecc206b3e2cfbfe9094c68d067ec189b4bd95e7509bacf563024a0bd3dca1d98",
+                "WSUS 파일": "windows10.0-KB5034624-x64-ndp48_WSUSSCAN.cab",
+                "architecture": "x64",
+                "file_name": "windows10.0-KB5034624-x64-ndp48.msu",
+                "file_size": "80.3",
+                "subject": "windows10.0-KB5034624-x64-ndp48.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034624-x64-ndp48_9aaf1ded061cdc7fd9107501a2a590835f33540d.msu"
+            },
+            {
+                "architecture": "x64",
+                "file_name": "windows10.0-kb5034624-x64-ndp48_9aaf1ded061cdc7fd9107501a2a590835f33540d.msu",
+                "subject": "windows10.0-kb5034624-x64-ndp48_9aaf1ded061cdc7fd9107501a2a590835f33540d.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034624-x64-ndp48_9aaf1ded061cdc7fd9107501a2a590835f33540d.msu"
+            },
+            {
+                "MD5": "5d3d7a8707a3801e34fff3e8daeb6832",
+                "SHA256": "183b2f752f443d9a4d48ce53dabf34b7c3b89ae52d569ca1afcb73c7dd8dd93a",
+                "WSUS 파일": "windows10.0-KB5034624-x86-ndp48_WSUSSCAN.cab",
+                "architecture": "x86",
+                "file_name": "windows10.0-KB5034624-x86-ndp48.msu",
+                "file_size": "47.7",
+                "subject": "windows10.0-KB5034624-x86-ndp48.msu",
+                "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034624-x86-ndp48_78f93d6da065054258bf47f1967e1440db7e0fca.msu"
+            }
+        ],
         "nations": {
             "en-us": {
                 "bulletin_url": "https://support.microsoft.com/en-us/help/5034624",
@@ -475,19 +588,27 @@
             "kb_number": "KB5034625",
             "os_version": "Windows 11, version 21H2",
             "patch_date": "2024/02/15",
-            "severity": "Moderate"
+            "severity": "Important"
         },
         "files": [
             {
+                "MD5": "ec994cd0766dda56a904fa47775a074e",
+                "SHA256": "cad07299b6c3d0a95b9284741bf3c5b8905900c54d38fc0d769379aabc3a1909",
+                "WSUS 파일": "windows10.0-KB5034625-x64-ndp48_WSUSSCAN.cab",
                 "architecture": "x64",
-                "file_name": "windows10.0-kb5034625-x64-ndp48_32ab81887e4182d7460f075f3adabf5a490938ba.msu",
-                "subject": "windows10.0-kb5034625-x64-ndp48_32ab81887e4182d7460f075f3adabf5a490938ba.msu",
+                "file_name": "windows10.0-KB5034625-x64-ndp48.msu",
+                "file_size": "66.1",
+                "subject": "windows10.0-KB5034625-x64-ndp48.msu",
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034625-x64-ndp48_32ab81887e4182d7460f075f3adabf5a490938ba.msu"
             },
             {
+                "MD5": "4fbdd1309fa536a9d5be091aaf06ac8d",
+                "SHA256": "a59b9d61cc7fe4a07b7991d8bb6d65b2581be48766b948c65c25c124dd69421d",
+                "WSUS 파일": "windows10.0-KB5034625-arm64-ndp48_WSUSSCAN.cab",
                 "architecture": "arm64",
-                "file_name": "windows10.0-kb5034625-arm64-ndp48_a1ad95711334a459c890cef8b3958a5bcae2f1fb.msu",
-                "subject": "windows10.0-kb5034625-arm64-ndp48_a1ad95711334a459c890cef8b3958a5bcae2f1fb.msu",
+                "file_name": "windows10.0-KB5034625-arm64-ndp48.msu",
+                "file_size": "66.4",
+                "subject": "windows10.0-KB5034625-arm64-ndp48.msu",
                 "vendor_url": "https://catalog.s.download.windowsupdate.com/c/msdownload/update/software/updt/2024/01/windows10.0-kb5034625-arm64-ndp48_a1ad95711334a459c890cef8b3958a5bcae2f1fb.msu"
             }
         ],

@@ -1,0 +1,13 @@
+[03/14/2024 06:21:24] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\crawler appended to path
+[03/14/2024 06:21:24] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\register appended to path
+[03/14/2024 06:21:24] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\validator appended to path
+[03/14/2024 06:21:24] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\utils appended to path
+[03/14/2024 06:21:24] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\filehandler appended to path
+[03/14/2024 06:21:25] PM INFO: [validator_manager.__init__] 필수 파일 목록 검사
+[03/14/2024 06:21:25] PM INFO: [validator_manager.__init__] meta.yaml OK
+[03/14/2024 06:21:25] PM INFO: [validator_manager.__init__] patch.xlsx OK
+[03/14/2024 06:21:25] PM INFO: [validator_manager.__init__] chromedriver.exe OK
+[03/14/2024 06:21:25] PM INFO: [validator_manager.__init__] 필요한 파일 목록이 모두 확인되었습니다.
+[03/14/2024 06:21:25] PM INFO: [func_run_dotnet.run_dotnet] [Phase 1] DOTNET 수집 & 검증 단계를 시작합니다.
+[03/14/2024 06:21:25] PM CRITICAL: [func_run_dotnet.run_dotnet] 예상치 못한 예외 발생
+[03/14/2024 06:21:25] PM CRITICAL: [func_run_dotnet.run_dotnet] _run_dotnet_phase1() missing 1 required positional argument: 'category'

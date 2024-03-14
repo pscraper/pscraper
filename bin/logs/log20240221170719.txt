@@ -1,9 +1,0 @@
-[02/21/2024 05:06:41] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\crawler appended to path
-[02/21/2024 05:06:41] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\register appended to path
-[02/21/2024 05:06:41] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\validator appended to path
-[02/21/2024 05:06:41] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\utils appended to path
-[02/21/2024 05:06:41] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\filehandler appended to path
-[02/21/2024 05:06:41] PM INFO: [func_run_dotnet.run_dotnet] [Phase 3] DOTNET 리포트 서버에 결과를 보고합니다.
-[02/21/2024 05:06:41] PM INFO: [util_func_common.find_latest_file_name] F:\seungsu\projects\pscraper\bin\data 폴더에서 result.json 탐색 시작
-[02/21/2024 05:06:41] PM CRITICAL: [func_run_dotnet.run_dotnet] 예상치 못한 예외 발생
-[02/21/2024 05:06:41] PM CRITICAL: [func_run_dotnet.run_dotnet] 최신 파일을 찾을 수 없습니다

@@ -1,0 +1,16 @@
+[03/14/2024 06:08:54] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\crawler appended to path
+[03/14/2024 06:08:54] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\register appended to path
+[03/14/2024 06:08:54] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\validator appended to path
+[03/14/2024 06:08:54] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\utils appended to path
+[03/14/2024 06:08:54] PM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\filehandler appended to path
+[03/14/2024 06:08:55] PM INFO: [validator_manager.__init__] 필수 파일 목록 검사
+[03/14/2024 06:08:55] PM INFO: [validator_manager.__init__] meta.yaml OK
+[03/14/2024 06:08:55] PM INFO: [validator_manager.__init__] patch.xlsx OK
+[03/14/2024 06:08:55] PM INFO: [validator_manager.__init__] chromedriver.exe OK
+[03/14/2024 06:08:55] PM INFO: [validator_manager.__init__] 필요한 파일 목록이 모두 확인되었습니다.
+[03/14/2024 06:08:55] PM INFO: [func_run_dotnet.run_dotnet] [Phase 2] DOTNET 해시 추출 & msu 압축 해제 & 파일명 변경 작업을 시작합니다.
+[03/14/2024 06:08:55] PM INFO: [util_func_common.find_latest_file_name] F:\seungsu\projects\pscraper\bin\data 폴더에서 result.json 탐색 시작
+[03/14/2024 06:08:55] PM INFO: [func_run_dotnet._run_dotnet_phase2] [COPY] F:\seungsu\projects\pscraper\bin\data\result20240314180557.json -> result.json
+[03/14/2024 06:08:55] PM INFO: [dotnet_file_handler.start] windows10.0-KB5034466-x64-ndp481.msu 작업 시작
+[03/14/2024 06:08:55] PM CRITICAL: [func_run_dotnet.run_dotnet] 예상치 못한 예외 발생
+[03/14/2024 06:08:55] PM CRITICAL: [func_run_dotnet.run_dotnet] 파일명에서 QNumber를 추출할 수 없습니다.

@@ -10,15 +10,12 @@ pyproject.toml
 ./back_office/crwaling/patchfiles
 ./build/*
 ./build/main/*
-./bin/data/*.xlsx
 .vscode/*
-*.log
 *.csv
 *.pyc
 *.png
 *.msu
 *.xml
-# *.txt
 *.cab
 *.toc
 *.pkg
@@ -27,6 +24,5 @@ pyproject.toml
 *.pkg
 *.manifest
 *.pyz
-# *.txt
 *.spec
 *.crdownload
