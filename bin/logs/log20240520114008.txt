@@ -1,0 +1,10 @@
+[05/20/2024 11:39:46] AM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\crawler appended to path
+[05/20/2024 11:39:46] AM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\register appended to path
+[05/20/2024 11:39:46] AM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\validator appended to path
+[05/20/2024 11:39:46] AM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\utils appended to path
+[05/20/2024 11:39:46] AM INFO: [__init__.<module>] F:\seungsu\projects\pscraper\src\filehandler appended to path
+[05/20/2024 11:39:47] AM INFO: [validator_manager.__init__] 필수 파일 목록 검사
+[05/20/2024 11:39:47] AM INFO: [validator_manager.__init__] meta.yaml OK
+[05/20/2024 11:39:47] AM INFO: [validator_manager.__init__] patch.xlsx OK
+[05/20/2024 11:39:47] AM INFO: [validator_manager.__init__] chromedriver.exe OK
+[05/20/2024 11:39:47] AM INFO: [validator_manager.__init__] 필요한 파일 목록이 모두 확인되었습니다.

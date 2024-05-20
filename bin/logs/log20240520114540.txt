@@ -1,0 +1,47 @@
+[05/20/2024 11:43:58] AM INFO: [__init__.<module>] E:\seungsu\projects\pscraper\src\crawler appended to path
+[05/20/2024 11:43:58] AM INFO: [__init__.<module>] E:\seungsu\projects\pscraper\src\register appended to path
+[05/20/2024 11:43:58] AM INFO: [__init__.<module>] E:\seungsu\projects\pscraper\src\validator appended to path
+[05/20/2024 11:43:58] AM INFO: [__init__.<module>] E:\seungsu\projects\pscraper\src\utils appended to path
+[05/20/2024 11:43:58] AM INFO: [__init__.<module>] E:\seungsu\projects\pscraper\src\filehandler appended to path
+[05/20/2024 11:44:03] AM INFO: [validator_manager.__init__] 필수 파일 목록 검사
+[05/20/2024 11:44:03] AM INFO: [validator_manager.__init__] meta.yaml OK
+[05/20/2024 11:44:03] AM INFO: [validator_manager.__init__] patch.xlsx OK
+[05/20/2024 11:44:03] AM INFO: [validator_manager.__init__] chromedriver.exe OK
+[05/20/2024 11:44:03] AM INFO: [validator_manager.__init__] 필요한 파일 목록이 모두 확인되었습니다.
+[05/20/2024 11:44:03] AM INFO: [func_run_dotnet.run_dotnet] [Phase 1] DOTNET 수집 & 검증 단계를 시작합니다.
+[05/20/2024 11:44:03] AM WARNING: [crawling_manager.__init__] Remove Dir Tree: E:\seungsu\projects\pscraper\bin\patchfiles\dotnet
+[05/20/2024 11:44:03] AM INFO: [crawling_manager.__init__] Make Dir: E:\seungsu\projects\pscraper\bin\patchfiles\dotnet
+[05/20/2024 11:44:03] AM INFO: [crawling_manager.__init__] Chrome Option --disable-popup-blocking Added.
+[05/20/2024 11:44:03] AM INFO: [crawling_manager.__init__] Chrome Option --disable-extensions Added.
+[05/20/2024 11:44:03] AM INFO: [crawling_manager.__init__] Chrome Option --disable-gpu Added.
+[05/20/2024 11:44:03] AM INFO: [crawling_manager.__init__] Chrome Option --no-sandbox Added.
+[05/20/2024 11:44:03] AM INFO: [crawling_manager.__init__] Chrome Option user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Added.
+[05/20/2024 11:44:08] AM WARNING: [crawling_manager.__init__] Message: session not created: This version of ChromeDriver only supports Chrome version 123
+Current browser version is 125.0.6422.61 with binary path C:\Program Files\Google\Chrome\Application\chrome.exe
+Stacktrace:
+	GetHandleVerifier [0x00007FF74E5770C2+63090]
+	(No symbol) [0x00007FF74E4E2D12]
+	(No symbol) [0x00007FF74E37EC65]
+	(No symbol) [0x00007FF74E3B54C2]
+	(No symbol) [0x00007FF74E3B48CF]
+	(No symbol) [0x00007FF74E3AE8C5]
+	(No symbol) [0x00007FF74E3AB2F4]
+	(No symbol) [0x00007FF74E3F0BFB]
+	(No symbol) [0x00007FF74E3F0830]
+	(No symbol) [0x00007FF74E3E6D83]
+	(No symbol) [0x00007FF74E3B83A8]
+	(No symbol) [0x00007FF74E3B9441]
+	GetHandleVerifier [0x00007FF74E97262D+4238301]
+	GetHandleVerifier [0x00007FF74E9AF78D+4488509]
+	GetHandleVerifier [0x00007FF74E9A7A6F+4456479]
+	GetHandleVerifier [0x00007FF74E650606+953270]
+	(No symbol) [0x00007FF74E4EE5DF]
+	(No symbol) [0x00007FF74E4E92B4]
+	(No symbol) [0x00007FF74E4E93EB]
+	(No symbol) [0x00007FF74E4D9C24]
+	BaseThreadInitThunk [0x00007FFB7DF54ED0+16]
+	RtlUserThreadStart [0x00007FFB7EBAE20B+43]
+
+[05/20/2024 11:44:08] AM INFO: [crawling_manager.__init__] 구버전 ChromeDriver 객체로 동작합니다.
+[05/20/2024 11:44:08] AM CRITICAL: [func_run_dotnet.run_dotnet] 예상치 못한 예외 발생
+[05/20/2024 11:44:08] AM CRITICAL: [func_run_dotnet.run_dotnet] WebDriver.__init__() got an unexpected keyword argument 'executable_path'

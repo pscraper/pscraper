@@ -1,26 +1,26 @@
 # Chrome Driver 옵션
 driver_options:
-    - --disable-popup-blocking
-    - --disable-extensions
-    - --disable-gpu
-    - --no-sandbox
-    - user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
+  - --disable-popup-blocking
+  - --disable-extensions
+  - --disable-gpu
+  - --no-sandbox
+  - user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36
 
 # 엑셀에 수집하려는 .NET 버전 리스트
 dotnet_excel_key:
-    - 11 22H2, 23H2 3.5, 4.8.1
-    - 11 21H2 3.5, 4.8
-    - 11 21H2 3.5, 4.8.1
-    - 2022 3.5, 4.8
-    - 2022 3.5, 4.8.1
-    - 10 21H2, 22H2 3.5, 4.8
-    - 10 21H2, 22H2 3.5, 4.8.1
-    - 1809 3.5, 4.7.2
-    - 1809 3.5, 4.8
-    - 1607 4.8
+  - 11 22H2, 23H2 3.5, 4.8.1
+  - 11 21H2 3.5, 4.8
+  - 11 21H2 3.5, 4.8.1
+  - 2022 3.5, 4.8
+  - 2022 3.5, 4.8.1
+  - 10 21H2, 22H2 3.5, 4.8
+  - 10 21H2, 22H2 3.5, 4.8.1
+  - 1809 3.5, 4.7.2
+  - 1809 3.5, 4.8
+  - 1607 4.8
 
 # 엑셀에 수집하려는 adobe 버전 리스트
 adobe_excel_key:
-    - Adobe Acrobat DC
-    - Adobe Acrobat Reader DC
-    - Adobe Acrobat DC 2020
+  - Adobe Acrobat DC
+  - Adobe Acrobat Reader DC
+  - Adobe Acrobat DC 2020

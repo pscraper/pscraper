@@ -31,8 +31,8 @@ def run_dotnet(category: str, url: str, phase: str) -> None:
     err = False
     run_name = category.upper()
     validator = DotnetValidatorManager()
-
     splt = phase.split(":")
+
     if len(splt) == 2:
         start_phase = int(splt[0])
         end_phase = int(splt[1])
@@ -78,9 +78,10 @@ def run_dotnet(category: str, url: str, phase: str) -> None:
 def _run_dotnet_phase1(
     validator: DotnetValidatorManager, url: str, category: str
 ) -> None:
+    crawler = DotnetCrawlingManager(url, category)
+
     # 패치 데이터 초기화
     # 해당 과정 이후 최종 선택된 QNumber와 수집 정보들이 mapper.txt에 담긴다.
-    crawler = DotnetCrawlingManager(url, category)
     crawler._init_patch_data()
 
     # 공통 정보 가져오기 (CVE, PatchDate, KBNumber, BulletinID)

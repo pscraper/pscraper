@@ -1,0 +1,24 @@
+[05/20/2024 11:47:00] AM INFO: [__init__.<module>] E:\seungsu\projects\pscraper\src\crawler appended to path
+[05/20/2024 11:47:00] AM INFO: [__init__.<module>] E:\seungsu\projects\pscraper\src\register appended to path
+[05/20/2024 11:47:00] AM INFO: [__init__.<module>] E:\seungsu\projects\pscraper\src\validator appended to path
+[05/20/2024 11:47:00] AM INFO: [__init__.<module>] E:\seungsu\projects\pscraper\src\utils appended to path
+[05/20/2024 11:47:00] AM INFO: [__init__.<module>] E:\seungsu\projects\pscraper\src\filehandler appended to path
+[05/20/2024 11:47:01] AM INFO: [validator_manager.__init__] 필수 파일 목록 검사
+[05/20/2024 11:47:01] AM INFO: [validator_manager.__init__] meta.yaml OK
+[05/20/2024 11:47:01] AM INFO: [validator_manager.__init__] patch.xlsx OK
+[05/20/2024 11:47:01] AM INFO: [validator_manager.__init__] chromedriver.exe OK
+[05/20/2024 11:47:01] AM INFO: [validator_manager.__init__] 필요한 파일 목록이 모두 확인되었습니다.
+[05/20/2024 11:47:01] AM INFO: [func_run_dotnet.run_dotnet] [Phase 1] DOTNET 수집 & 검증 단계를 시작합니다.
+[05/20/2024 11:47:01] AM WARNING: [crawling_manager.__init__] Remove Dir Tree: E:\seungsu\projects\pscraper\bin\patchfiles\dotnet
+[05/20/2024 11:47:01] AM INFO: [crawling_manager.__init__] Make Dir: E:\seungsu\projects\pscraper\bin\patchfiles\dotnet
+[05/20/2024 11:47:01] AM INFO: [crawling_manager.__init__] Chrome Option --disable-popup-blocking Added.
+[05/20/2024 11:47:01] AM INFO: [crawling_manager.__init__] Chrome Option --disable-extensions Added.
+[05/20/2024 11:47:01] AM INFO: [crawling_manager.__init__] Chrome Option --disable-gpu Added.
+[05/20/2024 11:47:01] AM INFO: [crawling_manager.__init__] Chrome Option --no-sandbox Added.
+[05/20/2024 11:47:01] AM INFO: [crawling_manager.__init__] Chrome Option user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36 Added.
+[05/20/2024 11:47:14] AM INFO: [crawling_manager.__init__] Successfully Initialized
+[05/20/2024 11:47:14] AM INFO: [crawling_manager.__init__] Python Version: 3.11.5 | packaged by Anaconda, Inc. | (main, Sep 11 2023, 13:26:23) [MSC v.1916 64 bit (AMD64)]
+[05/20/2024 11:47:14] AM INFO: [crawling_manager.__init__] Category: dotnet
+[05/20/2024 11:47:14] AM INFO: [crawling_manager.__init__] Base URL: https://devblogs.microsoft.com/dotnet/dotnet-framework-february-2024-security-and-quality-rollup-updates/
+[05/20/2024 11:47:14] AM INFO: [crawling_manager.__init__] HTML parsing OK
+[05/20/2024 11:47:29] AM INFO: [func_run_dotnet.run_dotnet] pscraper Successfully finished
