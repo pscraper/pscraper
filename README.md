@@ -28,7 +28,7 @@ pscraper --category {category} --url {patch_note_url} --phase 1
 pscraper --category {category} --url {patch_note_url} --phase 2:5 
 ```
 
-### Phase (included:included)
+### Phase (include:include)
 - --phase 1 정보 수집 & 검증 단계
 - --phase 2 해시 추출 & msu 압축 해제 등 파일 핸들링 단계 
 - --phase 3 수집 정보 엑셀 등록 단계
